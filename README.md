@@ -8,6 +8,7 @@ You can listening, rate, even download music.
 All youre favourate music can be saved in playlist, that you can adgust as you want.
 Every time you choose a song, program will be automatically generate turn of songs depend on genre you have choosen.
 Song can be easily share to youre friend.
+Use search bar to find song, album or artist.
 
 ### As artist
 You can easily upload youre music and create albums.
