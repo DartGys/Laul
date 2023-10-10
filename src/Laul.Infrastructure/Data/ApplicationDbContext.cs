@@ -1,6 +1,7 @@
 ﻿using Laul.Domain.Entities;
 using Laul.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Laul.Infrastructure.Data
 {
@@ -13,10 +14,18 @@ namespace Laul.Infrastructure.Data
         public DbSet<ListeningStat> ListeningStats => Set<ListeningStat>();
         public DbSet<Playlist> Playlists => Set<Playlist>();
         public DbSet<Song> Songs => Set<Song>();
+        public DbSet<PlaylistSong> PlaylistSongs => Set<PlaylistSong>();
 
-        public Task<int> SaveChangesAsync()
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            base.OnModelCreating(builder);
         }
     }
 }

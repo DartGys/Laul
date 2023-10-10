@@ -12,5 +12,7 @@ namespace Laul.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string Photo { get; set; }
+        public virtual ICollection<Album> Albums { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace Laul.Application.Interfaces
         DbSet<ListeningStat> ListeningStats { get; }
         DbSet<Playlist> Playlists { get; }
         DbSet<Song> Songs { get; }
-        Task<int> SaveChangesAsync();
+        DbSet<PlaylistSong> PlaylistSongs { get; }
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

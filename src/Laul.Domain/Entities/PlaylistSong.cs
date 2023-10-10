@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Laul.Domain.Entities
 {
-    public class ListeningStat
+    public class PlaylistSong
     {
         public int Id { get; set; }
-        public DateTime ListeningDate { get; set; }
-        public string UserId { get; set; }
+        public int PlaylistId { get; set; }
+        public Playlist Playlist { get; set; }
+
         public int SongId { get; set; }
-        public virtual Song Song { get; set; }
+        public Song Song { get; set; }
     }
 }
