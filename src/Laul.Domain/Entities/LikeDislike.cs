@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Laul.Domain.Entities
 {
-    internal class LikeDislike
+    public class LikeDislike
     {
+        public int Id { get; set; }
+        public DateTime ActionDate { get; set; }
+        public bool IsLike { get; set; }
+        public int UserId { get; set; }
+        public int ResourceId { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laul.Domain.Entities
 {
-    public class ListeningStats
+    public class ListeningStat
     {
         public int Id { get; set; }
         public DateTime ListeningDate { get; set; }

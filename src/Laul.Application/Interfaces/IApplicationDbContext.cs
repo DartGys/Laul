@@ -1,15 +1,16 @@
 ﻿using Laul.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Laul.Application.Interfaces
 {
-    internal interface IApplicationDbContext
+    public interface IApplicationDbContext
     {
-        DbSet<Album>
+        DbSet<Album> Albums { get;}
+        DbSet<Artist> Artists { get;}
+        DbSet<LikeDislike> LikeDislikes { get;}
+        DbSet<ListeningStat> ListeningStats { get; }
+        DbSet<Playlist> Playlists { get; }
+        DbSet<Song> Songs { get; }
+        Task<int> SaveChangesAsync();
     }
 }

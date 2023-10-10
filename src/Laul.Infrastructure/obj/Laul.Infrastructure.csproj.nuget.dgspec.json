@@ -4,14 +4,79 @@
     "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj": {
+    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
-        "projectName": "Laul.Infrastructure",
-        "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
+        "projectName": "Laul.Application",
+        "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
         "packagesPath": "C:\\Users\\boda2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\boda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj": {
+                "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj",
+        "projectName": "Laul.Domain",
+        "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj",
+        "packagesPath": "C:\\Users\\boda2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\boda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +104,71 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
+        "projectName": "Laul.Infrastructure",
+        "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\boda2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\boda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {
+                "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
