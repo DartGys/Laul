@@ -1,0 +1,5 @@
+C:\Users\boda2\source\repos\Laul\src\Laul.Infrastructure\obj\Debug\net6.0\Laul.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\boda2\source\repos\Laul\src\Laul.Infrastructure\obj\Debug\net6.0\Laul.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boda2\source\repos\Laul\src\Laul.Infrastructure\obj\Debug\net6.0\Laul.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\boda2\source\repos\Laul\src\Laul.Infrastructure\obj\Debug\net6.0\Laul.Infrastructure.AssemblyInfo.cs
+C:\Users\boda2\source\repos\Laul\src\Laul.Infrastructure\obj\Debug\net6.0\Laul.Infrastructure.csproj.CoreCompileInputs.cache

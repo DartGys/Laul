@@ -1,0 +1,15 @@
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\bin\Debug\net6.0\Laul.Application.deps.json
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\bin\Debug\net6.0\Laul.Application.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\bin\Debug\net6.0\Laul.Application.pdb
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\bin\Debug\net6.0\Laul.Domain.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\bin\Debug\net6.0\Laul.Domain.pdb
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.csproj.AssemblyReference.cache
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.AssemblyInfoInputs.cache
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.AssemblyInfo.cs
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.csproj.CoreCompileInputs.cache
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.csproj.CopyComplete
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\refint\Laul.Application.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\Laul.Application.pdb
+C:\Users\boda2\source\repos\Laul\src\Laul.Application\obj\Debug\net6.0\ref\Laul.Application.dll
