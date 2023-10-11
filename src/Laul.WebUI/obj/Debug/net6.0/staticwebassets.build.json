@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "H07Tu28MglmLeWvDOUb6La+kh15WlVAjgD2TTG/jCBA=",
+  "Hash": "2SxlyRozOmwndJiOeDd702YWRclZkjCpqgwneZ3mCos=",
   "Source": "Laul.WebUI",
   "BasePath": "_content/Laul.WebUI",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Laul.WebUI.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\css\\bootstrap_morph.css",
+      "SourceId": "Laul.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\",
+      "BasePath": "_content/Laul.WebUI",
+      "RelativePath": "css/bootstrap_morph.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap_morph.css"
+    },
+    {
       "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\css\\site.css",
       "SourceId": "Laul.WebUI",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\img\\Laul_logo.png",
+      "SourceId": "Laul.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\",
+      "BasePath": "_content/Laul.WebUI",
+      "RelativePath": "img/Laul_logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Laul_logo.png"
     },
     {
       "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\js\\site.js",

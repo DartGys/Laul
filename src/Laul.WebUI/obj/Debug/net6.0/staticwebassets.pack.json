@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\Laul.WebUI.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\css\\bootstrap_morph.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap_morph.css"
+    },
+    {
       "Id": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\img\\Laul_logo.png",
+      "PackagePath": "staticwebassets\\img\\Laul_logo.png"
     },
     {
       "Id": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\js\\site.js",
