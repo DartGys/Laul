@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2SxlyRozOmwndJiOeDd702YWRclZkjCpqgwneZ3mCos=",
+  "Hash": "GVXEg1Ru8HrXEStkUEp9pyriO//aFIykgeyzsygb1/I=",
   "Source": "Laul.WebUI",
   "BasePath": "_content/Laul.WebUI",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap_morph.css"
     },
     {
+      "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\css\\sidebar.css",
+      "SourceId": "Laul.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\",
+      "BasePath": "_content/Laul.WebUI",
+      "RelativePath": "css/sidebar.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\sidebar.css"
+    },
+    {
       "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\css\\site.css",
       "SourceId": "Laul.WebUI",
       "SourceType": "Discovered",
@@ -117,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Laul_logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\js\\sidebar.js",
+      "SourceId": "Laul.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\",
+      "BasePath": "_content/Laul.WebUI",
+      "RelativePath": "js/sidebar.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\sidebar.js"
     },
     {
       "Identity": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\wwwroot\\js\\site.js",
