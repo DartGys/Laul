@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Laul.Application.Interfaces;
+
 
 namespace Laul.Infrastructure.Data
 {
@@ -19,8 +19,6 @@ namespace Laul.Infrastructure.Data
 
             // Інші сервіси та налаштування
             // ...
-
-            services.AddTransient<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             return services;
         }
