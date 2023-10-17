@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laul.Application.Interfaces.Repository
+namespace Laul.Application.Interfaces.Persistance.Repository
 {
-    public interface ISongRepository : IGenericRepository<Song>
+    public interface IPlaylistRepository : IGenericRepository<Playlist>
     {
     }
 }

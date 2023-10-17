@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laul.Application.Interfaces.Repository
+namespace Laul.Infrastructure.Persistance.Repository
 {
-    internal interface IAlbumRepository
+    internal class PlaylistSongRepository
     {
     }
 }

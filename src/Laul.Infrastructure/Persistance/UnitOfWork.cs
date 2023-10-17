@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laul.Application.Interfaces
+namespace Laul.Infrastructure.Persistance
 {
-    internal interface IUnitOfWork
+    internal class UnitOfWork
     {
     }
 }
