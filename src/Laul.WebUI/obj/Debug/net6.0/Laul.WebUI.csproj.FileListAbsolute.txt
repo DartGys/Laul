@@ -91,3 +91,5 @@ C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.CodeDom.
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\MediatR.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\MediatR.Contracts.dll
