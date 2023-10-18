@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
 
 namespace Laul.Application.Songs.Commands.CreateSong
 {
-    internal class CreateSongCommand
+    public class CreateSongCommand : IRequest<Guid>
     {
+        public Guid ArtistId { get; set; }
+        public string Title { get; set; }
+        public int Duration { get; set; }
+        public string Genre { get; set; }
+        public int AlbumId { get; set; }
     }
 }

@@ -8,7 +8,9 @@ namespace Laul.Infrastructure.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Artist> builder)
         {
-            builder.HasKey(artist => artist.Id);
+            builder.Property(a => a.Id)
+            .ValueGeneratedOnAdd()
+            .IsRequired();
 
             builder.Property(artist => artist.Name)
             .HasMaxLength(255)
