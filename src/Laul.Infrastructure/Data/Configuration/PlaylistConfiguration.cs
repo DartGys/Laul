@@ -17,8 +17,9 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(p => p.Description)
             .HasMaxLength(1000);
 
-            builder.Property(ld => ld.UserId)
-            .HasMaxLength(255)
+            builder.Property(p => p.UserId)
+            .HasColumnName("UserId")
+            .HasColumnType("uniqueidentifier")
             .IsRequired();
 
             builder.HasMany(p => p.PlaylistSongs)

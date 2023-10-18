@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "bj3a9hSpWNMGOWON6fAblMm11GdlkNMNU3OpyTYNGikJA/vww+qBEXn21+FTwU6810cM+W6OLgljTkiFpNoW0w==",
+  "dgSpecHash": "yTnRlU3RgwpIlSWUfJ2g/XY1u8qPbJyfNkrjhNxo8ZRx8g810rbRgQDIcki+kEI/iHUHOchLUqFPIaHEGX7VQQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\boda2\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.11\\microsoft.entityframeworkcore.analyzers.7.0.11.nupkg.sha512",

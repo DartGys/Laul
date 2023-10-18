@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Laul.Infrastructure.Persistance.Repository
 {
-    internal class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         public readonly ApplicationDbContext _context;
 

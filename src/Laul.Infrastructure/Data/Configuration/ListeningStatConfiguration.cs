@@ -13,8 +13,9 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(ls => ls.ListeningDate)
             .IsRequired();
 
-            builder.Property(ld => ld.UserId)
-            .HasMaxLength(255)
+            builder.Property(ls => ls.UserId)
+            .HasColumnName("UserId")
+            .HasColumnType("uniqueidentifier")
             .IsRequired();
 
             builder.HasOne(ls => ls.Song)

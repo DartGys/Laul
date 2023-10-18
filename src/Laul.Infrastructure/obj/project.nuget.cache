@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "nF42f2usYy6AG3Q+Q8fyyRBnjgo0jMOuiNl1AHviyjpaRQFSifO01HZOS9Ev+G6LlTQ0nciCz4V+YJD82q/weQ==",
+  "dgSpecHash": "0q4+nFq+hqycQ2sM6uBZhR/plS0a+m53jvNOxgbV3fbjj3mdJckvTZpn6YyJGSED0vu7W2eW9lOkb4IV1FtYNg==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boda2\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
