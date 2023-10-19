@@ -12,6 +12,7 @@ namespace Laul.Application.Interfaces.Persistance.Repository
         Task<T> GeyById(int id);
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
         Task AddAsync(T entity);
         Task AddRangeAsync(IEnumerable<T> entities);
         void Remove(T entity);

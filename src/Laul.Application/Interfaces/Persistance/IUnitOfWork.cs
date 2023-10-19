@@ -17,6 +17,7 @@ namespace Laul.Application.Interfaces.Persistance
         IPlaylistSongRepository PlaylistSong { get; }
         ISongRepository Song { get; }
         Task<int> SaveChangeAsync();
+        Task<int> SaveChangeAsync(CancellationToken cancellationToken);
 
     }
 }

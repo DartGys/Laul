@@ -35,6 +35,12 @@ namespace Laul.Infrastructure.Persistance.Repository
             return await _context.Set<T>().Where(predicate).ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
+        {
+            return await _context.Set<T>().Where(predicate).ToListAsync(cancellationToken);
+        }
+
+
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
