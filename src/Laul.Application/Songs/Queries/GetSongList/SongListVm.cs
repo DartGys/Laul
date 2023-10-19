@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Laul.Application.Songs.Queries.GetSongList
 {
-    internal class SongListVm
+    public class SongListVm
     {
+        public IList<SongLookupDto> Songs { get; set; }
     }
 }

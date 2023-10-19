@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
+using Laul.Application.Common.Mapping;
+using Laul.Domain.Entities;
 
 namespace Laul.Application.Songs.Queries.GetSongDetails
 {
-    internal class SongDetailsVm
+    public class SongDetailsVm : IMapWith<Song>
     {
+        public string Title { get; set; }
+        public int Duration { get; set; }
+        public string Genre { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Song, SongDetailsVm>();
+        }
     }
 }

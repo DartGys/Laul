@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Yjzk+fZq333E3+izwT5L0oPGXF6adEjX73AHBqhPS7lkUNybsGOnHlVr1RUGMvfzSs+pSTf056x2MrDE8IJreA==",
+  "dgSpecHash": "G0+BLyX/EYiHJzxAKs2R6hUWDFQXI6hTRKhuD/Y+4MObaLIzyI82PVeHLqGZ8a2jyiK/aXPxHI7ioxN1V7PVWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\Laul.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boda2\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

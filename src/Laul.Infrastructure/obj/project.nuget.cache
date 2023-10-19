@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KlyfWa6aswa3SSR4eyixRCAgW7AoZtbler349T+BiYVup2d0jOZGD6NnjnyQ0lVNfGfHDiasu2sEsmQE7c6whQ==",
+  "dgSpecHash": "ioQ7SADuG6nhhvy/m2ylYwoKI6x1zpdTVNzMOLvwT2O8L2gig8fjTuH1w6qpsz+Xo+wLf3PqvtjzEjIpR22kKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boda2\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

@@ -1,4 +1,7 @@
-﻿using Laul.WebUI.Models;
+﻿using Laul.Application.Songs.Queries.GetSongDetails;
+using Laul.Application.Songs.Queries.GetSongList;
+using Laul.WebUI.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +9,19 @@ namespace Laul.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IMediator _mediator;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IMediator mediator)
         {
-            _logger = logger;
+            _mediator = mediator;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var command = new GetSongListQuery();
+            var result = await _mediator.Send(command);
+
+            return View(result);
         }
 
         public IActionResult Privacy()
