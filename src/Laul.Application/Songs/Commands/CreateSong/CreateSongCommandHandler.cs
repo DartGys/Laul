@@ -5,8 +5,7 @@ using Laul.Application.Interfaces.Persistance;
 
 namespace Laul.Application.Songs.Commands.CreateSong
 {
-    public class CreateSongCommandHandler
-       : IRequestHandler<CreateSongCommand, Guid>
+    public class CreateSongCommandHandler : IRequestHandler<CreateSongCommand, Guid>  
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -26,7 +25,10 @@ namespace Laul.Application.Songs.Commands.CreateSong
                 AlbumId = request.AlbumId,
             };
 
-            await _unitOfWork.
+            await _unitOfWork.Song.AddAsync(song);
+            await _unitOfWork.SaveChangeAsync();
+
+            return song.ArtistId;
         }
     }
 }
