@@ -3,7 +3,7 @@ using AutoMapper;
 using Laul.Application.Common.Mapping;
 using Laul.Domain.Entities;
 
-namespace Laul.Application.Songs.Queries.GetSongDetails
+namespace Laul.Application.Services.Songs.Queries.GetSongDetails
 {
     public class SongDetailsVm : IMapWith<Song>
     {

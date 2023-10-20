@@ -2,7 +2,7 @@
 using System;
 
 
-namespace Laul.Application.Songs.Commands.UpdateSong
+namespace Laul.Application.Services.Songs.Commands.UpdateSong
 {
     public class UpdateSongCommand : IRequest<Unit>
     {

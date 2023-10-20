@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace Laul.Application.Songs.Commands.CreateSong
+namespace Laul.Application.Services.Songs.Commands.CreateSong
 {
     public class CreateSongCommand : IRequest<Guid>
     {

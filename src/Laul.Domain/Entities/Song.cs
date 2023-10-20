@@ -13,6 +13,7 @@ namespace Laul.Domain.Entities
         public int Duration { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
+        public DateTime PublishDate { get; set; }
         public string Genre { get; set; }
         public Guid ArtistId { get; set; }
         public virtual Artist Artist { get; set; }

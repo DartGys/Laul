@@ -3,7 +3,7 @@ using Laul.Application.Common.Mapping;
 using Laul.Domain.Entities;
 using System;
 
-namespace Laul.Application.Songs.Queries.GetSongList
+namespace Laul.Application.Services.Songs.Queries.GetSongList
 {
     public class SongLookupDto : IMapWith<Song>
     {

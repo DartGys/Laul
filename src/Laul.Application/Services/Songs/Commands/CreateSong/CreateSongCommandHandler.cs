@@ -3,9 +3,9 @@ using MediatR;
 using Laul.Domain.Entities;
 using Laul.Application.Interfaces.Persistance;
 
-namespace Laul.Application.Songs.Commands.CreateSong
+namespace Laul.Application.Services.Songs.Commands.CreateSong
 {
-    public class CreateSongCommandHandler : IRequestHandler<CreateSongCommand, Guid>  
+    public class CreateSongCommandHandler : IRequestHandler<CreateSongCommand, Guid>
     {
         private readonly IUnitOfWork _unitOfWork;
 

@@ -17,6 +17,9 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(s => s.Duration)
             .IsRequired();
 
+            builder.Property(s => s.PublishDate)
+                .HasColumnType("date");
+
             builder.Property(s => s.Photo)
            .HasMaxLength(255);
 
