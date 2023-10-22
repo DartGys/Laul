@@ -2,6 +2,7 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Laul.Application.Interfaces.Persistance;
+using Microsoft.EntityFrameworkCore;
 
 namespace Laul.Application.Services.Songs.Queries.GetSongList
 {

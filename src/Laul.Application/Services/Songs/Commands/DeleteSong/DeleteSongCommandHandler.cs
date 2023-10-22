@@ -18,11 +18,11 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<Unit> Handle(DeleteSongCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteSongCommand command, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == request.Id, cancellationToken)).FirstOrDefault();
+            var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == command.Id, cancellationToken)).FirstOrDefault();
 
-            if (entity == null || entity.ArtistId != request.ArtistId)
+            if (entity == null || entity.ArtistId != command.ArtistId)
             {
                 throw new NotFoundExeption(nameof(Song), entity.Id);
             }

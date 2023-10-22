@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Laul.Domain\Laul.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Albums\Commands\CreateAlbum\" />
-  </ItemGroup>
-
 </Project>

@@ -14,17 +14,18 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Unit> Handle(UpdateSongCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateSongCommand command, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == request.Id, cancellationToken)).FirstOrDefault();
+            var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == command.Id, cancellationToken)).FirstOrDefault();
 
-            if (entity == null || entity.Id != request.Id)
+            if (entity == null || entity.Id != command.Id)
             {
-                throw new NotFoundExeption(nameof(Song), request.Id);
+                throw new NotFoundExeption(nameof(Song), command.Id);
             }
 
-            entity.Title = request.Title;
-            entity.Genre = request.Genre;
+            entity.Title = command.Title;
+            entity.Genre = command.Genre;
+            entity.Photo = command.Photo;
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);
 
