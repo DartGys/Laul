@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Laul.Application.Services.Albums.Commands.DeleteAlbum
 {
-    internal class DeleteAlbumCommand
+    public class DeleteAlbumCommand : IRequest<Unit>
     {
+        public int Id { get; set; }
+        public Guid ArtistId { get; set; }
     }
 }

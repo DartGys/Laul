@@ -9,5 +9,6 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
         public int Id { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
+        public string Photo { get; set; }
     }
 }

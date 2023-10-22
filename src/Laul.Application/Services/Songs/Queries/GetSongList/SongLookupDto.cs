@@ -9,10 +9,12 @@ namespace Laul.Application.Services.Songs.Queries.GetSongList
     {
         public string Title { get; set; }
         public int Duration { get; set; }
+        //public string ArtistName { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Song, SongLookupDto>();
+                //.ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name));
         }
     }
 }

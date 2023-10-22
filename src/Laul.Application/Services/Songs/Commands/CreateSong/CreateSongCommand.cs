@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Laul.Application.Services.Songs.Commands.CreateSong
 {
-    public class CreateSongCommand : IRequest<Guid>
+    public class CreateSongCommand : IRequest<int>
     {
         public Guid ArtistId { get; set; }
         public string Title { get; set; }

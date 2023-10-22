@@ -1,4 +1,5 @@
-﻿using Laul.Application.Services.Songs.Queries.GetSongList;
+﻿using Laul.Application.Services.Albums.GetAlbumList;
+using Laul.Application.Services.Songs.Queries.GetSongList;
 using Laul.WebUI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Laul.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var command = new GetSongListQuery();
+            var command = new GetAlbumListQuery() { ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9") };
             var result = await _mediator.Send(command);
 
             return View(result);

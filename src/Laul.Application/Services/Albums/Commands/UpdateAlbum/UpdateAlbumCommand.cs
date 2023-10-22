@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Laul.Application.Services.Albums.Commands.UpdateAlbum
 {
-    internal class UpdateAlbumCommand
+    public class UpdateAlbumCommand : IRequest<Unit>
     {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Image { get; set; }
+        public string Genre { get; set; }
     }
 }
