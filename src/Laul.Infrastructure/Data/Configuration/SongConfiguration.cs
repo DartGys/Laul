@@ -17,6 +17,13 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(s => s.Duration)
             .IsRequired();
 
+            builder.Property(s => s.Photo)
+           .HasMaxLength(255);
+
+            builder.Property(s => s.Storage)
+           .IsRequired()
+           .HasMaxLength(255);
+
             builder.Property(s => s.Genre)
             .HasMaxLength(50);
 

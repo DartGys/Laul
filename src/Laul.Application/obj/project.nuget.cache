@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "v2E40VVV+NkMPA3n5XgSF5k1haA4k8vCEdFR3Ji9h/JIhp6c+SZjEJod37wBXeYt0hlUTKGDmaCzd23uUreKKQ==",
+  "dgSpecHash": "nqTbTjx8isMtWhscLGL/Lzde6sE+hAeyAUB5FXN297PfcxlxympYs+FT+bWRo6lSGZamYfUtmpoALLCNrHlDSQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boda2\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

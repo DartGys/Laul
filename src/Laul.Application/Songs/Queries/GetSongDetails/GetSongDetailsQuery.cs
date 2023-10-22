@@ -1,14 +1,13 @@
 ﻿using Laul.Application.Common.Mapping;
 using Laul.Domain.Entities;
+using MediatR;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Laul.Application.Songs.Queries.GetSongDetails
 {
-    public class SongDetails : IMapWith<Song>
+    public class GetSongDetailsQuery : IRequest<SongDetailsVm>
     {
-        public Guid ArtitId;
-        public string Title;
-        public int Duration;
-        public string Genre;
+        public int Id { get; set; }
+        public Guid ArtistId { get; set; }
     }
 }
