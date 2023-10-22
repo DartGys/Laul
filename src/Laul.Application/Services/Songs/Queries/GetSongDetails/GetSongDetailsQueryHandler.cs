@@ -5,9 +5,9 @@ using System;
 using Laul.Application.Common.Exeption;
 using Laul.Domain.Entities;
 
-namespace Laul.Application.Songs.Queries.GetSongDetails
+namespace Laul.Application.Services.Songs.Queries.GetSongDetails
 {
-    public  class GetSongDetailsQueryHandler : IRequestHandler<GetSongDetailsQuery, SongDetailsVm>
+    public class GetSongDetailsQueryHandler : IRequestHandler<GetSongDetailsQuery, SongDetailsVm>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace Laul.Application.Songs.Queries.GetSongDetails
         {
             var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == request.Id, cancellationToken)).FirstOrDefault();
 
-            if(entity == null || entity.ArtistId != request.ArtistId)
+            if (entity == null || entity.ArtistId != request.ArtistId)
             {
                 throw new NotFoundExeption(nameof(Song), entity.Id);
             }

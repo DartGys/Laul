@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laul.Application.Songs.Commands.DeleteSong
+namespace Laul.Application.Services.Songs.Commands.DeleteSong
 {
     public class DeleteSongCommandHandler
         : IRequestHandler<DeleteSongCommand, Unit>
@@ -22,7 +22,7 @@ namespace Laul.Application.Songs.Commands.DeleteSong
         {
             var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == request.Id, cancellationToken)).FirstOrDefault();
 
-            if(entity == null || entity.ArtistId != request.ArtistId)
+            if (entity == null || entity.ArtistId != request.ArtistId)
             {
                 throw new NotFoundExeption(nameof(Song), entity.Id);
             }

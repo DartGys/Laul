@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Laul.Application.Songs.Queries.GetSongList
+namespace Laul.Application.Services.Songs.Queries.GetSongList
 {
     public class GetSongListQuery : IRequest<SongListVm>
     {

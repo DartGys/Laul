@@ -3,7 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Laul.Application.Interfaces.Persistance;
 
-namespace Laul.Application.Songs.Queries.GetSongList
+namespace Laul.Application.Services.Songs.Queries.GetSongList
 {
     public class GetSongListQueryHandler : IRequestHandler<GetSongListQuery, SongListVm>
     {

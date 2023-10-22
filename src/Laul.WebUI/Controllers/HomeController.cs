@@ -1,5 +1,4 @@
-﻿using Laul.Application.Songs.Queries.GetSongDetails;
-using Laul.Application.Songs.Queries.GetSongList;
+﻿using Laul.Application.Services.Songs.Queries.GetSongList;
 using Laul.WebUI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

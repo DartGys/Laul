@@ -17,8 +17,8 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(album => album.Image)
             .HasMaxLength(255);
 
-            builder.Property(album => album.Year)
-                .IsRequired();
+            builder.Property(album => album.PublishDate)
+                .HasColumnType("date");
 
             builder.Property(album => album.Genre)
             .HasMaxLength(50);

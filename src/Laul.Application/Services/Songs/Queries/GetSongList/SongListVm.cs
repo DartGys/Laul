@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laul.Application.Songs.Queries.GetSongList
+namespace Laul.Application.Services.Songs.Queries.GetSongList
 {
     public class SongListVm
     {
