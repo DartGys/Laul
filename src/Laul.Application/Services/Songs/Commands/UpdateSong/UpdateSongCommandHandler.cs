@@ -1,4 +1,5 @@
 ﻿using Laul.Application.Common.Exeption;
+using Laul.Application.Interfaces.BlobStorage;
 using Laul.Application.Interfaces.Persistance;
 using Laul.Domain.Entities;
 using MediatR;
@@ -23,9 +24,10 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
                 throw new NotFoundExeption(nameof(Song), command.Id);
             }
 
+            string photoToken = 
+
             entity.Title = command.Title;
             entity.Genre = command.Genre;
-            entity.Photo = command.Photo;
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);
 

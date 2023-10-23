@@ -7,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using System.Diagnostics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Laul.WebUI.Controllers
 {
@@ -34,43 +35,16 @@ namespace Laul.WebUI.Controllers
                 ContentType = "image/jpg" // Тип контенту може бути змінений відповідно до реального типу файлу
             };
 
-            string musicPath = @"C:\Users\boda2\Downloads\Запрещённые Барабанщики - Убили Негра.mp3";
-            var fileProvider2 = new PhysicalFileProvider(Path.GetDirectoryName(musicPath));
-
-            // Отримуємо інформацію про файл
-            var fileInfo2 = fileProvider2.GetFileInfo(Path.GetFileName(musicPath));
-
-            // Створюємо об'єкт IFormFile з інформацією про файл
-            var msuicFile = new FormFile(fileInfo2.CreateReadStream(), 0, fileInfo2.Length, null, fileInfo2.Name)
+            var command = new CreateAlbumCommand
             {
-                Headers = new HeaderDictionary(),
-                ContentType = "audio/mp3" // Тип контенту може бути змінений відповідно до реального типу файлу
-            };
-
-            var command = new CreateSongCommand
-            {
-                AlbumId = 4,
                 ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9"),
-                Duration = 120,
-                Genre = "Jazz",
-                Photo = photoFile,
                 PublishDate = DateTime.Now,
-                Storage = msuicFile,
-                Title = "UbiliNegra",
+                Genre = "Jazz2",
+                Image = photoFile,
+                Title = "Title2",
             };
-            var resul = _mediator.Send(command);
-
-            //var command = new CreateAlbumCommand
-            //{
-            //    ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9"),
-            //    PublishDate = DateTime.Now,
-            //    Genre = "Jazz",
-            //    Image = photoFile,
-            //    Title = "Title",
-            //};
             var result = await _mediator.Send(command);
 
-            Console.WriteLine(result);
             return View();
         }
 

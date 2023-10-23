@@ -2,25 +2,25 @@
 using MediatR;
 using Laul.Domain.Entities;
 using Laul.Application.Interfaces.Persistance;
-using Laul.Application.Interfaces;
+using Laul.Application.Interfaces.BlobStorage;
 
 namespace Laul.Application.Services.Songs.Commands.CreateSong
 {
     public class CreateSongCommandHandler : IRequestHandler<CreateSongCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IBlobStorageUpload _blobStorageUpdload;
+        private readonly IBlobStorageContext _blobStorageContext;
 
-        public CreateSongCommandHandler(IUnitOfWork unitOfWork, IBlobStorageUpload blobStorageUpload)
+        public CreateSongCommandHandler(IUnitOfWork unitOfWork, IBlobStorageContext blobStorageUpload)
         {
             _unitOfWork = unitOfWork;
-            _blobStorageUpdload = blobStorageUpload;
+            _blobStorageContext = blobStorageUpload;
         }
 
         public async Task<int> Handle(CreateSongCommand command, CancellationToken cancellationToken)
         {
-            string photoToken = await _blobStorageUpdload.UploadFileAsync(command.Photo, command.Title);
-            string storageToken = await _blobStorageUpdload.UploadFileAsync(command.Storage, command.Title);
+            string photoToken = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, command.Title);
+            string storageToken = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Storage, command.Title);
 
             var song = new Song()
             {

@@ -2,7 +2,7 @@
 using Azure.Storage.Blobs;
 using Azure.Storage.Sas;
 using HeyRed.Mime;
-using Laul.Application.Interfaces;
+using Laul.Application.Interfaces.BlobStorage;
 using Microsoft.AspNetCore.Http;
 using System.Text.RegularExpressions;
 
@@ -32,8 +32,8 @@ namespace Laul.Infrastructure.Data.BlobStorage
                 // Якщо контейнер не існує, створюємо його
                 containerClient.Create();
             }
-            string fileName = name + Path.GetExtension(file.FileName);
-            BlobClient blobClient = containerClient.GetBlobClient(fileName);
+
+            BlobClient blobClient = containerClient.GetBlobClient(name);
 
             using (MemoryStream stream = new MemoryStream(fileBytes))
             {
@@ -43,7 +43,7 @@ namespace Laul.Infrastructure.Data.BlobStorage
             var sasBuilder = new BlobSasBuilder
             {
                 BlobContainerName = containerName,
-                BlobName = fileName,
+                BlobName = name,
                 Resource = "b",
                 ExpiresOn = DateTimeOffset.UtcNow.AddYears(1),
                 StartsOn = DateTimeOffset.UtcNow

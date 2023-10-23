@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Laul.Application.Interfaces
+namespace Laul.Application.Interfaces.BlobStorage
 {
     public interface IBlobStorageUpload
     {
