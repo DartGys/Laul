@@ -3,6 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Laul.Application.Interfaces.Persistance;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Laul.Application.Services.Songs.Queries.GetSongList
 {
@@ -19,8 +20,10 @@ namespace Laul.Application.Services.Songs.Queries.GetSongList
 
         public async Task<SongListVm> Handle(GetSongListQuery request, CancellationToken cancellationToken)
         {
-            var songsList = (await _unitOfWork.Song.GetAllAsync())
+            var songsList = (await _unitOfWork.Song.GetAllAsyncNoTracking(cancellationToken, a => a.Album, a => a.Artist))
                 .AsQueryable()
+                .OrderBy(x => Guid.NewGuid())
+                .Take(request.Count)
                 .ProjectTo<SongLookupDto>(_mapper.ConfigurationProvider)
                 .ToList();
 

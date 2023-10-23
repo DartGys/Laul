@@ -32,8 +32,8 @@ namespace Laul.Infrastructure.Data.BlobStorage
                 // Якщо контейнер не існує, створюємо його
                 containerClient.Create();
             }
-
-            BlobClient blobClient = containerClient.GetBlobClient(name);
+            string fileName = name + Path.GetExtension(file.FileName);
+            BlobClient blobClient = containerClient.GetBlobClient(fileName);
 
             using (MemoryStream stream = new MemoryStream(fileBytes))
             {
@@ -43,7 +43,7 @@ namespace Laul.Infrastructure.Data.BlobStorage
             var sasBuilder = new BlobSasBuilder
             {
                 BlobContainerName = containerName,
-                BlobName = name,
+                BlobName = fileName,
                 Resource = "b",
                 ExpiresOn = DateTimeOffset.UtcNow.AddYears(1),
                 StartsOn = DateTimeOffset.UtcNow

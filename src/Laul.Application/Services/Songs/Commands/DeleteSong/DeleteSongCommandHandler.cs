@@ -34,7 +34,7 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Storage);
         
             _unitOfWork.Song.Remove(entity);
-            await _unitOfWork.SaveChangeAsync();
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
             return Unit.Value;
         }
     }

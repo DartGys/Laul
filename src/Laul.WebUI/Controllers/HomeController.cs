@@ -22,15 +22,8 @@ namespace Laul.WebUI.Controllers
             _mediator = mediator;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var command = new DeleteSongCommand()
-            {
-                ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9"),
-                Id = 1004,
-            };
-            var result = await _mediator.Send(command);
-
             return View();
         }
 

@@ -34,8 +34,8 @@ namespace Laul.Application.Services.Songs.Commands.CreateSong
                 AlbumId = command.AlbumId,
             };
 
-            await _unitOfWork.Song.AddAsync(song);
-            await _unitOfWork.SaveChangeAsync();
+            await _unitOfWork.Song.AddAsync(song, cancellationToken);
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
 
             return song.Id;
         }

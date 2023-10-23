@@ -9,12 +9,15 @@ namespace Laul.Application.Interfaces.Persistance.Repository
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> GeyById(int id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
-        Task AddAsync(T entity);
-        Task AddRangeAsync(IEnumerable<T> entities);
+        Task<T> GetById(int id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<T> GetById(Guid id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<T>> GetAllAsyncNoTracking(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<T>> GetAllAsyncNoTracking(CancellationToken cancellationToken = default(CancellationToken), params Expression<Func<T, object>>[] includes);
+        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<T>> FindAsyncNoTracking(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default(CancellationToken));
+        Task AddAsync(T entity, CancellationToken cancellationToken = default(CancellationToken));
+        Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default(CancellationToken));
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
 
