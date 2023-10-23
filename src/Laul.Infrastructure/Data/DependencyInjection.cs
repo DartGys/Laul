@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Laul.Application.Interfaces.Persistance;
 using Laul.Infrastructure.Persistance;
+using Laul.Application.Interfaces;
+using Laul.Infrastructure.Data.BlobStorage;
 
 namespace Laul.Infrastructure.Data
 {
@@ -21,6 +23,7 @@ namespace Laul.Infrastructure.Data
             // Інші сервіси та налаштування
             // ...
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IBlobStorageUpload, BlobStorageUpload>();
 
             return services;
         }

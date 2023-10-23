@@ -1,8 +1,11 @@
-﻿using Laul.Application.Services.Albums.GetAlbumList;
+﻿using Laul.Application.Services.Albums.Commands.CreateAlbum;
+using Laul.Application.Services.Albums.GetAlbumList;
+using Laul.Application.Services.Songs.Commands.CreateSong;
 using Laul.Application.Services.Songs.Queries.GetSongList;
 using Laul.WebUI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using System.Diagnostics;
 
 namespace Laul.WebUI.Controllers
@@ -18,10 +21,57 @@ namespace Laul.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var command = new GetAlbumListQuery() { ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9") };
+            string photoPath = @"C:\Users\boda2\Downloads\274px-Убили_негра.jpg";
+            var fileProvider = new PhysicalFileProvider(Path.GetDirectoryName(photoPath));
+
+            // Отримуємо інформацію про файл
+            var fileInfo = fileProvider.GetFileInfo(Path.GetFileName(photoPath));
+
+            // Створюємо об'єкт IFormFile з інформацією про файл
+            var photoFile = new FormFile(fileInfo.CreateReadStream(), 0, fileInfo.Length, null, fileInfo.Name)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = "image/jpg" // Тип контенту може бути змінений відповідно до реального типу файлу
+            };
+
+            string musicPath = @"C:\Users\boda2\Downloads\Запрещённые Барабанщики - Убили Негра.mp3";
+            var fileProvider2 = new PhysicalFileProvider(Path.GetDirectoryName(musicPath));
+
+            // Отримуємо інформацію про файл
+            var fileInfo2 = fileProvider2.GetFileInfo(Path.GetFileName(musicPath));
+
+            // Створюємо об'єкт IFormFile з інформацією про файл
+            var msuicFile = new FormFile(fileInfo2.CreateReadStream(), 0, fileInfo2.Length, null, fileInfo2.Name)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = "audio/mp3" // Тип контенту може бути змінений відповідно до реального типу файлу
+            };
+
+            var command = new CreateSongCommand
+            {
+                AlbumId = 4,
+                ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9"),
+                Duration = 120,
+                Genre = "Jazz",
+                Photo = photoFile,
+                PublishDate = DateTime.Now,
+                Storage = msuicFile,
+                Title = "UbiliNegra",
+            };
+            var resul = _mediator.Send(command);
+
+            //var command = new CreateAlbumCommand
+            //{
+            //    ArtistId = new Guid("D53201B9-824B-4EA4-8C66-4FA2BA14A3F9"),
+            //    PublishDate = DateTime.Now,
+            //    Genre = "Jazz",
+            //    Image = photoFile,
+            //    Title = "Title",
+            //};
             var result = await _mediator.Send(command);
 
-            return View(result);
+            Console.WriteLine(result);
+            return View();
         }
 
         public IActionResult Privacy()
