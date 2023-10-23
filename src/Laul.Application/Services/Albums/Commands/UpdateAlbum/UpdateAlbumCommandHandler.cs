@@ -2,15 +2,18 @@
 using Laul.Application.Common.Exeption;
 using MediatR;
 using Laul.Domain.Entities;
+using Laul.Application.Interfaces.BlobStorage;
 
 namespace Laul.Application.Services.Albums.Commands.UpdateAlbum
 {
     public class UpdateAlbumCommandHandler : IRequestHandler<UpdateAlbumCommand, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public UpdateAlbumCommandHandler(IUnitOfWork unitOfWork)
+        private readonly IBlobStorageContext _blobStorageContext;
+        public UpdateAlbumCommandHandler(IUnitOfWork unitOfWork, IBlobStorageContext blobStorageContext)
         {
             _unitOfWork = unitOfWork;
+            _blobStorageContext = blobStorageContext;
         }
 
         public async Task<Unit> Handle(UpdateAlbumCommand command, CancellationToken cancellationToken)
@@ -22,8 +25,10 @@ namespace Laul.Application.Services.Albums.Commands.UpdateAlbum
                 throw new NotFoundExeption(nameof(Album), entity.Id);
             }
 
+            await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Image);
+
             entity.Title = command.Title;
-            entity.Image = command.Image;
+            entity.Image = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Image, command.Title);
             entity.Genre = command.Genre;
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);

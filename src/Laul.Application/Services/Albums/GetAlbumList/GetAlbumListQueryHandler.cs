@@ -19,7 +19,7 @@ namespace Laul.Application.Services.Albums.GetAlbumList
 
         public async Task<AlbumListVm> Handle(GetAlbumListQuery request, CancellationToken cancellation)
         {
-            var artist = (await _unitOfWork.Artist.FindAsync(a => a.Id == request.ArtistId)).FirstOrDefault();
+            var artist = await _unitOfWork.Artist.GetById(request.ArtistId);
 
             var albumsList = (await _unitOfWork.Album.FindAsync(a => a.ArtistId == request.ArtistId))
                 .AsQueryable()
