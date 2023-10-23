@@ -9,6 +9,6 @@ namespace Laul.Application.Interfaces.BlobStorage
 {
     public interface IBlobStorageDelete
     {
-        public Task<bool> DeleteFileAsync(string name);
+        public Task<bool> DeleteFileAsync(string token);
     }
 }

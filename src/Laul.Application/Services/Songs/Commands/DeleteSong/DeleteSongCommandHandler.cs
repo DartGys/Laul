@@ -1,4 +1,5 @@
 ﻿using Laul.Application.Common.Exeption;
+using Laul.Application.Interfaces.BlobStorage;
 using Laul.Application.Interfaces.Persistance;
 using Laul.Domain.Entities;
 using MediatR;
@@ -14,9 +15,11 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
         : IRequestHandler<DeleteSongCommand, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public DeleteSongCommandHandler(IUnitOfWork unitOfWork)
+        private readonly IBlobStorageContext _blobStorageContext;
+        public DeleteSongCommandHandler(IUnitOfWork unitOfWork, IBlobStorageContext blobStorageContext)
         {
             _unitOfWork = unitOfWork;
+            _blobStorageContext = blobStorageContext;
         }
         public async Task<Unit> Handle(DeleteSongCommand command, CancellationToken cancellationToken)
         {
@@ -27,6 +30,9 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
                 throw new NotFoundExeption(nameof(Song), entity.Id);
             }
 
+            await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
+            await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Storage);
+        
             _unitOfWork.Song.Remove(entity);
             await _unitOfWork.SaveChangeAsync();
             return Unit.Value;
