@@ -37,9 +37,9 @@ namespace Laul.Application.Services.Songs.Queries.GetSongDetails
                 .Include(album.Title)
                 .Include(artist.Name)
                 .ProjectTo<SongDetailsVm>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
+                .FirstOrDefaultAsync(cancellationToken);
 
-            return _mapper.Map<SongDetailsVm>(entity);
+            return _mapper.Map<SongDetailsVm>(song);
         }
     }
 }

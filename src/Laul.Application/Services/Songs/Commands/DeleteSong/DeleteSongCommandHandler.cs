@@ -29,13 +29,12 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
             {
                 throw new NotFoundExeption(nameof(Song), entity.Id);
             }
-        
-            _unitOfWork.Song.Remove(entity);
-            await _unitOfWork.SaveChangeAsync(cancellationToken);
 
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Storage);
-
+        
+            _unitOfWork.Song.Remove(entity);
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
             return Unit.Value;
         }
     }
