@@ -13,5 +13,6 @@ namespace Laul.Domain.Entities
         public Playlist Playlist { get; set; }
         public int SongId { get; set; }
         public Song Song { get; set; }
+        public Guid UserId { get; set; }
     }
 }

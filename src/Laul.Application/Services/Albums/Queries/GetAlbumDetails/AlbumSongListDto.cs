@@ -4,7 +4,7 @@ using Laul.Domain.Entities;
 
 namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
 {
-    public class SongLookupDto : IMapWith<Song>
+    public class AlbumSongListDto : IMapWith<Song>
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -13,7 +13,7 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Song, SongLookupDto>();
+            profile.CreateMap<Song, AlbumSongListDto>();
         }
     }
 }
