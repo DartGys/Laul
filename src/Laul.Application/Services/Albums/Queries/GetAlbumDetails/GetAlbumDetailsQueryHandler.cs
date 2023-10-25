@@ -43,7 +43,7 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
             var AlbumDetailsVm = _mapper.Map<AlbumDetailsVm>(album);
             AlbumDetailsVm.Songs = _mapper.Map<IList<AlbumSongListDto>>(songs);
 
-            return _mapper.Map<AlbumDetailsVm>(album);
+            return AlbumDetailsVm;
         }
     }
 }

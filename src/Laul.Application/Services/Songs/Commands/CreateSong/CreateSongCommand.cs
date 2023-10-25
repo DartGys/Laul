@@ -8,11 +8,10 @@ namespace Laul.Application.Services.Songs.Commands.CreateSong
     {
         public Guid ArtistId { get; set; }
         public string Title { get; set; }
-        public int Duration { get; set; }
         public DateTime PublishDate { get; set; }
         public IFormFile Photo { get; set; }
         public IFormFile Storage { get; set; }
         public string Genre { get; set; }
-        public int AlbumId { get; set; }
+        public ulong AlbumId { get; set; }
     }
 }

@@ -7,9 +7,8 @@ namespace Laul.Application.Services.Songs.Queries.GetSongList
 {
     public class SongLookupDto : IMapWith<Song>
     {
-        public int Id { get; set; }
+        public ulong Id { get; set; }
         public string Title { get; set; }
-        public int Duration { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
         public string ArtistName { get; set; }

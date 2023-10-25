@@ -1,4 +1,6 @@
 ﻿using Laul.Application.Interfaces.Persistance;
+using Laul.Application.Common.Exeption;
+using Laul.Domain.Entities;
 using MediatR;
 
 namespace Laul.Application.Services.Playlists.Commands.AddPlaylistSong
@@ -15,9 +17,23 @@ namespace Laul.Application.Services.Playlists.Commands.AddPlaylistSong
         public async Task<int> Handle(AddPlaylistSongCommand command, CancellationToken cancellationToken)
         {
             var playlist = await _unitOfWork.Playlist.GetById(command.PlaylistId);
-            //var song = await _unitOfWork.Song.GetById(command)
+            var song = await _unitOfWork.Song.GetById(command.SongId);
+            
+            if(song == null || playlist == null)
+            {
+                throw new NotFoundExeption(nameof(PlaylistSong), "No song or playlist");
+            }
 
-            return 1;
+            var playlistSong = new PlaylistSong()
+            {
+                SongId = command.SongId,
+                PlaylistId = playlist.Id,
+                UserId = command.UserId,
+            };
+
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
+
+            return playlistSong.Id;
         }
     }
 }

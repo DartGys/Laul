@@ -19,7 +19,7 @@ namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
             {
                 UserId = command.UserId,
                 SongId = command.SongId,
-                ListeningDate = command.ListeningDate,
+                ListeningDate = DateTime.UtcNow,
             };
 
             await _unitOfWork.ListeningStats.AddAsync(listeningStat,cancellationToken);

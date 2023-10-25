@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MediatR;
 namespace Laul.Application.Services.LikeDislikes.Commands.CreateLikeDislike
 {
-    internal class CreateLikeDislikeCommand
+    public class CreateLikeDislikeCommand : IRequest<int>
     {
+        public Guid UserId { get; set; }
+        public int SongId { get; set; }
+        public bool IsLike { get; set; }
     }
 }

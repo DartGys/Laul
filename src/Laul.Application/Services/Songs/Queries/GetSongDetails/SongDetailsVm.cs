@@ -9,13 +9,14 @@ namespace Laul.Application.Services.Songs.Queries.GetSongDetails
     public class SongDetailsVm : IMapWith<Song>
     {
         public string Title { get; set; }
-        public int Duration { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
         public int Year { get; set; }
         public string Genre { get; set; }
         public string AlbumName { get; set; }
         public string ArtistName { get; set; }
+        public ulong likeCount { get; set; }
+        public ulong dislikeCount { get; set; }
 
         public void Mapping(Profile profile)
         {
