@@ -10,7 +10,7 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
 {
     public class DeleteSongCommand : IRequest<Unit>
     {
-        public int Id;
+        public ulong Id;
         public Guid ArtistId;
     }
 }

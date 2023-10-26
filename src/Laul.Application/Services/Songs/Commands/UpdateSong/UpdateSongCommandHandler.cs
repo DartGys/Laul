@@ -9,10 +9,12 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
     public class UpdateSongCommandHandler : IRequestHandler<UpdateSongCommand, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IBlobStorageContext _blobStorageContext;
 
-        public UpdateSongCommandHandler(IUnitOfWork unitOfWork)
+        public UpdateSongCommandHandler(IUnitOfWork unitOfWork, IBlobStorageContext blobStorageContext)
         {
             _unitOfWork = unitOfWork;
+            _blobStorageContext = blobStorageContext;
         }
 
         public async Task<Unit> Handle(UpdateSongCommand command, CancellationToken cancellationToken)
@@ -24,9 +26,12 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
                 throw new NotFoundExeption(nameof(Song), command.Id);
             }
 
-            string photoToken = 
+            await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
 
             entity.Title = command.Title;
+
+            entity.Photo = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, entity.Title);
+
             entity.Genre = command.Genre;
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);

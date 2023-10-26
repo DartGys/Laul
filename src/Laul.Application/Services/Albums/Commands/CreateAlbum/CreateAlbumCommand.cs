@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Laul.Application.Services.Albums.Commands.CreateAlbum
 {
-    public class CreateAlbumCommand : IRequest<int>
+    public class CreateAlbumCommand : IRequest<ulong>
     {
         public Guid ArtistId { get; set; }
         public string Title { get; set; }

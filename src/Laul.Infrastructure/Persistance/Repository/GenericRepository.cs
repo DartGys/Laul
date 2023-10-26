@@ -20,35 +20,61 @@ namespace Laul.Infrastructure.Persistance.Repository
             _context = context;
         }
 
-        public async Task AddAsync(T entity)
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await _context.Set<T>().AddAsync(entity);
+            await _context.Set<T>().AddAsync(entity, cancellationToken);
         }
 
-        public async Task AddRangeAsync(IEnumerable<T> entities)
+        public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await _context.Set<T>().AddRangeAsync(entities);
+            await _context.Set<T>().AddRangeAsync(entities, cancellationToken);
         }
 
-        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
-        {
-            return await _context.Set<T>().Where(predicate).ToListAsync();
-        }
-
-        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await _context.Set<T>().Where(predicate).ToListAsync(cancellationToken);
         }
 
-
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> FindAsyncNoTracking(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().AsNoTracking().Where(predicate).ToListAsync(cancellationToken);
         }
 
-        public async Task<T> GeyById(int id)
+        public async Task<IEnumerable<T>> FindAsyncNoTracking(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default(CancellationToken), params Expression<Func<T, object>>[] includes)
         {
-            return await _context.Set<T>().FindAsync(id);
+            IQueryable<T> query = _context.Set<T>().AsNoTracking().Where(predicate);
+            foreach(var include in includes)
+                query = query.Include(include);
+
+            return await query.ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await _context.Set<T>().ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsyncNoTracking(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await _context.Set<T>().AsNoTracking().ToListAsync(cancellationToken);
+        }
+        public async Task<IEnumerable<T>> GetAllAsyncNoTracking(CancellationToken cancellationToken = default(CancellationToken), params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>().AsNoTracking();
+            foreach(var include in includes)
+                query = query.Include(include);
+
+            return await query.ToListAsync(cancellationToken);
+        }
+
+        public async Task<T> GetById(ulong id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await _context.Set<T>().FindAsync(id,cancellationToken);
+        }
+
+        public async Task<T> GetById(Guid id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await _context.Set<T>().FindAsync(id, cancellationToken);
         }
 
         public void Remove(T entity)
