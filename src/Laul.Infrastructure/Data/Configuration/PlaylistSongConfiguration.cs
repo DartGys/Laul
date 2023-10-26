@@ -19,11 +19,6 @@ namespace Laul.Infrastructure.Data.Configuration
             .WithMany(s => s.PlaylistSongs)
             .HasForeignKey(ps => ps.SongId)
             .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Property(p => p.UserId)
-            .HasColumnName("UserId")
-            .HasColumnType("uniqueidentifier")
-            .IsRequired();
         }
     }
 }

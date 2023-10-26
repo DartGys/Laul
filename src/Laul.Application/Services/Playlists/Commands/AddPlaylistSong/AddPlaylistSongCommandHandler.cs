@@ -28,7 +28,6 @@ namespace Laul.Application.Services.Playlists.Commands.AddPlaylistSong
             {
                 SongId = command.SongId,
                 PlaylistId = playlist.Id,
-                UserId = command.UserId,
             };
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);

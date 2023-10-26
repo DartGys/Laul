@@ -28,7 +28,7 @@ namespace Laul.Infrastructure.Migrations
                 name: "Playlists",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "ulong", nullable: false)
+                    Id = table.Column<int>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
@@ -43,11 +43,11 @@ namespace Laul.Infrastructure.Migrations
                 name: "Albums",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "ulong", nullable: false)
+                    Id = table.Column<int>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Year = table.Column<int>(type: "int", nullable: false),
+                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Genre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     ArtistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -66,13 +66,15 @@ namespace Laul.Infrastructure.Migrations
                 name: "Songs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "ulong", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<ulong>(type: "bigint", nullable: false)
+                    .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Duration = table.Column<int>(type: "ulong", nullable: false),
                     Genre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     ArtistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AlbumId = table.Column<int>(type: "ulong", nullable: false)
+                    AlbumId = table.Column<ulong>(type: "bigint", nullable: false),
+                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Photo = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Storage = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,7 +100,7 @@ namespace Laul.Infrastructure.Migrations
                     ActionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsLike = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SongId = table.Column<int>(type: "int", nullable: false)
+                    SongId = table.Column<int>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,11 +117,11 @@ namespace Laul.Infrastructure.Migrations
                 name: "ListeningStats",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "ulong", nullable: false)
+                    Id = table.Column<int>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ListeningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SongId = table.Column<int>(type: "ulong", nullable: false)
+                    SongId = table.Column<int>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,14 +138,12 @@ namespace Laul.Infrastructure.Migrations
                 name: "PlaylistSongs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "ulong", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PlaylistId = table.Column<int>(type: "ulong", nullable: false),
-                    SongId = table.Column<int>(type: "ulong", nullable: false)
+                    PlaylistId = table.Column<int>(type: "bigint", nullable: false),
+                    SongId = table.Column<int>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlaylistSongs", x => x.Id);
+                    table.PrimaryKey("PK_PlaylistSongs", x => new { x.PlaylistId, x.SongId });
                     table.ForeignKey(
                         name: "FK_PlaylistSongs_Playlists_PlaylistId",
                         column: x => x.PlaylistId,
