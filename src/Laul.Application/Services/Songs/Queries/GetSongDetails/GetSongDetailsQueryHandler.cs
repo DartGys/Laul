@@ -31,13 +31,20 @@ namespace Laul.Application.Services.Songs.Queries.GetSongDetails
 
             var album = await _unitOfWork.Album.GetById(entity.AlbumId, cancellationToken);
             var artist = await _unitOfWork.Artist.GetById(entity.ArtistId,cancellationToken);
+            var listeningCount = (await _unitOfWork.ListeningStats.FindAsyncNoTracking(l => l.SongId == request.Id, cancellationToken)).Count();
+            var like = (await _unitOfWork.LikeDislike.FindAsyncNoTracking(l => l.SongId == request.Id && l.IsLike == true)).Count();
+            var dislike = (await _unitOfWork.LikeDislike.FindAsyncNoTracking(l => l.SongId == request.Id && l.IsLike == false)).Count();
 
-            var song = (await _unitOfWork.Song.FindAsync(s => s.Id == request.Id, cancellationToken))
+            var song = await (await _unitOfWork.Song.FindAsync(s => s.Id == request.Id, cancellationToken))
                 .AsQueryable()
                 .Include(album.Title)
                 .Include(artist.Name)
                 .ProjectTo<SongDetailsVm>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(cancellationToken);
+
+            song.listeningCount = (ulong)listeningCount;
+            song.likeCount = (ulong)like;
+            song.dislikeCount = (ulong)dislike;
 
             return _mapper.Map<SongDetailsVm>(song);
         }
