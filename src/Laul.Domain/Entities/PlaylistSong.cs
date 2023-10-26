@@ -8,7 +8,6 @@ namespace Laul.Domain.Entities
 {
     public class PlaylistSong
     {
-        public ulong Id { get; set; }
         public ulong PlaylistId { get; set; }
         public Playlist Playlist { get; set; }
         public ulong SongId { get; set; }

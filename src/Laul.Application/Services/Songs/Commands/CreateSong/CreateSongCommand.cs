@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Laul.Application.Services.Songs.Commands.CreateSong
 {
-    public class CreateSongCommand : IRequest<int>
+    public class CreateSongCommand : IRequest<ulong>
     {
         public Guid ArtistId { get; set; }
         public string Title { get; set; }

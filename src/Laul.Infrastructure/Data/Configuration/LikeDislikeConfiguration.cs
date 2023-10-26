@@ -8,7 +8,7 @@ namespace Laul.Infrastructure.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<LikeDislike> builder)
         {
-            builder.HasKey(ld => ld.Id);
+            builder.HasKey(ld => new { ld.UserId, ld.SongId });
 
             builder.Property(ld => ld.ActionDate)
             .IsRequired();

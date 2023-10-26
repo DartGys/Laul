@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Laul.Application.Services.LikeDislikes.Commands.CreateLikeDislike
 {
-    public class CreateLikeDislikeCommandHandler : IRequestHandler<CreateLikeDislikeCommand, int>
+    public class CreateLikeDislikeCommandHandler : IRequestHandler<CreateLikeDislikeCommand, Guid>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -13,7 +13,7 @@ namespace Laul.Application.Services.LikeDislikes.Commands.CreateLikeDislike
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<int> Handle(CreateLikeDislikeCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateLikeDislikeCommand command, CancellationToken cancellationToken)
         {
             var likeDislike = new LikeDislike()
             {
@@ -26,7 +26,7 @@ namespace Laul.Application.Services.LikeDislikes.Commands.CreateLikeDislike
             await _unitOfWork.LikeDislike.AddAsync(likeDislike, cancellationToken);
             await _unitOfWork.SaveChangeAsync(cancellationToken);
 
-            return likeDislike.Id;
+            return likeDislike.UserId;
         }
     }
 }

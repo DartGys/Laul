@@ -9,7 +9,7 @@ namespace Laul.Application.Interfaces.Persistance.Repository
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> GetById(int id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<T> GetById(ulong id, CancellationToken cancellationToken = default(CancellationToken));
         Task<T> GetById(Guid id, CancellationToken cancellationToken = default(CancellationToken));
         Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default(CancellationToken));
         Task<IEnumerable<T>> GetAllAsyncNoTracking(CancellationToken cancellationToken = default(CancellationToken));

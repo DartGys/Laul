@@ -8,7 +8,6 @@ namespace Laul.Domain.Entities
 {
     public class LikeDislike
     {
-        public ulong Id { get; set; }
         public DateTime ActionDate { get; set; }
         public bool IsLike { get; set; }
         public Guid UserId { get; set; }

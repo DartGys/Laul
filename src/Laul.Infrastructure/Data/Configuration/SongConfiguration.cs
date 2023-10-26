@@ -14,9 +14,6 @@ namespace Laul.Infrastructure.Data.Configuration
             .IsRequired()
             .HasMaxLength(255);
 
-            builder.Property(s => s.Duration)
-            .IsRequired();
-
             builder.Property(s => s.PublishDate)
                 .HasColumnType("date");
 
