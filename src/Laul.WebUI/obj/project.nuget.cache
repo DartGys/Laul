@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hQHDrU5p83xh2A5hr2HCFOwx+2eZtdhAoTx4htgfoSrDDTufN8eFxSFWhDU7A8DWT+qfHDeUsNi3YJd+PptxDA==",
+  "dgSpecHash": "R+PrpUsjssN5MSq4NQ8ne32XkOC9s0yMG5J1jz4j7hUaNlHMnP9L/NJczHsaSGrgOh+oJ2DisX2U5NOo33R7oA==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\Laul.WebUI.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,7 @@
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\mimetypesmap\\1.0.8\\mimetypesmap.1.0.8.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",

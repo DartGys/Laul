@@ -95,3 +95,14 @@ C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\MediatR.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\MediatR.Contracts.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\MimeTypesMap.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.IO.Hashing.dll

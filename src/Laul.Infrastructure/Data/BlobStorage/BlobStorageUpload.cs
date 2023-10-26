@@ -2,32 +2,28 @@
 using Azure.Storage.Blobs;
 using Azure.Storage.Sas;
 using HeyRed.Mime;
+using Laul.Application.Interfaces.BlobStorage;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Laul.Infrastructure.Data.BlobStorage
 {
-    public class BlobStorageUpload : BlobStorageConnection
+    public class BlobStorageUpload : BlobStorageConnection, IBlobStorageUpload
     {
-        public BlobStorageConnection() : base();
-        public async Task<string> UploadFileAsync(IFormFile imageFile, string name)
+        public BlobStorageUpload() : base() { }
+        
+        public async Task<string> UploadFileAsync(IFormFile file, string name)
         {
             // Отримуємо як байтовий масив
             byte[] fileBytes;
             using (var memoryStream = new MemoryStream())
             {
-                await imageFile.CopyToAsync(memoryStream);
+                await file.CopyToAsync(memoryStream);
                 fileBytes = memoryStream.ToArray();
             }
 
             // Отримуємо ім'я файлу з IFormFile
-            string containerName = name + MimeTypesMap.GetMimeType(imageFile.FileName).Split('/')[0];
+            string containerName = MimeTypesMap.GetMimeType(file.FileName).Split('/')[0];
 
             BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
             BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
@@ -36,6 +32,7 @@ namespace Laul.Infrastructure.Data.BlobStorage
                 // Якщо контейнер не існує, створюємо його
                 containerClient.Create();
             }
+
             BlobClient blobClient = containerClient.GetBlobClient(name);
 
             using (MemoryStream stream = new MemoryStream(fileBytes))
