@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Laul.Domain\Laul.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Artists\Commands\UpdateArtist\" />
+  </ItemGroup>
+
 </Project>

@@ -17,13 +17,17 @@ namespace Laul.Application.Services.Songs.Queries.GetSongDetails
         public string ArtistName { get; set; }
         public ulong likeCount { get; set; }
         public ulong dislikeCount { get; set; }
+        public ulong listeningCount { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Song, SongDetailsVm>()
                 .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.PublishDate.Year))
                 .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name))
-                .ForMember(dest => dest.AlbumName, opt => opt.MapFrom(src => src.Album.Image));
+                .ForMember(dest => dest.AlbumName, opt => opt.MapFrom(src => src.Album.Image))
+                .ForMember(dest => dest.likeCount, opt => opt.MapFrom(src => src.LikeDislikes.Where(l => l.IsLike == true).Count()))
+                .ForMember(dest => dest.dislikeCount, opt => opt.MapFrom(src => src.LikeDislikes.Where(l => l.IsLike == false).Count()))
+                .ForMember(dest => dest.listeningCount, opt => opt.MapFrom(src => src.ListeningStats.Count()));
         }
     }
 }

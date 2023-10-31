@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "R+PrpUsjssN5MSq4NQ8ne32XkOC9s0yMG5J1jz4j7hUaNlHMnP9L/NJczHsaSGrgOh+oJ2DisX2U5NOo33R7oA==",
+  "dgSpecHash": "06kz4DmZFFzpsTjSgT/bWThs0o5BI3PgbEszW88JeS91ehQLdtNFPTetfYIdMWRNBcqwKugkdo9DkH6ROVEmuw==",
   "success": true,
   "projectFilePath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.WebUI\\Laul.WebUI.csproj",
   "expectedPackageFiles": [
@@ -11,8 +11,11 @@
     "C:\\Users\\boda2\\.nuget\\packages\\azure.storage.blobs\\12.18.0\\azure.storage.blobs.12.18.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\azure.storage.common\\12.17.0\\azure.storage.common.12.17.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\identitymodel\\6.2.0\\identitymodel.6.2.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.24\\microsoft.aspnetcore.authentication.jwtbearer.6.0.24.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\6.0.24\\microsoft.aspnetcore.authentication.openidconnect.6.0.24.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -54,6 +57,7 @@
     "C:\\Users\\boda2\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mimetypesmap\\1.0.8\\mimetypesmap.1.0.8.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\boda2\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\boda2\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
