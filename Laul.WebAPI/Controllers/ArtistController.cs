@@ -1,4 +1,6 @@
 ﻿using Laul.Application.Services.Artists.Commands.CreateArtist;
+using Laul.Application.Services.Artists.Commands.DeleteArtist;
+using Laul.Application.Services.Artists.Commands.UpdateArtist;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +16,16 @@ namespace Laul.WebAPI.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost(Name="CreateArist")]
-        public async Task<IActionResult> CreateArtist(CreateArtistCommand command)
-        {
-            var result = await _mediator.Send(command);
+        [HttpPost]
+        public async Task<IActionResult> CreateArtist(CreateArtistCommand command) =>
+            Ok(await _mediator.Send(command));
 
-            return Ok(result);
-        }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteArtist(DeleteArtistCommand command) =>
+            Ok(await _mediator.Send(command));
+
+        [HttpPatch]
+        public async Task<IActionResult> UpdateArtist(UpdateArtistCommand command) =>
+            Ok(await _mediator.Send(command));
     }
 }

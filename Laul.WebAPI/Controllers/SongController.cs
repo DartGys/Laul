@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Laul.Application.Services.Songs.Commands.CreateSong;
 using MediatR;
+using Laul.Application.Services.Songs.Commands.DeleteSong;
+using Laul.Application.Services.Songs.Commands.UpdateSong;
 
 namespace Laul.WebAPI.Controllers
 {
@@ -14,13 +16,16 @@ namespace Laul.WebAPI.Controllers
             _mediator = mediator;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateSong(CreateSongCommand command) =>
+            Ok(await _mediator.Send(command));
 
-        [HttpPost(Name = "CreateSong")]
-        public async Task<IActionResult> CreateSong(CreateSongCommand command)
-        {
-            var result = await _mediator.Send(command);
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSong(DeleteSongCommand command) =>
+            Ok(await _mediator.Send(command));
 
-            return Ok(result);
-        }
+        [HttpPatch]
+        public async Task<IActionResult> UpdateSong(UpdateSongCommand command) =>
+            Ok(await _mediator.Send(command));
     }
 }
