@@ -1,4 +1,4 @@
-﻿using Laul.Application.Services.Artists.Commands.CreateArtist;
+﻿using Laul.Application.Services.Playlists.Commands.CreatePlaylist;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +6,17 @@ namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ArtistController : ControllerBase
+    public class PlaylistController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ArtistController(IMediator mediator)
+
+        public PlaylistController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpPost(Name="CreateArist")]
-        public async Task<IActionResult> CreateArtist(CreateArtistCommand command)
+        [HttpPost(Name="PlaylistCreate")]
+        public async Task<IActionResult> CreatePlaylist(CreatePlaylistCommand command)
         {
             var result = await _mediator.Send(command);
 

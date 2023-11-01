@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace Laul.Application.Services.Artists.Commands.UpdateArtist
 {
-    internal class UpdateArtistCommand
+    public class UpdateArtistCommand : IRequest<Unit>
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public IFormFile Photo { get; set; }
     }
 }

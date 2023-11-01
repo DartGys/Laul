@@ -67,7 +67,7 @@ namespace Laul.Infrastructure.Persistance.Repository
             return await query.ToListAsync(cancellationToken);
         }
 
-        public async Task<T> GetById(ulong id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<T> GetById(long id, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await _context.Set<T>().FindAsync(id,cancellationToken);
         }

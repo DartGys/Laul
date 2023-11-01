@@ -2,8 +2,6 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Laul.Application.Interfaces.Persistance;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Laul.Application.Services.Songs.Queries.GetSongList
 {

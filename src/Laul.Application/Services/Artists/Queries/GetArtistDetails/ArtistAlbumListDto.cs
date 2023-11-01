@@ -6,7 +6,7 @@ namespace Laul.Application.Services.Artists.Queries.GetArtistDetails
 {
     public class ArtistAlbumListDto : IMapWith<Album>
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Image { get; set; }
 

@@ -2,9 +2,9 @@
 
 namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
 {
-    public class CreateListeningStatCommand : IRequest<ulong>
+    public class CreateListeningStatCommand : IRequest<long>
     {
-        public ulong SongId { get; set; }
+        public long SongId { get; set; }
         public Guid UserId { get; set; }
 
     }

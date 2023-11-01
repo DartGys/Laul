@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Laul.Application.Services.Playlists.Commands.AddPlaylistSong
 {
-    public class AddPlaylistSongCommandHandler : IRequestHandler<AddPlaylistSongCommand, ulong>
+    public class AddPlaylistSongCommandHandler : IRequestHandler<AddPlaylistSongCommand, long>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -14,7 +14,7 @@ namespace Laul.Application.Services.Playlists.Commands.AddPlaylistSong
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ulong> Handle(AddPlaylistSongCommand command, CancellationToken cancellationToken)
+        public async Task<long> Handle(AddPlaylistSongCommand command, CancellationToken cancellationToken)
         {
             var playlist = await _unitOfWork.Playlist.GetById(command.PlaylistId);
             var song = await _unitOfWork.Song.GetById(command.SongId);

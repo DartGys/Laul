@@ -8,10 +8,10 @@ namespace Laul.Domain.Entities
 {
     public class ListeningStat
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public DateTime ListeningDate { get; set; }
         public Guid UserId { get; set; }
-        public ulong SongId { get; set; }
+        public long SongId { get; set; }
         public virtual Song Song { get; set; }
     }
 }

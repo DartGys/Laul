@@ -4,7 +4,7 @@ namespace Laul.Application.Services.Albums.Commands.DeleteAlbum
 {
     public class DeleteAlbumCommand : IRequest<Unit>
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public Guid ArtistId { get; set; }
     }
 }

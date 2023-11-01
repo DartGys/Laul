@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
 {
-    public class CreateListeningStatCommandHanlder : IRequestHandler<CreateListeningStatCommand, ulong>
+    public class CreateListeningStatCommandHanlder : IRequestHandler<CreateListeningStatCommand, long>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -13,7 +13,7 @@ namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ulong> Handle(CreateListeningStatCommand command, CancellationToken cancellationToken)
+        public async Task<long> Handle(CreateListeningStatCommand command, CancellationToken cancellationToken)
         {
             var listeningStat = new ListeningStat()
             {

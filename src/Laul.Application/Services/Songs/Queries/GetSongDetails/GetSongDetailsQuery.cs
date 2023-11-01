@@ -7,7 +7,7 @@ namespace Laul.Application.Services.Songs.Queries.GetSongDetails
 {
     public class GetSongDetailsQuery : IRequest<SongDetailsVm>
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public Guid ArtistId { get; set; }
     }
 }
