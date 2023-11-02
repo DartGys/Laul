@@ -15,8 +15,7 @@ namespace Laul.Infrastructure.Data.Configuration
 
             builder.Property(ls => ls.UserId)
             .HasColumnName("UserId")
-            .HasColumnType("uniqueidentifier")
-            .IsRequired();
+            .HasColumnType("uniqueidentifier");
 
             builder.HasOne(ls => ls.Song)
             .WithMany(song => song.ListeningStats)

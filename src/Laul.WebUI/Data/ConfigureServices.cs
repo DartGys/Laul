@@ -24,6 +24,8 @@ namespace Laul.WebUI.Data
                 options.ResponseType = "code";
 
                 options.SaveTokens = true;
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
             });
 
             return services;
