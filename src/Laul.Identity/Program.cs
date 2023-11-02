@@ -1,3 +1,4 @@
+#nullable disable
 using Laul.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);

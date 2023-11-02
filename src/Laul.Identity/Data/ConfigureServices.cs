@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IdentityModel;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Laul.Identity.Data
 {
@@ -8,7 +10,15 @@ namespace Laul.Identity.Data
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+            services.AddDbContext<IdentityAspDbContext>(options =>
+            options.UseSqlServer(connectionString,
+            b => b.MigrationsAssembly(assembly)));
+
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                .AddEntityFrameworkStores<IdentityAspDbContext>();
+
             services.AddIdentityServer()
+                .AddAspNetIdentity<IdentityUser>()
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = b =>
