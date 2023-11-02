@@ -31,6 +31,8 @@ namespace Laul.Identity.Data
                 })
                 .AddDeveloperSigningCredential();
 
+            services.AddAuthorization();
+
             return services;
         }
     }
