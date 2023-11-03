@@ -1,8 +1,8 @@
-﻿using IdentityModel;
+﻿using Laul.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Laul.Identity.Data
+namespace Laul.Identity.Services
 {
     public static class ConfigureServices
     {
@@ -14,7 +14,7 @@ namespace Laul.Identity.Data
             options.UseSqlServer(connectionString,
             b => b.MigrationsAssembly(assembly)));
 
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityAspDbContext>();
 
             services.AddIdentityServer()

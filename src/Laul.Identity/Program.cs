@@ -1,6 +1,6 @@
 #nullable disable
 using Laul.Identity;
-using Laul.Identity.Data;
+using Laul.Identity.Services;
 
 var seed = args.Contains("/seed");
 if(seed)

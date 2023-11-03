@@ -1,8 +1,6 @@
 using Laul.Infrastructure.Data;
 using Laul.Application.Common;
-using Laul.WebUI.Data;
-using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
+using Laul.WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

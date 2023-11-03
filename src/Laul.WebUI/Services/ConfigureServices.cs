@@ -1,7 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 
 
-namespace Laul.WebUI.Data
+namespace Laul.WebUI.Services
 {
     public static class ConfigureServices
     {
