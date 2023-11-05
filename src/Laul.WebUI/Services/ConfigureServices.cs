@@ -1,32 +1,41 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using Laul.WebUI.Services.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using System.IdentityModel.Tokens.Jwt;
 
 
 namespace Laul.WebUI.Services
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddWebServices(this IServiceCollection services)
+        public static IServiceCollection AddWebServices(this IServiceCollection services, IConfiguration configuration)
         {
-            JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+            services.Configure<IdentityServerSettings>(configuration.GetSection(
+                nameof(IdentityServerSettings)));
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddAuthentication(options =>
             {
-                options.DefaultScheme = "Cookies";
-                options.DefaultChallengeScheme = "oidc";
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie("Cookies")
-            .AddOpenIdConnect("oidc", options =>
-            {
-                options.Authority = "https://localhost:5001";
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddOpenIdConnect(
+                OpenIdConnectDefaults.AuthenticationScheme,
+                options =>
+                {
+                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.SignOutScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                    options.Authority = configuration["InteractiveServiceSettings:AuthorityUrl"];
+                    options.ClientId = configuration["InteractiveServiceSettings:ClientId"];
+                    options.ClientSecret = configuration["InteractiveServiceSettings:ClientSecret"];
 
-                options.ClientId = "mvc";
-                options.ClientSecret = "secret";
-                options.ResponseType = "code";
+                    options.ResponseType = "code";
+                    options.SaveTokens = true;
+                    options.GetClaimsFromUserInfoEndpoint = true;
+                }
+            );
 
-                options.SaveTokens = true;
-                options.Scope.Add("openid");
-                options.Scope.Add("profile");
-            });
 
             return services;
         }

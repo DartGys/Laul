@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.Application", "src\Lau
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.WebAPI", "src\Laul.WebAPI\Laul.WebAPI.csproj", "{58EEC76A-3F66-44C5-9609-74EACF61B4A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laul.Identity", "src\Laul.Identity\Laul.Identity.csproj", "{3431C411-9D28-46BB-9544-31464D5E0D73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.Identity", "src\Laul.Identity\Laul.Identity.csproj", "{3431C411-9D28-46BB-9544-31464D5E0D73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
