@@ -1,6 +1,6 @@
 using Laul.Infrastructure.Data;
 using Laul.Application.Common;
-using Laul.WebUI.Data;
+using Laul.WebUI.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,12 +10,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
-//builder.Services.AddWebServices();
+builder.Services.AddWebServices(builder.Configuration);
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())   
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();

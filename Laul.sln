@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.Infrastructure", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.Application", "src\Laul.Application\Laul.Application.csproj", "{D69185F1-0235-479F-942A-5F57647060EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laul.WebAPI", "Laul.WebAPI\Laul.WebAPI.csproj", "{58EEC76A-3F66-44C5-9609-74EACF61B4A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.WebAPI", "src\Laul.WebAPI\Laul.WebAPI.csproj", "{58EEC76A-3F66-44C5-9609-74EACF61B4A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laul.Identity", "src\Laul.Identity\Laul.Identity.csproj", "{3431C411-9D28-46BB-9544-31464D5E0D73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{58EEC76A-3F66-44C5-9609-74EACF61B4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58EEC76A-3F66-44C5-9609-74EACF61B4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58EEC76A-3F66-44C5-9609-74EACF61B4A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3431C411-9D28-46BB-9544-31464D5E0D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3431C411-9D28-46BB-9544-31464D5E0D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3431C411-9D28-46BB-9544-31464D5E0D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3431C411-9D28-46BB-9544-31464D5E0D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{29A5167F-089D-4E33-98CC-2F59546F72A1} = {AB1F38C8-8D67-4FCC-A3BE-C2A28D7A6218}
 		{D69185F1-0235-479F-942A-5F57647060EC} = {AB1F38C8-8D67-4FCC-A3BE-C2A28D7A6218}
 		{58EEC76A-3F66-44C5-9609-74EACF61B4A8} = {AB1F38C8-8D67-4FCC-A3BE-C2A28D7A6218}
+		{3431C411-9D28-46BB-9544-31464D5E0D73} = {AB1F38C8-8D67-4FCC-A3BE-C2A28D7A6218}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9D933FE-1CF6-4D5A-936E-79C846CE845A}

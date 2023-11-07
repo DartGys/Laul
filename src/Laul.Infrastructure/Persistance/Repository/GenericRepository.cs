@@ -1,4 +1,4 @@
-﻿
+﻿#nullable disable
 using Laul.Application.Interfaces.Persistance.Repository;
 using Laul.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
