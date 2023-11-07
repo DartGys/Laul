@@ -29,7 +29,7 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
             }
 
 
-            var playlist = (await _unitOfWork.Playlist.FindAsyncNoTracking(a => a.Id == request.Id, cancellationToken))
+            var playlist = (await _unitOfWork.Playlist.FindAsyncNoTracking(a => a.Id == Convert.ToInt64(request.Id), cancellationToken))
                 .AsQueryable()
                 .ProjectTo<PlaylistDetailsVm>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(cancellationToken);

@@ -2,10 +2,10 @@
 
 namespace Laul.Application.Services.Playlists.Commands.AddPlaylistSong
 {
-    public class AddPlaylistSongCommand : IRequest<ulong>
+    public class AddPlaylistSongCommand : IRequest<long>
     {
         public Guid UserId { get; set; }
-        public ulong SongId { get; set; }
-        public ulong PlaylistId { get; set; }
+        public long SongId { get; set; }
+        public long PlaylistId { get; set; }
     }
 }

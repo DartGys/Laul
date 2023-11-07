@@ -7,7 +7,7 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
 {
     public class UpdateSongCommand : IRequest<Unit>
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
         public IFormFile Photo { get; set; }

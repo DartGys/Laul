@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Laul.Application.Common.Exeption;
-using Laul.Application.Interfaces.BlobStorage;
 using Laul.Application.Interfaces.Persistance;
 using Laul.Domain.Entities;
 using MediatR;

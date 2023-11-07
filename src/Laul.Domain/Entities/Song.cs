@@ -8,7 +8,7 @@ namespace Laul.Domain.Entities
 {
     public class Song
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
@@ -16,7 +16,7 @@ namespace Laul.Domain.Entities
         public string Genre { get; set; }
         public Guid ArtistId { get; set; }
         public virtual Artist Artist { get; set; }
-        public ulong AlbumId { get; set; }
+        public long AlbumId { get; set; }
         public virtual Album Album { get; set; }
         public virtual ICollection<LikeDislike> LikeDislikes { get; set; }
         public virtual ICollection<ListeningStat> ListeningStats { get; set; }

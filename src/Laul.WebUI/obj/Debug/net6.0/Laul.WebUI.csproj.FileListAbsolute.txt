@@ -106,3 +106,7 @@ C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.Exten
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\MimeTypesMap.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\System.IO.Hashing.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\IdentityModel.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Laul.Application.Services.Albums.Commands.CreateAlbum
 {
-    public class CreateAlbumCommandHandler : IRequestHandler<CreateAlbumCommand, ulong>
+    public class CreateAlbumCommandHandler : IRequestHandler<CreateAlbumCommand, long>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBlobStorageContext _blobStorageContext;
@@ -14,7 +14,7 @@ namespace Laul.Application.Services.Albums.Commands.CreateAlbum
             _unitOfWork = unitOfWork;
             _blobStorageContext = blobStorageUpload;
         }
-        public async Task<ulong> Handle(CreateAlbumCommand command, CancellationToken cancellationToken)
+        public async Task<long> Handle(CreateAlbumCommand command, CancellationToken cancellationToken)
         {
             string imageTokem = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Image, command.Title);
             var album = new Album()

@@ -6,7 +6,7 @@ using Laul.Application.Interfaces.BlobStorage;
 
 namespace Laul.Application.Services.Songs.Commands.CreateSong
 {
-    public class CreateSongCommandHandler : IRequestHandler<CreateSongCommand, ulong>
+    public class CreateSongCommandHandler : IRequestHandler<CreateSongCommand, long>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBlobStorageContext _blobStorageContext;
@@ -17,7 +17,7 @@ namespace Laul.Application.Services.Songs.Commands.CreateSong
             _blobStorageContext = blobStorageUpload;
         }
 
-        public async Task<ulong> Handle(CreateSongCommand command, CancellationToken cancellationToken)
+        public async Task<long> Handle(CreateSongCommand command, CancellationToken cancellationToken)
         {
             string photoToken = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, command.Title);
             string storageToken = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Storage, command.Title);
