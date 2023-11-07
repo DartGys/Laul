@@ -10,6 +10,7 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServer4.Test;
+using Laul.Identity.Quickstart.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -35,21 +36,22 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public AccountController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager)
         {
-
-
             _interaction = interaction;
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -66,7 +68,7 @@ namespace IdentityServerHost.Quickstart.UI
                 // we only have one option for logging in and it's an external provider
                 return RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl });
             }
-
+            ViewBag.ReturnUrl = returnUrl;
             return View(vm);
         }
 
@@ -179,11 +181,59 @@ namespace IdentityServerHost.Quickstart.UI
             return View(vm);
         }
 
-        
         /// <summary>
-        /// Show logout page
+        /// Entry point into the register workflow
         /// </summary>
         [HttpGet]
+        public async Task<IActionResult> Register(string returnUrl)
+        {
+            var vm = new RegisterViewModel
+            {
+                ReturnUrl = returnUrl
+            };
+            return View(vm);
+        }
+
+
+        /// <summary>
+        /// Handle postback from username/email/password register
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegistrerInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new AppUser { UserName = model.UserName, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return Redirect(model.ReturnUrl);
+                    //var loginvm = await BuildLoginViewModelAsync(model.ReturnUrl);
+                    //loginvm.Username = model.UserName;
+                    //loginvm.Password = model.Password;
+                    //return await Login(loginvm, "login");
+
+                }
+                else
+                {
+                    ViewBag.Error = true;
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+
+            return View(model);
+        }
+
+            /// <summary>
+            /// Show logout page
+            /// </summary>
+            [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
             // build a model so the logout page knows what to display

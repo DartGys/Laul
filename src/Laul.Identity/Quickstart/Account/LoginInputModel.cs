@@ -8,9 +8,9 @@ namespace IdentityServerHost.Quickstart.UI
 {
     public class LoginInputModel
     {
-        [Required]
+        [Required(ErrorMessage = "Field Username is required")]
         public string Username { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Field Password is required")]
         public string Password { get; set; }
         public bool RememberLogin { get; set; }
         public string ReturnUrl { get; set; }

@@ -12,7 +12,7 @@ namespace Laul.Identity
                 new IdentityResource
                 {
                     Name = "role",
-                    UserClaims = new List<string> { "role" }
+                    UserClaims = new List<string> { "role" },
                 }
             };
 
@@ -55,8 +55,8 @@ namespace Laul.Identity
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "WebAPI.read" },
                     RequirePkce = true,
-                    RequireConsent = true,
-                    AllowPlainTextPkce = false
+                    RequireConsent = false,
+                    AllowPlainTextPkce = false,
                 }
             };
     }

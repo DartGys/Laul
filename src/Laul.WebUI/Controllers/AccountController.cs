@@ -14,22 +14,25 @@ namespace Laul.WebUI.Controllers
             this.config = config;
         }
 
-        public IActionResult Login()
-        {
-            string redirectUri = Url.Content("~/");
-
-            if(HttpContext.User.Identity.IsAuthenticated)
-            {
-                Response.Redirect(redirectUri);
-            }
-
-            return Challenge(
-                new AuthenticationProperties
+            public IActionResult Login(string redirectUri)
+             {
+                if (string.IsNullOrEmpty(redirectUri))
                 {
-                    RedirectUri = redirectUri
-                },
-                OpenIdConnectDefaults.AuthenticationScheme);
-        }
+                    redirectUri = Url.Content("~/");
+                }
+
+                if(HttpContext.User.Identity.IsAuthenticated)
+                {
+                    Response.Redirect(redirectUri);
+                }
+
+                return Challenge(
+                    new AuthenticationProperties
+                    {
+                        RedirectUri = redirectUri
+                    },
+                    OpenIdConnectDefaults.AuthenticationScheme);
+            }
 
         public IActionResult Logout()
         {
@@ -41,6 +44,8 @@ namespace Laul.WebUI.Controllers
                 OpenIdConnectDefaults.AuthenticationScheme,
                 CookieAuthenticationDefaults.AuthenticationScheme);
         }
+
+            
 
     }
 }
