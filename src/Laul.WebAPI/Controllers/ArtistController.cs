@@ -17,7 +17,7 @@ namespace Laul.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateArtist(CreateArtistCommand command) =>
+        public async Task<IActionResult> CreateArtist([FromBody]CreateArtistCommand command) =>
             Ok(await _mediator.Send(command));
 
         [HttpDelete]

@@ -12,7 +12,7 @@ namespace Laul.Identity
                 new IdentityResource
                 {
                     Name = "role",
-                    UserClaims = new List<string> { "role" },
+                    UserClaims = new List<string> { "role","sub" },
                 }
             };
 
