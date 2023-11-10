@@ -110,3 +110,10 @@ C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\IdentityModel.d
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\NAudio.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\NAudio.Asio.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\NAudio.Core.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\NAudio.Midi.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\NAudio.Wasapi.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\NAudio.WinMM.dll
+C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\bin\Debug\net6.0\SixLabors.ImageSharp.dll

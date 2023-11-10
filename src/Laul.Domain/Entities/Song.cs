@@ -16,7 +16,7 @@ namespace Laul.Domain.Entities
         public string Genre { get; set; }
         public Guid ArtistId { get; set; }
         public virtual Artist Artist { get; set; }
-        public long AlbumId { get; set; }
+        public long? AlbumId { get; set; }
         public virtual Album Album { get; set; }
         public virtual ICollection<LikeDislike> LikeDislikes { get; set; }
         public virtual ICollection<ListeningStat> ListeningStats { get; set; }

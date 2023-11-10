@@ -1,9 +1,31 @@
-﻿@using Laul.Application.Services.Songs.Queries.GetSongList;
-@model SongListVm
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Laul.Application.Services.Songs.Queries.GetSongList.SongListVm;
 
-<h1>Song List</h1>
+<!DOCTYPE html>
+<html>
+<head>
 
+</head>
+<body>
 
+    <table>
+        <tbody>
+            @foreach (var item in Model.Songs)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td><img style="width: 20%; height: auto;border-radius: 100%; " src="@item.Photo" alt="Photo"></td>
+                    <td>
+                        <audio controls>
+                            <source src="@item.Storage" type="audio/mp3">
+                        </audio>
+                    </td>
+                    <td>@item.ArtistName</td>
+                    <td>@item.AlbumName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</body>
+</html>

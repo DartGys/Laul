@@ -12,19 +12,9 @@ namespace Laul.Infrastructure.Data.BlobStorage
     {
         public BlobStorageUpload() : base() { }
         
-        public async Task<string> UploadFileAsync(IFormFile file, string name)
+        public async Task<string> UploadFileAsync(byte[] fileBytes, string containerName, string fileName)
         {
-            // Отримуємо як байтовий масив
-            byte[] fileBytes;
-            using (var memoryStream = new MemoryStream())
-            {
-                await file.CopyToAsync(memoryStream);
-                fileBytes = memoryStream.ToArray();
-            }
-
-            // Отримуємо ім'я файлу з IFormFile
-            string containerName = MimeTypesMap.GetMimeType(file.FileName).Split('/')[0];
-
+            containerName = containerName.ToLower();
             BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
             BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
             if (!containerClient.Exists())
@@ -32,7 +22,7 @@ namespace Laul.Infrastructure.Data.BlobStorage
                 // Якщо контейнер не існує, створюємо його
                 containerClient.Create();
             }
-            string fileName = name + Path.GetExtension(file.FileName);
+
             BlobClient blobClient = containerClient.GetBlobClient(fileName);
 
             using (MemoryStream stream = new MemoryStream(fileBytes))

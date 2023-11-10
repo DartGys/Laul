@@ -1,0 +1,58 @@
+﻿@using Laul.Application.Services.Artists.Queries.GetArtistDetails
+@model ArtistDetilsVm
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/Profile.css"/>
+</head>
+<body>
+    @if (!string.IsNullOrEmpty(Model.Photo))
+    {
+        <img src="@Model.Photo" alt="User Photo" />
+    }
+
+    <div class="details">
+    <h1>@Model.Name</h1>
+
+    @if (!string.IsNullOrEmpty(Model.Description))
+    {
+        <p>@Model.Description</p>
+    }
+
+    <h2>Songs</h2>
+    @if (Model.Songs != null && Model.Songs.Any())
+    {
+        <ul>
+            @foreach (var song in Model.Songs)
+            {
+                <li>@song.Title</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No songs available.</p>
+    }
+
+    <h2>Albums</h2>
+    @if (Model.Albums != null && Model.Albums.Any())
+    {
+        <ul>
+            @foreach (var album in Model.Albums)
+            {
+                <li>@album.Title</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No albums available.</p>
+    }
+
+    <a href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id })">Edit Profile</a>
+    <a href="@Url.Action("CreateSong", "Song", new { ArtistId = Model.Id })">Create Song</a>
+
+    </div>
+</body>
+</html>

@@ -19,8 +19,10 @@ namespace Laul.Application.Services.Songs.Commands.CreateSong
 
         public async Task<long> Handle(CreateSongCommand command, CancellationToken cancellationToken)
         {
-            string photoToken = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, command.Title);
-            string storageToken = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Storage, command.Title);
+            string photoToken = command.Photo == null ? null :
+                await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, nameof(command.Photo), command.Title);
+            string storageToken = command.Storage == null ? null :
+                await _blobStorageContext.UploadAsync.UploadFileAsync(command.Storage, nameof(command.Storage), command.Title);
 
             var song = new Song()
             {
@@ -30,7 +32,7 @@ namespace Laul.Application.Services.Songs.Commands.CreateSong
                 Photo = photoToken,
                 Storage = storageToken,
                 Genre = command.Genre,
-                AlbumId = command.AlbumId,
+                AlbumId = null,
             };
 
             await _unitOfWork.Song.AddAsync(song, cancellationToken);

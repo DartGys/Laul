@@ -2,6 +2,8 @@
 using Laul.Application.Interfaces.Persistance.Repository;
 using Laul.Infrastructure.Data;
 using Laul.Infrastructure.Persistance.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,10 +62,9 @@ namespace Laul.Infrastructure.Persistance
                 disposed = true;
             }
         }
-
-        public async Task<int> SaveChangeAsync()
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.SaveChangesAsync();
+            return await _context.Database.BeginTransactionAsync(cancellationToken);
         }
 
         public async Task<int> SaveChangeAsync(CancellationToken cancellationToken)

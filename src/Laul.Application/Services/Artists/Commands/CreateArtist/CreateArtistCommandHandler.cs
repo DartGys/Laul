@@ -18,14 +18,14 @@ namespace Laul.Application.Services.Artists.Commands.CreateArtist
 
         public async Task<Guid> Handle(CreateArtistCommand command, CancellationToken cancellationToken)
         {
-            string photoToken = command.Photo != null ? await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, command.Name) : null;
+            //string photoToken = command.Photo != null ? await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, command.Name) : null;
 
             var artist = new Artist()
             {
                 Id = command.Id,
                 Name = command.Name,
                 Description = command.Description,
-                Photo = photoToken,
+                //Photo = photoToken,
             };
 
             await _unitOfWork.Artist.AddAsync(artist, cancellationToken);

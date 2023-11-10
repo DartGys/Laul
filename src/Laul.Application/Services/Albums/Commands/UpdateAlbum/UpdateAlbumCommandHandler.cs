@@ -28,7 +28,7 @@ namespace Laul.Application.Services.Albums.Commands.UpdateAlbum
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Image);
 
             entity.Title = command.Title;
-            entity.Image = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Image, command.Title);
+            //entity.Image = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Image, command.Title);
             entity.Genre = command.Genre;
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);

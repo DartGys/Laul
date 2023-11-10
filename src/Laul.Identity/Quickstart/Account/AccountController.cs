@@ -189,7 +189,7 @@ namespace IdentityServerHost.Quickstart.UI
         /// Entry point into the register workflow
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Register(string returnUrl)
+        public IActionResult Register(string returnUrl)
         {
             var vm = new RegisterViewModel
             {
@@ -222,8 +222,7 @@ namespace IdentityServerHost.Quickstart.UI
                             Id = new Guid(user.Id),
                             Name = user.UserName
                         };
-                        var content = new StringContent(JsonConvert.SerializeObject(artist), Encoding.UTF8, "application/json");
-                        var apiResult = await client.PostAsync(new Uri(apiUrl + endpoint), content);
+                        var apiResult = await client.PostAsJsonAsync(new Uri(apiUrl + endpoint), artist);
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     

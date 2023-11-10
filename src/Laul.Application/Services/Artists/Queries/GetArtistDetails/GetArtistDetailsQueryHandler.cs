@@ -21,9 +21,9 @@ namespace Laul.Application.Services.Artists.Queries.GetArtistDetails
 
         public async Task<ArtistDetilsVm> Handle(GetArtistDetailsQuery request, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfWork.Artist.FindAsyncNoTracking(e => e.Name == request.name, cancellationToken)).FirstOrDefault();
+            var entity = (await _unitOfWork.Artist.FindAsyncNoTracking(e => e.Name == request.Name, cancellationToken)).FirstOrDefault();
 
-            if (entity == null || entity.Name != request.name)
+            if (entity == null || entity.Name != request.Name)
             {
                 throw new NotFoundExeption(nameof(Artist), entity.Id);
             }

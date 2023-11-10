@@ -1,0 +1,32 @@
+﻿@model Laul.WebUI.Models.Artist.ArtistUpdateDto
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <h1>@ViewData["Title"]</h1>
+
+    <!-- Форма для редагування профілю -->
+    <form asp-action="EditArtist" asp-controller="Profile" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label asp-for="Description">Description:</label>
+            <textarea asp-for="Description"></textarea>
+        </div>
+
+        <div>
+            <label asp-for="Photo">Photo:</label>
+            <input type="file" asp-for="Photo" />
+        </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+﻿@model Laul.WebUI.Models.Song.CreateSongDto
+
+@{
+    ViewData["Title"] = "Create Song";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <h1>@ViewData["Title"]</h1>
+
+    <!-- Форма для створення пісні -->
+    <form method="post" action="/Song/CreateSong" enctype="multipart/form-data">
+        <input type="hidden" asp-for="ArtistId" />
+
+        <div>
+            <label asp-for="Title">Title:</label>
+            <input asp-for="Title" />
+        </div>
+
+        <div>
+            <label asp-for="PublishDate">Publish Date:</label>
+            <input asp-for="PublishDate" type="date" />
+        </div>
+
+        <div>
+            <label asp-for="Photo">Photo:</label>
+            <input asp-for="Photo" type="file" accept="image/*" />
+        </div>
+
+        <div>
+            <label asp-for="Song">Song:</label>
+            <input asp-for="Song" type="file" accept="audio/*" />
+        </div>
+
+        <div>
+            <label asp-for="Genre">Genre:</label>
+            <input asp-for="Genre" />
+        </div>
+
+        <button type="submit">Create Song</button>
+    </form>
+</body>
+</html>

@@ -1,4 +1,5 @@
 ﻿using Laul.Application.Interfaces.Persistance.Repository;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace Laul.Application.Interfaces.Persistance
         IPlaylistRepository Playlist { get; }
         IPlaylistSongRepository PlaylistSong { get; }
         ISongRepository Song { get; }
-        Task<int> SaveChangeAsync();
-        Task<int> SaveChangeAsync(CancellationToken cancellationToken);
+        Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
+        Task<int> SaveChangeAsync(CancellationToken cancellationToken = default);
 
     }
 }
