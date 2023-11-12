@@ -49,10 +49,11 @@
     {
         <p>No albums available.</p>
     }
-
-    <a href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id })">Edit Profile</a>
-    <a href="@Url.Action("CreateSong", "Song", new { ArtistId = Model.Id })">Create Song</a>
-
+        @if (Model.Name == Context.User.FindFirst("name")?.Value)
+        {
+            <a href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id })">Edit Profile</a>
+            <a href="@Url.Action("CreateSong", "Song", new { ArtistId = Model.Id })">Create Song</a>
+        }
     </div>
 </body>
 </html>

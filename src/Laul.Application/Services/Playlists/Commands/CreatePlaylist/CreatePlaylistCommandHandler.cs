@@ -15,11 +15,13 @@ namespace Laul.Application.Services.Playlists.Commands.CreatePlaylist
 
         public async Task<long> Handle(CreatePlaylistCommand command, CancellationToken cancellationToken)
         {
+            var userId = (await _unitOfWork.Artist.FindAsync(u => u.Name == command.UserName)).FirstOrDefault().Id;
+
             var Playlist = new Playlist()
             {
                 Title = command.Title,
                 Description = command.Description,
-                UserId = command.UserId,
+                UserId = userId,
             };
 
             await _unitOfWork.Playlist.AddAsync(Playlist,cancellationToken);

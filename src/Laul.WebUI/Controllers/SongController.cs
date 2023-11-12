@@ -29,7 +29,8 @@ namespace Laul.WebUI.Controllers
         {
             var model = new CreateSongDto()
             {
-                ArtistId = ArtistId
+                ArtistId = ArtistId,
+                PublishDate = DateTime.Now,
             };
             return View(model);
         }

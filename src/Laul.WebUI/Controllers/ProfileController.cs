@@ -23,12 +23,15 @@ namespace Laul.WebUI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetArtistDetails()
+        public async Task<IActionResult> GetArtistDetails(string UserName)
         {
+            if(string.IsNullOrEmpty(UserName))
+            {
+                UserName = HttpContext.User.FindFirstValue("name");
+            }
             var reqeust = new GetArtistDetailsQuery()
             {
-                Name = HttpContext.User.FindFirstValue("name")
+                Name = UserName
             };
             var model = await _mediator.Send(reqeust);
             return View(model);

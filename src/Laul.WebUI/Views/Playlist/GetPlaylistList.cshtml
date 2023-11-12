@@ -1,0 +1,24 @@
+﻿@model Laul.Application.Services.Playlists.Queries.GetPlaylistList.PlaylistListVm
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/playlistList.css"/>
+</head>
+<body>
+    <h1>Playlist's List</h1>
+    <a href="@Url.Action("CreatePlaylist")">Create Playlist</a>
+        <nav>
+        <ul class="playlist-list">
+            @foreach (var playlist in Model.Playlists)
+            {
+                <li>
+                    <a href="@Url.Action("GetPlaylistDetails", new { Id = playlist.Id })">@playlist.Title</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</body>
+
+</html>
+

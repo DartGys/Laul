@@ -3,29 +3,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <link rel="stylesheet" href="~/css/songList.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Song/togleAndPlay.js"></script>
+    <script src="~/js/Song/songMenu.js"></script>
+    <script src="~/js/Playlist/playlistAddForm.js"></script>
 </head>
 <body>
-
-    <table>
-        <tbody>
-            @foreach (var item in Model.Songs)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Title</td>
-                    <td><img style="width: 20%; height: auto;border-radius: 100%; " src="@item.Photo" alt="Photo"></td>
-                    <td>
-                        <audio controls>
-                            <source src="@item.Storage" type="audio/mp3">
-                        </audio>
-                    </td>
-                    <td>@item.ArtistName</td>
-                    <td>@item.AlbumName</td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
+    <div id="songs-container">
+        @foreach (var item in Model.Songs)
+        {
+            <div class="song-card">
+                <div onclick="toggleAndPlayAudio('@item.Storage', '@item.Storage')" onmouseover="changeCursor(this)">
+                    <img class="song-cover" src="@item.Photo" alt="Photo">
+                    <div class="song-details">
+                        <h3 style="font-size: 14px;">@item.Title</h3>
+                        <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>
+                        <div class="dropdown">
+                            <a class="bx bx-dots-vertical-rounded dropdownButton"></a>
+                            <ul class="dropdown-menu">
+                                <li data-controller="" data-target="">Add to Playlist</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 11px;">@item.AlbumName</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- Модальне вікно -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Мій модальний заголовок</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Тут буде вміст модального вікна.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+                    <button type="button" class="btn btn-primary">Зберегти зміни</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

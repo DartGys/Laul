@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace Laul.Application.Services.Playlists.Commands.CreatePlaylist
+﻿namespace Laul.WebUI.Models.Playlist
 {
-    public class CreatePlaylistCommand : IRequest<long>
+    public class CreatePlaylistDto
     {
         public string Title { get; set; }
         public string Description { get; set; }

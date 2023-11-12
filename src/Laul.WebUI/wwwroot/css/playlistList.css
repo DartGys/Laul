@@ -1,0 +1,31 @@
+﻿/* Стилізація для загальної структури */
+body {
+    font-family: Arial, sans-serifs;
+
+}
+
+h1 {
+    color: #333;
+}
+
+/* Стилізація для навігаційного списку */
+.playlist-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .playlist-list li {
+        margin-bottom: 10px;
+    }
+
+    .playlist-list a {
+        text-decoration: none;
+        font-size: 25px;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+        .playlist-list a:hover {
+            color: #0056b3;
+        }

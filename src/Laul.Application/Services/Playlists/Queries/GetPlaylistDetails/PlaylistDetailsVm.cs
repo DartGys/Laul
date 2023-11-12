@@ -8,6 +8,11 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public IList<PlaylistSongListDto> Songs { get; set; }
+        public IList<SongDto> Songs { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Playlist, PlaylistDetailsVm>();
+        }
     }
 }

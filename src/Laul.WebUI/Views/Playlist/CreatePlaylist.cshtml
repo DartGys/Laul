@@ -1,0 +1,29 @@
+﻿@model Laul.WebUI.Models.Playlist.CreatePlaylistDto
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Playlist</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Create Playlist</h2>
+        <div>
+            <form action="/PlaylistController/CreatePlaylist" method="post">
+            <div class="form-group">
+                <label for="Title">Title:</label>
+                <input type="text" class="form-control" id="Title" name="Title" required>
+            </div>
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <textarea class="form-control" id="Description" name="Description" rows="4" required></textarea>
+            </div>
+            <input type="hidden" id="UserName" name="UserName" value="@Model.UserName">
+
+            <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -24,6 +24,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Playlist/CreatePlaylist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcQ3JlYXRlUGxheWxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Playlist/GetPlaylistDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcR2V0UGxheWxpc3REZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Playlist/GetPlaylistList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcR2V0UGxheWxpc3RMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Profile/EditArtist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0QXJ0aXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
