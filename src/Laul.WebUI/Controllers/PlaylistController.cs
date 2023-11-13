@@ -26,6 +26,20 @@ namespace Laul.WebUI.Controllers
         [Authorize]
         public async Task<IActionResult> GetPlaylistList()
         {
+
+            var UserName = HttpContext.User.FindFirstValue("name");
+            var reqeust = new GetPlaylistListQuery()
+            {
+                UserName = UserName,
+            };
+            var model = await _mediator.Send(reqeust);
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetPlaylistListForm()
+        {
             var UserName = HttpContext.User.FindFirstValue("name");
             var reqeust = new GetPlaylistListQuery()
             {
@@ -33,7 +47,7 @@ namespace Laul.WebUI.Controllers
             };
             var model = await _mediator.Send(reqeust);
 
-            return View(model);
+            return PartialView(model);
         }
 
         public async Task<IActionResult> GetPlaylistDetails(long Id)
@@ -73,7 +87,7 @@ namespace Laul.WebUI.Controllers
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Playlist", model);
                 if (response.IsSuccessStatusCode)
                 {
-                    RedirectToAction("GetPlaylistList");
+                    return RedirectToAction("GetPlaylistList");
                 }
                 else
                 {

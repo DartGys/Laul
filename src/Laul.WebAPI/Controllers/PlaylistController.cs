@@ -3,15 +3,16 @@ using Laul.Application.Services.Playlists.Commands.CreatePlaylist;
 using Laul.Application.Services.Playlists.Commands.DeletePlaylist;
 using Laul.Application.Services.Playlists.Commands.RemovePlaylistSong;
 using Laul.Application.Services.Playlists.Commands.UpdatePlaylist;
+using Laul.Application.Services.Playlists.Queries.GetPlaylistList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
     public class PlaylistController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -32,5 +33,13 @@ namespace Laul.WebAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeletePlaylist(DeletePlaylistCommand command) =>
             Ok(await _mediator.Send(command));
+
+        [HttpGet]
+        public async Task<IActionResult> GetPlaylistList(GetPlaylistListQuery request)
+        {
+            var UserName = HttpContext.User.FindFirstValue("name");
+
+            return Ok(await _mediator.Send(request));
+        }
     }
 }

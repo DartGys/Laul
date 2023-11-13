@@ -1,0 +1,12 @@
+﻿@model Laul.Application.Services.Playlists.Queries.GetPlaylistList.PlaylistListVm
+
+<form>
+    <div class="list-group">
+        @foreach (var playlist in Model.Playlists)
+        {
+            <a href="@Url.Action("GetPlaylistDetails", new { Id = playlist.Id })" class="list-group-item list-group-item-action">
+                @playlist.Title
+            </a>
+        }
+    </div>
+</form>

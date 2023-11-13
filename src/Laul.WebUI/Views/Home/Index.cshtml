@@ -1,4 +1,4 @@
-﻿@model Laul.Application.Services.Songs.Queries.GetSongList.SongListVm;
+﻿    @model Laul.Application.Services.Songs.Queries.GetSongList.SongListVm;
 
 <!DOCTYPE html>
 <html>
@@ -8,22 +8,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/Song/togleAndPlay.js"></script>
     <script src="~/js/Song/songMenu.js"></script>
-    <script src="~/js/Playlist/playlistAddForm.js"></script>
+    <script src="~/js/Playlist/playlistModalWindow.js"></script>
 </head>
 <body>
     <div id="songs-container">
         @foreach (var item in Model.Songs)
         {
             <div class="song-card">
-                <div onclick="toggleAndPlayAudio('@item.Storage', '@item.Storage')" onmouseover="changeCursor(this)">
-                    <img class="song-cover" src="@item.Photo" alt="Photo">
+                <div onmouseover="changeCursor(this)">
+                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage', '@item.Storage')">
                     <div class="song-details">
                         <h3 style="font-size: 14px;">@item.Title</h3>
                         <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>
                         <div class="dropdown">
                             <a class="bx bx-dots-vertical-rounded dropdownButton"></a>
                             <ul class="dropdown-menu">
-                                <li data-controller="" data-target="">Add to Playlist</li>
+                                <li onclick="openModal()" data-toggle="ajax-modal" data-target="Modal">Add to Playlist</li>
                             </ul>
                         </div>
                         <p style="font-size: 11px;">@item.AlbumName</p>
@@ -32,25 +32,6 @@
             </div>
         }
     </div>
-    <!-- Модальне вікно -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Мій модальний заголовок</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Тут буде вміст модального вікна.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
-                    <button type="button" class="btn btn-primary">Зберегти зміни</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
+

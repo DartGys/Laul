@@ -10,7 +10,7 @@
     <div class="container">
         <h2>Create Playlist</h2>
         <div>
-            <form action="/PlaylistController/CreatePlaylist" method="post">
+            <form asp-action="CreatePlaylist" asp-controller="Playlist" method="post">
             <div class="form-group">
                 <label for="Title">Title:</label>
                 <input type="text" class="form-control" id="Title" name="Title" required>
@@ -21,7 +21,7 @@
             </div>
             <input type="hidden" id="UserName" name="UserName" value="@Model.UserName">
 
-            <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>
     </div>
