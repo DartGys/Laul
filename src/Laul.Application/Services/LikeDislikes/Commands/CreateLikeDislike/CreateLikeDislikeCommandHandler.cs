@@ -20,13 +20,13 @@ namespace Laul.Application.Services.LikeDislikes.Commands.CreateLikeDislike
                 ActionDate = DateTime.UtcNow,
                 IsLike = command.IsLike,
                 SongId = command.SongId,
-                UserId = command.UserId,
+                ArtistId = command.ArtistId,
             };
 
             await _unitOfWork.LikeDislike.AddAsync(likeDislike, cancellationToken);
             await _unitOfWork.SaveChangeAsync(cancellationToken);
 
-            return likeDislike.UserId;
+            return likeDislike.ArtistId;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Laul.WebUI.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetPlaylistListForm()
+        public async Task<IActionResult> GetPlaylistListForm(long songId)
         {
             var UserName = HttpContext.User.FindFirstValue("name");
             var reqeust = new GetPlaylistListQuery()
@@ -59,11 +59,6 @@ namespace Laul.WebUI.Controllers
             var model = await _mediator.Send(request);
 
             return View(model);
-        }
-
-        public async Task<IActionResult> AddSongToPlaylist(long id)
-        {
-            return View();
         }
 
         [HttpGet]

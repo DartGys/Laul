@@ -4,9 +4,26 @@
     <div class="list-group">
         @foreach (var playlist in Model.Playlists)
         {
-            <a href="@Url.Action("GetPlaylistDetails", new { Id = playlist.Id })" class="list-group-item list-group-item-action">
+            <a href="#" onclick="sendPostRequest(); return false;" class="list-group-item list-group-item-action">
                 @playlist.Title
             </a>
         }
     </div>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function sendAjaxRequest(songId, playlistId) {
+        $.ajax({
+            url: 'https://localhost:5445/PlaylistSong', 
+            method: 'POST',
+            data: { SongId: songId, PlaylistId: playlistId },
+            success: function (data) {
+                console.log('Success:', data);
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>

@@ -19,8 +19,8 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistList
 
         public async Task<PlaylistListVm> Handle(GetPlaylistListQuery request, CancellationToken cancellationToken)
         {
-            var artistId = (await _unitOfWork.Artist.FindAsyncNoTracking(a => a.Name == request.UserName)).FirstOrDefault().Id;
-            var playlistList = (await _unitOfWork.Playlist.FindAsyncNoTracking(p => p.UserId == artistId))
+            var ArtsitId = (await _unitOfWork.Artist.FindAsyncNoTracking(a => a.Name == request.UserName)).FirstOrDefault().Id;
+            var playlistList = (await _unitOfWork.Playlist.FindAsyncNoTracking(p => p.ArtistId == ArtsitId))
                 .AsQueryable()
                 .ProjectTo<PlaylistLookupDto>(_mapper.ConfigurationProvider)
                 .ToList();

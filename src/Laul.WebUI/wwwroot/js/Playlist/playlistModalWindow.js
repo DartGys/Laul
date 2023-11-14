@@ -1,4 +1,4 @@
-﻿function openModal() {
+﻿function openModal(songId) {
     const url = '/Playlist/GetPlaylistListForm';
     const modal = $('#modal');
 
@@ -10,7 +10,7 @@
     $.ajax({
         type: 'GET',
         url: url,
-        data: {},
+        data: { Songid = songId },
         success: function (response) {
             console.log("modal success");
             modal.find(".modal-body").html(response);

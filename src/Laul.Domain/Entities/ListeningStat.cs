@@ -10,7 +10,8 @@ namespace Laul.Domain.Entities
     {
         public long Id { get; set; }
         public DateTime ListeningDate { get; set; }
-        public Guid UserId { get; set; }
+        public Guid ArtistId { get; set; }
+        public Artist Artist { get; set; }
         public long SongId { get; set; }
         public virtual Song Song { get; set; }
     }

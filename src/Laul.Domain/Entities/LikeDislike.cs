@@ -10,7 +10,8 @@ namespace Laul.Domain.Entities
     {
         public DateTime ActionDate { get; set; }
         public bool IsLike { get; set; }
-        public Guid UserId { get; set; }
+        public Guid ArtistId { get; set; }
+        public Artist Artist { get; set; }
         public long SongId { get; set; }
         public virtual Song Song { get; set; }
     }

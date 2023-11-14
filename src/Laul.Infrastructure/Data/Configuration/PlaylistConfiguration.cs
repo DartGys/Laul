@@ -17,10 +17,10 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(p => p.Description)
             .HasMaxLength(1000);
 
-            builder.Property(p => p.UserId)
-            .HasColumnName("UserId")
-            .HasColumnType("uniqueidentifier")
-            .IsRequired();
+            builder.HasOne(p => p.Artist)
+            .WithMany(p => p.Playlists)
+            .HasForeignKey(album => album.ArtistId)
+            .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(p => p.PlaylistSongs)
             .WithOne(ps => ps.Playlist)

@@ -12,7 +12,7 @@ namespace Laul.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<Guid>(
-                name: "UserId",
+                name: "ArtistId",
                 table: "PlaylistSongs",
                 type: "uniqueidentifier",
                 nullable: false,
@@ -23,7 +23,7 @@ namespace Laul.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "UserId",
+                name: "ArtistId",
                 table: "PlaylistSongs");
         }
     }
