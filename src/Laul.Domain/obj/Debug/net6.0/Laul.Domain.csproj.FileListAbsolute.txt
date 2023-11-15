@@ -10,3 +10,15 @@ C:\Users\boda2\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\refint\Laul.Do
 C:\Users\boda2\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.pdb
 C:\Users\boda2\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\ref\Laul.Domain.dll
 C:\Users\boda2\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.csproj.AssemblyReference.cache
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\bin\Debug\net6.0\Laul.Domain.deps.json
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\bin\Debug\net6.0\Laul.Domain.dll
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\bin\Debug\net6.0\Laul.Domain.pdb
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.AssemblyInfoInputs.cache
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.AssemblyInfo.cs
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.sourcelink.json
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.dll
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\refint\Laul.Domain.dll
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\Laul.Domain.pdb
+C:\Users\ZenBook\source\repos\Laul\src\Laul.Domain\obj\Debug\net6.0\ref\Laul.Domain.dll

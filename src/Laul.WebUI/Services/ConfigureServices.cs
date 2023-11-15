@@ -1,4 +1,5 @@
-﻿using Laul.WebUI.Services.Identity;
+﻿using Laul.WebUI.Common.Mapping;
+using Laul.WebUI.Services.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using System.IdentityModel.Tokens.Jwt;
@@ -36,6 +37,7 @@ namespace Laul.WebUI.Services
                 }
             );
 
+            services.AddAutoMapper(typeof(AssemblyMappingProfile).Assembly);
 
             return services;
         }

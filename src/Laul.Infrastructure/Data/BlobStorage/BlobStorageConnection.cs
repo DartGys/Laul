@@ -8,7 +8,7 @@ namespace Laul.Infrastructure.Data.BlobStorage
         public BlobStorageConnection()
         {
             var config = new ConfigurationBuilder()
-            .AddJsonFile("C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Data\\BlobStorage\\key.json")
+            .AddJsonFile($"C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Data\\BlobStorage\\key.json")
             .Build();
 
             connectionString = config["AzureStorageConnectionString"];

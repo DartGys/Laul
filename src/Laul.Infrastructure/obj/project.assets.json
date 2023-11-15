@@ -3744,19 +3744,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\boda2\\.nuget\\packages\\": {}
+    "C:\\Users\\ZenBook\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
       "projectName": "Laul.Infrastructure",
-      "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\boda2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Infrastructure\\Laul.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\ZenBook\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\boda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ZenBook\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3770,8 +3770,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {
-              "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj"
+            "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {
+              "projectPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj"
             }
           }
         }
@@ -3847,7 +3847,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

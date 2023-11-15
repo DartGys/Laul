@@ -29,10 +29,7 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
             }
 
 
-            var playlist = await (await _unitOfWork.Playlist.FindAsyncNoTracking(a => a.Id == request.Id, cancellationToken))
-                .AsQueryable()
-                .ProjectTo<PlaylistDetailsVm>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(cancellationToken);
+            var playlist = _mapper.Map<PlaylistDetailsVm>(entity);
 
             var playlistSongs = await _unitOfWork.PlaylistSong.FindAsyncNoTracking(p => p.PlaylistId == request.Id, cancellationToken);
 
@@ -40,10 +37,10 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
 
             foreach (var playlistsong in playlistSongs)
             {
-                var song = await (await _unitOfWork.Song.FindAsyncNoTracking(s => s.Id == playlistsong.SongId, cancellationToken, a => a.Artist, a => a.Album))
+                var song = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.Id == playlistsong.SongId, cancellationToken, a => a.Artist, a => a.Album))
                     .AsQueryable()
                     .ProjectTo<SongDto>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync();
+                    .FirstOrDefault();
 
                 songs.Add(song);
             }

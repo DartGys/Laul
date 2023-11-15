@@ -1,10 +1,10 @@
-﻿@model Laul.Application.Services.Playlists.Queries.GetPlaylistList.PlaylistListVm
+﻿@model Laul.WebUI.Models.Playlist.PlaylistListFormVm;
 
 <form>
     <div class="list-group">
         @foreach (var playlist in Model.Playlists)
         {
-            <a href="#" onclick="sendPostRequest(); return false;" class="list-group-item list-group-item-action">
+            <a href="#" onclick="sendAjaxRequest(@Model.SongId,@playlist.Id); return false;" class="list-group-item list-group-item-action">
                 @playlist.Title
             </a>
         }
@@ -15,11 +15,13 @@
 <script>
     function sendAjaxRequest(songId, playlistId) {
         $.ajax({
-            url: 'https://localhost:5445/PlaylistSong', 
+            url: '/PlaylistSong/AddSongToPlaylist',
             method: 'POST',
             data: { SongId: songId, PlaylistId: playlistId },
             success: function (data) {
                 console.log('Success:', data);
+
+                $('#modal').modal('hide')
             },
             error: function (error) {
                 console.error('Error:', error);

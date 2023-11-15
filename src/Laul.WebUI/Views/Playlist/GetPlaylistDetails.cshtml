@@ -1,1 +1,24 @@
-﻿
+﻿@model Laul.Application.Services.Playlists.Queries.GetPlaylistDetails.PlaylistDetailsVm
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/playlistDetails.css"/>
+</head>
+<body>
+    <div class="playlist-details">
+        <h1>@Model.Title</h1>
+        <p>@Model.Description</p>
+        <div class="songs-row">
+            @foreach (var song in Model.Songs)
+            {
+                <div class="song-card">
+                    <img src="@song.Photo" alt="@song.Title">
+                    <h3>@song.Title</h3>
+                    <p>@song.ArtistName</p>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

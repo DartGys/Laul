@@ -5,6 +5,7 @@ using System.Security.Claims;
 using Laul.Application.Services.Playlists.Queries.GetPlaylistList;
 using Laul.Application.Services.Playlists.Queries.GetPlaylistDetails;
 using Laul.WebUI.Models.Playlist;
+using AutoMapper;
 
 namespace Laul.WebUI.Controllers
 {
@@ -13,13 +14,15 @@ namespace Laul.WebUI.Controllers
         private readonly IMediator _mediator;
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
 
-        public PlaylistController(IMediator mediator, IConfiguration config)
+        public PlaylistController(IMediator mediator, IConfiguration config, IMapper mapper)
         {
             _mediator = mediator;
             _httpClient = new HttpClient();
             _config = config;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -38,14 +41,17 @@ namespace Laul.WebUI.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetPlaylistListForm(long songId)
+        public async Task<IActionResult> GetPlaylistListForm(long SongId)
         {
             var UserName = HttpContext.User.FindFirstValue("name");
             var reqeust = new GetPlaylistListQuery()
             {
                 UserName = UserName,
             };
-            var model = await _mediator.Send(reqeust);
+            var request = await _mediator.Send(reqeust);
+
+            var model = _mapper.Map<PlaylistListFormVm>(request);
+            model.SongId = SongId;
 
             return PartialView(model);
         }
