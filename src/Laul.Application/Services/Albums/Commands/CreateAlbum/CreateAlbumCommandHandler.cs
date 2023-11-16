@@ -16,11 +16,13 @@ namespace Laul.Application.Services.Albums.Commands.CreateAlbum
         }
         public async Task<long> Handle(CreateAlbumCommand command, CancellationToken cancellationToken)
         {
-            //string imageTokem = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Image, command.Title);
+            string imageTokem = command.Image == null ? null :
+                await _blobStorageContext.UploadAsync.UploadFileAsync(command.Image, nameof(command.Image), command.Title);
+            
             var album = new Album()
             {
                 Title = command.Title,
-                //Image = imageTokem,
+                Image = imageTokem,
                 PublishDate = command.PublishDate,
                 Genre = command.Genre,
                 ArtistId = command.ArtistId,

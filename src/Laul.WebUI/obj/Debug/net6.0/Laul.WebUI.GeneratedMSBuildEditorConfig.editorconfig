@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ZenBook\source\repos\Laul\src\Laul.WebUI
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/CreateAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cQ3JlYXRlQWxidW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/GetAlbumListByArtist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cR2V0QWxidW1MaXN0QnlBcnRpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

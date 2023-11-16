@@ -6,6 +6,8 @@ using Laul.Application.Services.Playlists.Queries.GetPlaylistList;
 using Laul.Application.Services.Playlists.Queries.GetPlaylistDetails;
 using Laul.WebUI.Models.Playlist;
 using AutoMapper;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
@@ -35,6 +37,7 @@ namespace Laul.WebUI.Controllers
             {
                 UserName = UserName,
             };
+
             var model = await _mediator.Send(reqeust);
             return View(model);
         }

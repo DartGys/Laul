@@ -33,10 +33,8 @@ namespace Laul.WebAPI.Controllers
             Ok(await _mediator.Send(command));
 
         [HttpGet]
-        public async Task<IActionResult> GetPlaylistList(GetPlaylistListQuery request)
+        public async Task<IActionResult> GetPlaylistList([FromBody]GetPlaylistListQuery request)
         {
-            var UserName = HttpContext.User.FindFirstValue("name");
-
             return Ok(await _mediator.Send(request));
         }
     }

@@ -22,24 +22,13 @@
     </div>
     <a href="@Url.Action("GetSongListByArtist", "Song", new {UserName = Model.Name})"><h2>Songs</h2></a>
 
-    <h2>Albums</h2>
-    @if (Model.Albums != null && Model.Albums.Any())
-    {
-        <ul>
-            @foreach (var album in Model.Albums)
-            {
-                <li>@album.Title</li>
-            }
-        </ul>
-    }
-    else
-    {
-        <p>No albums available.</p>
-    }
+    <a href="@Url.Action("GetAlbumListByArtist","Album", new {UserName = Model.Name})"><h2>Albums</h2></a>
+
         @if (Model.Name == Context.User.FindFirst("name")?.Value)
         {
             <a href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id })">Edit Profile</a>
             <a href="@Url.Action("CreateSong", "Song", new { ArtistId = Model.Id })">Create Song</a>
+            <a href="@Url.Action("CreateAlbum", "Album", new { ArtistId = Model.Id })">Create Album</a>
         }
     
 </body>
