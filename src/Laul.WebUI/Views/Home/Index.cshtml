@@ -16,7 +16,7 @@
         {
             <div class="song-card">
                 <div onmouseover="changeCursor(this)">
-                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage', '@item.Storage')">
+                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage')">
                     <div class="song-details">
                         <h3 style="font-size: 14px;">@item.Title</h3>
                         <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>

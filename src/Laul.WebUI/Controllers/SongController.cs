@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Laul.WebUI.Common.Inspector;
+using Laul.Application.Services.Songs.Queries.GetSongByArtist;
 
 namespace Laul.WebUI.Controllers
 {
@@ -21,6 +22,17 @@ namespace Laul.WebUI.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> GetSongListByArtist(string UserName)
+        {
+            var request = new GetSongListByArtistQuery()
+            {
+                UserName = UserName,
+            };
+            var model = await _mediator.Send(request);
+
+            return View(model);
         }
 
         [HttpGet]

@@ -1,9 +1,9 @@
-﻿function toggleAndPlayAudio(audioUrl, storage) {
+﻿function toggleAndPlayAudio(audioUrl) {
     console.log('Playing song:', audioUrl);
     // Отримайте доступ до елементу аудіо та змініть його src
     var audioPlayer = document.getElementById('footerAudioPlayer');
 
-    var same = audioPlayer.src === storage;
+    var same = audioPlayer.src === audioUrl;
     // Перевірте, чи аудіо відтворюється
     if (same && !audioPlayer.paused) {
         // Якщо так, поставте на паузу

@@ -29,16 +29,14 @@ namespace Laul.Application.Services.Artists.Commands.UpdateArtist
                 throw new NotFoundExeption(nameof(Album), entity.Id);
             }
 
-            if (entity.Photo != null)
-            {
-                await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
-            }
-
-            //entity.Name = command.Name;
             entity.Description = command.Description;
             if (command.Photo != null)
             {
-                var token = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, nameof(command.Photo),command.Name);
+                if (entity.Photo != null)
+                {
+                    await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
+                }
+                var token = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, nameof(command.Photo), entity.Name);
                 entity.Photo = token;
             }
 

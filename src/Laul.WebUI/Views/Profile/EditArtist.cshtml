@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="~/js/Profile/profilePhotoPriview.js"></script>
     <title>@ViewData["Title"]</title>
 </head>
 <body>
@@ -22,7 +23,8 @@
 
         <div>
             <label asp-for="Photo">Photo:</label>
-            <input type="file" asp-for="Photo" />
+            <input type="file" asp-for="Photo" accept="image/*" onchange="previewImage(this)" />
+            <div id="photoPreview" style="margin-top: 10px; max-width: 200px; max-height: auto;"></div>
         </div>
 
         <button type="submit">Save Changes</button>

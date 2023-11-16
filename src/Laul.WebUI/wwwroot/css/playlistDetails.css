@@ -1,31 +1,21 @@
-﻿.playlist-details {
+﻿.container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    justify-content: space-between;
 }
 
-.songs-row {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
+.title {
+    flex: 1; /* Займає доступне простір в рядку */
 }
 
-.song-card {
-    flex: 0 0 auto;
-    text-align: center;
+.description {
+    flex: 2; /* Займає доступне простір в рядку */
 }
 
-    .song-card img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 8px;
-    }
+.song-cover {
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
 
-@media (max-width: 600px) {
-    .songs-row {
-        flex-wrap: nowrap;
-        overflow-x: scroll;
-    }
+.song-card:hover .song-cover {
+    filter: brightness(0.8);
 }

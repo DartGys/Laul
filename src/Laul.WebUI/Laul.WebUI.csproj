@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\Playlist\playlistModalWindow.js" />
+    <None Include="wwwroot\js\sidebar.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\Song\songMenu.js" />
+    <None Include="wwwroot\js\Song\togleAndPlay.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="IdentityModel" Version="6.2.0" />
     <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.24" />
@@ -14,6 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
@@ -22,6 +31,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Laul.Application\Laul.Application.csproj" />
     <ProjectReference Include="..\Laul.Infrastructure\Laul.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\Profile\" />
   </ItemGroup>
 
 </Project>

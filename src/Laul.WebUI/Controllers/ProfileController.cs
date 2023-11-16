@@ -54,31 +54,34 @@ namespace Laul.WebUI.Controllers
         {
             if(ModelState.IsValid)
             {
-                using (var memoryStream = new MemoryStream())
+                byte[] PhotoInBytes = null;
+                if (request.Photo != null)
                 {
-                    await request.Photo.CopyToAsync(memoryStream);
-                    byte[] PhotoInBytes = memoryStream.ToArray();
-
-                    var model = new ArtistUpdateOutputDto()
+                    using (var memoryStream = new MemoryStream())
                     {
-                        Id = request.Id,
-                        Description = request.Description,
-                        Name = request.Name,
-                        Photo = PhotoInBytes
-                    };
-                    var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await _httpClient.PatchAsync($"{_config["apiUrl"]}/Artist", content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // Обробка успішного відгуку від API (наприклад, редірект)
-                        return RedirectToAction("GetArtistDetails");
+                        await request.Photo.CopyToAsync(memoryStream);
+                        PhotoInBytes = memoryStream.ToArray();
                     }
-                    else
-                    {
-                        // Обробка помилки від API (наприклад, відображення повідомлення про помилку)
-                        ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
-                    }
+                }
+                var model = new ArtistUpdateOutputDto()
+                {
+                    Id = request.Id,
+                    Description = request.Description,
+                    Name = request.Name,
+                    Photo = PhotoInBytes
+                };
+                var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await _httpClient.PatchAsync($"{_config["apiUrl"]}/Artist", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Обробка успішного відгуку від API (наприклад, редірект)
+                    return RedirectToAction("GetArtistDetails");
+                }
+                else
+                {
+                    // Обробка помилки від API (наприклад, відображення повідомлення про помилку)
+                    ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
                 }
             }
             return View(request);

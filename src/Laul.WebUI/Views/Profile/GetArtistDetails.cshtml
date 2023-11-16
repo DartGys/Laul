@@ -9,7 +9,7 @@
 <body>
     @if (!string.IsNullOrEmpty(Model.Photo))
     {
-        <img src="@Model.Photo" alt="User Photo" />
+        <img style=" width: 100px; height: auto; border-radius: 100%;" src="@Model.Photo" alt="User Photo" />
     }
 
     <div class="details">
@@ -19,21 +19,8 @@
     {
         <p>@Model.Description</p>
     }
-
-    <h2>Songs</h2>
-    @if (Model.Songs != null && Model.Songs.Any())
-    {
-        <ul>
-            @foreach (var song in Model.Songs)
-            {
-                <li>@song.Title</li>
-            }
-        </ul>
-    }
-    else
-    {
-        <p>No songs available.</p>
-    }
+    </div>
+    <a href="@Url.Action("GetSongListByArtist", "Song", new {UserName = Model.Name})"><h2>Songs</h2></a>
 
     <h2>Albums</h2>
     @if (Model.Albums != null && Model.Albums.Any())
@@ -54,6 +41,6 @@
             <a href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id })">Edit Profile</a>
             <a href="@Url.Action("CreateSong", "Song", new { ArtistId = Model.Id })">Create Song</a>
         }
-    </div>
+    
 </body>
 </html>
