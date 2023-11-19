@@ -1,4 +1,5 @@
-﻿using Laul.Application.Services.Albums.Queries.GetAlbumListByArtist;
+﻿using Laul.Application.Services.Albums.Queries.GetAlbumDetails;
+using Laul.Application.Services.Albums.Queries.GetAlbumListByArtist;
 using Laul.WebUI.Common.Inspector;
 using Laul.WebUI.Models.Album;
 using MediatR;
@@ -30,12 +31,12 @@ namespace Laul.WebUI.Controllers
                 PublishDate = DateTime.UtcNow
             };
 
-            return View(request);
+            return PartialView(request);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CreateAlbum(CreateAlbumDto request)
+        public async Task CreateAlbum([FromBody]CreateAlbumDto request)
         {
             if(ModelState.IsValid)
             {
@@ -62,16 +63,12 @@ namespace Laul.WebUI.Controllers
 
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Album", model);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("GetArtistDetails", "Profile");
-                }
-                else
+                if (!response.IsSuccessStatusCode)
                 {
                     ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
                 }
             }
-            return View(request);
+            
         }
 
         public async Task<IActionResult> GetAlbumListByArtist(string UserName)
@@ -79,6 +76,18 @@ namespace Laul.WebUI.Controllers
             var request = new GetAlbumListByArtistQuery()
             {
                 UserName = UserName
+            };
+            var model = await _mediator.Send(request);
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> GetAlbumDetails(long AlbumId, Guid ArtistId)
+        {
+            var request = new GetAlbumDetailsQuery()
+            {
+                Id = AlbumId,
+                ArtistId = ArtistId
             };
             var model = await _mediator.Send(request);
 

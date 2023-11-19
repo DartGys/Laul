@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\Playlist\playlistModalWindow.js" />
     <None Include="wwwroot\js\sidebar.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\Song\songMenu.js" />

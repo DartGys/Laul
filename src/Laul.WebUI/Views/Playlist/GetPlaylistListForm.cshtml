@@ -1,31 +1,36 @@
 ﻿@model Laul.WebUI.Models.Playlist.PlaylistListFormVm;
 
-<form>
-    <div class="list-group">
-        @foreach (var playlist in Model.Playlists)
-        {
-            <a href="#" onclick="sendAjaxRequest(@Model.SongId,@playlist.Id); return false;" class="list-group-item list-group-item-action">
-                @playlist.Title
-            </a>
-        }
-    </div>
-</form>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    function sendAjaxRequest(songId, playlistId) {
-        $.ajax({
-            url: '/PlaylistSong/AddSongToPlaylist',
-            method: 'POST',
-            data: { SongId: songId, PlaylistId: playlistId },
-            success: function (data) {
-                console.log('Success:', data);
-
-                $('#modal').modal('hide')
-            },
-            error: function (error) {
-                console.error('Error:', error);
+<html>
+<body>
+    <form>
+        <div class="list-group">
+            @foreach (var playlist in Model.Playlists)
+            {
+                <a href="#" onclick="sendPlaylistRequest(@Model.SongId,@playlist.Id); return false;" class="list-group-item list-group-item-action">
+                    @playlist.Title
+                </a>
             }
-        });
-    }
-</script>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function sendPlaylistRequest(songId, playlistId) {
+            const modal = $('#modal');
+
+            $.ajax({
+                url: '/PlaylistSong/AddSongToPlaylist',
+                method: 'POST',
+                data: { SongId: songId, PlaylistId: playlistId },
+                success: function (data) {
+                    console.log('Success:', data);
+                    $('#modal').modal('hide')
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

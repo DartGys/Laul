@@ -11,16 +11,18 @@
     {
         @foreach (var item in Model.Albums)
         {
-            <div class="song-card">
-                <div onmouseover="changeCursor(this)">
-                    <img class="song-cover" src="@item.Image" alt="Photo)">
-                    <div class="song-details">
-                            <h3 style="margin: 0px">@item.Title</h3>
-                        <h3 style="font-size: 14px; margin: 0px">@item.Genre</h3>
-                        <h3 style="font-size: 14px;">@item.PublishDate.Year</h3>
+                <a href="@Url.Action("GetAlbumDetails","Album", new { AlbumId = item.Id, ArtistId = Model.ArtistId})">
+                <div class="song-card">
+                    <div onmouseover="changeCursor(this)">
+                        <img class="song-cover" src="@item.Image" alt="Photo)">
+                        <div class="song-details">
+                                <h3 style="margin: 0px">@item.Title</h3>
+                            <h3 style="font-size: 14px; margin: 0px">@item.Genre</h3>
+                            <h3 style="font-size: 14px;">@item.PublishDate.Year</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         }
     }
     else

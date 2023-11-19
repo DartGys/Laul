@@ -31,7 +31,7 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumListByArtist
                 .ProjectTo<AlbumLookupDto>(_mapper.ConfigurationProvider)
                 .ToList();
 
-            return new AlbumListVm { Albums = albumList };
+            return new AlbumListVm { Albums = albumList, ArtistId = artist.Id };
         }
     }
 }

@@ -22,6 +22,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cQ3JlYXRlQWxidW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/GetAlbumDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cR2V0QWxidW1EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/GetAlbumListByArtist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cR2V0QWxidW1MaXN0QnlBcnRpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,38 @@
+﻿@model Laul.Application.Services.Albums.Queries.GetAlbumDetails.AlbumDetailsVm
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/js/Song/togleAndPlay.js"></script>
+</head>
+<body>
+    <a>Download song to album</a>
+    <a>Add to album from list</a>
+    <div>
+        <img src="@Model.Image"/>
+    </div>
+    <div>
+        <h3>@Model.Title</h3>
+    </div>
+    <div>
+        <h4>@Model.Genre</h4>
+    </div>
+    <div>
+        <h4>@Model.Year</h4>
+    </div>
+    <div>
+        <h4>@Model.Songs.Count Songs</h4>
+    </div>
+    <table class="table">
+        @foreach (var item in Model.Songs)
+        {
+            <tr class="song-cover" onmouseover="changeCursor(this)">
+                <td style="width: auto; height: 50px" onclick="toggleAndPlayAudio('@item.Storage')">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
