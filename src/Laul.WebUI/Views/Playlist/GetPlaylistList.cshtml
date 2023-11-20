@@ -7,17 +7,19 @@
 </head>
 <body>
     <h1>Playlist's List</h1>
-    <a href="@Url.Action("CreatePlaylist")">Create Playlist</a>
-        <nav>
+    <a class="btn btn-primary" href="@Url.Action("CreatePlaylist")">Create Playlist</a>
+
+    <nav>
         <ul class="playlist-list">
             @foreach (var playlist in Model.Playlists)
             {
-                <li>
+                <li class="list-group-item">
                     <a href="@Url.Action("GetPlaylistDetails", new { Id = playlist.Id })">@playlist.Title</a>
                 </li>
             }
         </ul>
     </nav>
+
 </body>
 
 </html>

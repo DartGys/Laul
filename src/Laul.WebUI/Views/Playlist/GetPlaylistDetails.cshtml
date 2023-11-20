@@ -22,12 +22,16 @@
     <table class="table">
         @foreach(var item in Model.Songs)
         {
-            <tr class="song-cover" onmouseover="changeCursor(this)">
-                <td style="width: 50px; height: 50px" onclick="toggleAndPlayAudio('@item.Storage')">
-                    <img style="block-size: 50px" src="@item.Photo"/>
-                </td>
-                <td style="width: 350px; height: 50px">
-                    @Html.DisplayFor(modelItem => item.Title)
+            <tr>
+                <td>
+                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio('@item.Storage')" class="song-cover" onmouseover="changeCursor(this)">
+                        <div style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img style="block-size: 50px" src="@item.Photo" />
+                        </div>
+                        <div style="width: 350px; height: 50px">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </div>
+                    </div>
                 </td>
                 <td style="width: 200px; height: 50px">
                     @Html.DisplayFor(modelItem => item.ArtistName)
@@ -37,9 +41,9 @@
                 </td>
                 <td>
                     <div class="dropdown">
-                        <a class="bx bx-dots-vertical-rounded dropdownButton"></a>
-                        <ul class="dropdown-menu">
-                            <li>Delete from Playlist</li>
+                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none"></a>
+                        <ul class="dropdown-menu song-cover">
+                            <a class="text-decoration-none" href="@Url.Action("RemoveSongFromPlaylist","PlaylistSong", new {songId = item.Id, playlistId = Model.Id})">Delete From Playlist</a>
                         </ul>
                     </div>
                 </td>

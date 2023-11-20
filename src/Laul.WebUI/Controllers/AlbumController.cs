@@ -5,6 +5,7 @@ using Laul.WebUI.Models.Album;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol;
 
 namespace Laul.WebUI.Controllers
 {
@@ -31,18 +32,18 @@ namespace Laul.WebUI.Controllers
                 PublishDate = DateTime.UtcNow
             };
 
-            return PartialView(request);
+            return View(request);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task CreateAlbum([FromBody]CreateAlbumDto request)
+        public async Task<IActionResult> CreateAlbum(CreateAlbumDto request)
         {
             if(ModelState.IsValid)
             {
                 byte[] ImageInBytes = null;
                 if (request.Image != null)
-                {
+                {   
                     if(Inspector.IsImage(request.Image))
                     {
                         using (var memoryStream = new MemoryStream())
@@ -63,12 +64,11 @@ namespace Laul.WebUI.Controllers
 
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Album", model);
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
-                }
+                RedirectToAction("GetArtistDetails", "Profile");
             }
-            
+
+            return View(request);
+
         }
 
         public async Task<IActionResult> GetAlbumListByArtist(string UserName)

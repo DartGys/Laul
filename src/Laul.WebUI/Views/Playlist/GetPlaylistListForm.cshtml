@@ -2,6 +2,8 @@
 
 <html>
 <body>
+    <div id="succedContainer"></div>
+
     <form>
         <div class="list-group">
             @foreach (var playlist in Model.Playlists)
@@ -12,25 +14,5 @@
             }
         </div>
     </form>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        function sendPlaylistRequest(songId, playlistId) {
-            const modal = $('#modal');
-
-            $.ajax({
-                url: '/PlaylistSong/AddSongToPlaylist',
-                method: 'POST',
-                data: { SongId: songId, PlaylistId: playlistId },
-                success: function (data) {
-                    console.log('Success:', data);
-                    $('#modal').modal('hide')
-                },
-                error: function (error) {
-                    console.error('Error:', error);
-                }
-            });
-        }
-    </script>
 </body>
 </html>

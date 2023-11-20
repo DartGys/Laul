@@ -9,66 +9,40 @@
 <head>
     <title>@ViewData["Title"]</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
     <h1>@ViewData["Title"]</h1>
 
-    <form id="albumForm" enctype="multipart/form-data">
-        <div>
-            <input asp-for="ArtistId" name="ArtistId" type="hidden">
-        </div>
-        <div>
-            <label asp-for="Title">Title:</label>
-            <textarea asp-for="Title" name="Title"></textarea>
-        </div>
+    <div class="container my-5">
+        
+        <form id="albumForm" method="post" asp-controller="Album" asp-action="CreateAlbum" enctype="multipart/form-data" class="mt-3">
+            <div>
+                <input asp-for="ArtistId" name="ArtistId" type="hidden">
+            </div>
 
-        <div>
-            <label asp-for="PublishDate">Publish Date:</label>
-            <input asp-for="PublishDate" type="date" name="PublishDate" />
-        </div>
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Title:</label>
+                <textarea asp-for="Title" name="Title" class="form-control"></textarea>
+            </div>
 
-        <div>
-            <label asp-for="Genre">Genre:</label>
-            <textarea asp-for="Genre" name="Genre"></textarea>
-        </div>
+            <div class="mb-3">
+                <label asp-for="PublishDate" class="form-label">Publish Date:</label>
+                <input asp-for="PublishDate" type="date" name="PublishDate" class="form-control" />
+            </div>
 
-        <div>
-            <label asp-for="Image">Photo:</label>
-            <input type="file" asp-for="Image" accept="image/*" name="Image" onchange="previewImage(this)" />
-            <div id="photoPreview" style="margin-top: 10px; max-width: 200px; max-height: auto;"></div>
-        </div>
+            <div class="mb-3">
+                <label asp-for="Genre" class="form-label">Genre:</label>
+                <textarea asp-for="Genre" name="Genre" class="form-control"></textarea>
+            </div>
 
-        <button type="button" onclick="sendAlbumRequest()">Create</button>
-    </form>
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label">Photo:</label>
+                <input type="file" asp-for="Image" accept="image/*" name="Image" onchange="previewImage(this)" class="form-control" />
+                <div id="photoPreview" style="margin-top: 10px; max-width: 200px; max-height: auto;"></div>
+            </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <script>
-        function sendAjaxRequest() {
-            const modal = new bootstrap.Modal(document.getElementById('modal'));
-
-            var albumDto = {
-                ArtistId: $('#ArtistId').val(),
-                Title: $('#Title').val(),
-                Image: $('#Image')[0].files[0],
-                PublishDate: $('#PublishDate').val(),
-                Genre: $('#Genre').val()
-            };
-
-            $.ajax({
-                url: '/Album/CreateAlbum',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(albumDto),
-                success: function (data) {
-                    console.log('Success:', data);
-                    modal.hide()
-                },
-                error: function (error) {
-                    console.error('Error:', error);
-                }
-            });
-        }
-    </script>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
 </body>
 </html>
 

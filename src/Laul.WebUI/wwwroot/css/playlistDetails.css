@@ -12,10 +12,21 @@
 }
 
 .song-cover {
+    width: 100%;
+    height: auto;
     filter: brightness(1);
     transition: filter 0.3s ease;
 }
 
-.song-card:hover .song-cover {
-    filter: brightness(0.8);
+.song-card a {
+    text-decoration: none; /* Заборонити підкреслення за замовчуванням */
 }
+
+    .song-card a:hover {
+        text-decoration: underline; /* Додати підкреслення при наведенні */
+    }
+
+    .song-cover:hover {
+        filter: brightness(0.8);
+    }
+

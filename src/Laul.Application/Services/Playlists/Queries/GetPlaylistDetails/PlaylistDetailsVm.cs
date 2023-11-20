@@ -6,6 +6,7 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
 {
     public class PlaylistDetailsVm : IMapWith<Playlist>
     {
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public IList<SongDto> Songs { get; set; }

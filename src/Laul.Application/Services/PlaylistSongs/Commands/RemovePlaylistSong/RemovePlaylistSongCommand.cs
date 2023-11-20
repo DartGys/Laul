@@ -6,6 +6,5 @@ namespace Laul.Application.Services.PlaylistSongs.Commands.RemovePlaylistSong
     {
         public long SongId { get; set; }
         public long PlaylistId { get; set; }
-        public Guid UserId { get; set; }
     }
 }
