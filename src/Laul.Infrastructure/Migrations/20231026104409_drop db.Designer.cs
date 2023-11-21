@@ -84,7 +84,7 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.LikeDislike", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasMaxLength(255)
                         .HasColumnType("uniqueidentifier");
 
@@ -97,7 +97,7 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<bool>("IsLike")
                         .HasColumnType("bit");
 
-                    b.HasKey("UserId", "SongId");
+                    b.HasKey("ArtistId", "SongId");
 
                     b.HasIndex("SongId");
 
@@ -118,9 +118,9 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<decimal>("SongId")
                         .HasColumnType("decimal(20,0)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserId");
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 
@@ -146,9 +146,9 @@ namespace Laul.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserId");
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 
@@ -163,9 +163,9 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<decimal>("SongId")
                         .HasColumnType("decimal(20,0)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserId");
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("PlaylistId", "SongId");
 

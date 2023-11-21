@@ -18,7 +18,7 @@ namespace Laul.Application.Services.Songs.Queries.GetSongList
         {
             profile.CreateMap<Song, SongLookupDto>()
                 .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name))
-                .ForMember(dest => dest.AlbumName, opt => opt.MapFrom(src => src.Album.Title));
+                .ForMember(dest => dest.AlbumName, opt => opt.MapFrom(src => src.Album != null ? src.Album.Title : null));
         }
     }
 }

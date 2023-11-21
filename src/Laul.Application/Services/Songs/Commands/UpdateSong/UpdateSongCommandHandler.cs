@@ -30,7 +30,7 @@ namespace Laul.Application.Services.Songs.Commands.UpdateSong
 
             entity.Title = command.Title;
 
-            entity.Photo = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, entity.Title);
+            //entity.Photo = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, entity.Title);
 
             entity.Genre = command.Genre;
 

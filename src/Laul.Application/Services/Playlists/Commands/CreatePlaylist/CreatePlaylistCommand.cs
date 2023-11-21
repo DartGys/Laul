@@ -6,6 +6,6 @@ namespace Laul.Application.Services.Playlists.Commands.CreatePlaylist
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public Guid UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

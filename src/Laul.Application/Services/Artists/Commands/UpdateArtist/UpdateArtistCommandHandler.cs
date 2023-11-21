@@ -3,6 +3,9 @@ using Laul.Application.Common.Exeption;
 using MediatR;
 using Laul.Domain.Entities;
 using Laul.Application.Interfaces.BlobStorage;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Http;
+using System.Collections;
 
 namespace Laul.Application.Services.Artists.Commands.UpdateArtist
 {
@@ -26,11 +29,16 @@ namespace Laul.Application.Services.Artists.Commands.UpdateArtist
                 throw new NotFoundExeption(nameof(Album), entity.Id);
             }
 
-            await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
-
-            entity.Name = command.Name;
             entity.Description = command.Description;
-            entity.Photo = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, command.Name);
+            if (command.Photo != null)
+            {
+                if (entity.Photo != null)
+                {
+                    await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
+                }
+                var token = await _blobStorageContext.UploadAsync.UploadFileAsync(command.Photo, nameof(command.Photo), entity.Name);
+                entity.Photo = token;
+            }
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);
 

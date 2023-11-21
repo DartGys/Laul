@@ -1,9 +1,36 @@
-﻿@using Laul.Application.Services.Songs.Queries.GetSongList;
-@model SongListVm
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿    @model Laul.Application.Services.Songs.Queries.GetSongList.SongListVm;
 
-<h1>Song List</h1>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/songList.css" />
+    <script src="~/js/Song/togleAndPlay.js"></script>
+    <script src="~/js/Song/songMenu.js"></script>
+    <script src="~/js/Playlist/modalPlaylistWindow.js"></script>
+    <script src="~/js/Playlist/sendPlaylistRequest.js"></script>
+</head>
+<body>
+    <div id="songs-container">
+        @foreach (var item in Model.Songs)
+        {
+            <div class="song-card">
+                <div onmouseover="changeCursor(this)">
+                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage')">
+                    <div class="song-details">
+                        <h3 style="font-size: 14px;">@item.Title</h3>
+                        <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>
+                        <div class="dropdown">
+                            <a class="bx bx-dots-vertical-rounded dropdownButton"></a>
+                            <ul class="dropdown-menu">
+                                <li onclick="openModal('@item.Id')" data-toggle="ajax-modal" data-target="Modal">Add to Playlist</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 11px;">@item.AlbumName</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
 

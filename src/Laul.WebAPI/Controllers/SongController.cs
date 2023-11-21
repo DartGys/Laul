@@ -3,6 +3,7 @@ using Laul.Application.Services.Songs.Commands.CreateSong;
 using MediatR;
 using Laul.Application.Services.Songs.Commands.DeleteSong;
 using Laul.Application.Services.Songs.Commands.UpdateSong;
+using Laul.Application.Services.Songs.Commands.AddSongToAlbum;
 
 namespace Laul.WebAPI.Controllers
 {

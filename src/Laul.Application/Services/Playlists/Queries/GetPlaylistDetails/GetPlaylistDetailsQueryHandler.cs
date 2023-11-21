@@ -29,20 +29,25 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
             }
 
 
-            var playlist = (await _unitOfWork.Playlist.FindAsyncNoTracking(a => a.Id == Convert.ToInt64(request.Id), cancellationToken))
-                .AsQueryable()
-                .ProjectTo<PlaylistDetailsVm>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(cancellationToken);
+            var playlist = _mapper.Map<PlaylistDetailsVm>(entity);
 
-            var songs = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.AlbumId == request.Id, cancellationToken, a => a.Artist, a => a.Album))
-                .AsQueryable()
-                .ProjectTo<PlaylistSongListDto>(_mapper.ConfigurationProvider)
-                .ToList();
+            var playlistSongs = await _unitOfWork.PlaylistSong.FindAsyncNoTracking(p => p.PlaylistId == request.Id, cancellationToken);
 
-            var playlistDetailsVm = _mapper.Map<PlaylistDetailsVm>(playlist);
-            playlistDetailsVm.Songs = _mapper.Map<IList<PlaylistSongListDto>>(songs);
+            var songs = new List<SongDto>();
 
-            return playlistDetailsVm;
+            foreach (var playlistsong in playlistSongs)
+            {
+                var song = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.Id == playlistsong.SongId, cancellationToken, a => a.Artist, a => a.Album))
+                    .AsQueryable()
+                    .ProjectTo<SongDto>(_mapper.ConfigurationProvider)
+                    .FirstOrDefault();
+
+                songs.Add(song);
+            }
+
+            playlist.Songs = new List<SongDto>(songs);
+
+            return playlist;
         }
     }
 }

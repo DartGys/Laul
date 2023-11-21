@@ -1,0 +1,33 @@
+﻿@model Laul.Application.Services.Songs.Queries.GetSongListByArtist.SongListByArtistVm;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/js/Song/togleAndPlay.js"></script>
+</head>
+<body>
+    <table class="table">
+        @if (Model.Songs != null && Model.Songs.Any())
+        {
+            @foreach (var item in Model.Songs)
+            {
+                <tr class="song-cover" onmouseover="changeCursor(this)">
+                    <td style="width: 50px; height: 50px" onclick="toggleAndPlayAudio('@item.Storage')">
+                        <img style="block-size: 50px" src="@item.Photo" />
+                    </td>
+                    <td style="width: 350px; height: 50px">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AlbumTitle)
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>No songs available.</p>
+        }
+    </table>
+</body>
+</html>

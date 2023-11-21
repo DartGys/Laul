@@ -17,7 +17,7 @@ namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
         {
             var listeningStat = new ListeningStat()
             {
-                UserId = command.UserId,
+                ArtistId = command.ArtistId,
                 SongId = command.SongId,
                 ListeningDate = DateTime.UtcNow,
             };

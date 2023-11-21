@@ -1,0 +1,55 @@
+﻿@model Laul.Application.Services.Playlists.Queries.GetPlaylistDetails.PlaylistDetailsVm
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/playlistDetails.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Song/togleAndPlay.js"></script>
+    <script src="~/js/Song/songMenu.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>@Model.Title</h1>
+        </div>
+
+        <div class="description">
+            <p>@Model.Description</p>
+        </div>
+    </div>
+    <table class="table">
+        @foreach(var item in Model.Songs)
+        {
+            <tr>
+                <td>
+                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio('@item.Storage')" class="song-cover" onmouseover="changeCursor(this)">
+                        <div style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img style="block-size: 50px" src="@item.Photo" />
+                        </div>
+                        <div style="width: 350px; height: 50px">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 200px; height: 50px">
+                    @Html.DisplayFor(modelItem => item.ArtistName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlbumTitle)
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none"></a>
+                        <ul class="dropdown-menu song-cover">
+                            <a class="text-decoration-none" href="@Url.Action("RemoveSongFromPlaylist","PlaylistSong", new {songId = item.Id, playlistId = Model.Id})">Delete From Playlist</a>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

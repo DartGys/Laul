@@ -31,12 +31,10 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
             var album = (await _unitOfWork.Album.FindAsyncNoTracking(a => a.Id == request.Id, cancellationToken))
                 .AsQueryable()
                 .Include(artist.Name)
-                .ProjectTo<AlbumDetailsVm>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(cancellationToken);
+                .FirstOrDefault();
 
             var songs = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.AlbumId == request.Id, cancellationToken))
                 .AsQueryable()
-                .ProjectTo<AlbumSongListDto>(_mapper.ConfigurationProvider)
                 .ToList();
 
             var AlbumDetailsVm = _mapper.Map<AlbumDetailsVm>(album);

@@ -35,6 +35,7 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.HasOne(s => s.Album)
             .WithMany(a => a.Songs)
             .HasForeignKey(s => s.AlbumId)
+            .IsRequired(false)
             .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(s => s.LikeDislikes)

@@ -1,5 +1,6 @@
 ﻿namespace Laul.WebUI.Services.Identity
 {
+#nullable disable
     public class IdentityServerSettings
     {
         public string DiscoveryUrl { get; set; }

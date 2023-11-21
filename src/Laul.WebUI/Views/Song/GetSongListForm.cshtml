@@ -1,0 +1,24 @@
+﻿@model Laul.WebUI.Models.Song.SongListFormVm;
+
+<html>
+<head>
+
+</head>
+<body>
+    <div id="succedContainer"></div>
+
+    <form id="addSongsForm">
+        <div class="list-group">
+            @foreach (var playlist in Model.Songs)
+            {
+                <a class="list-group-item list-group-item-action">
+                    <input type="checkbox" class="songCheckbox" data-song-id="@playlist.Id" />
+                    @playlist.Title
+                </a>
+            }
+        </div>
+
+        <button type="button" onclick="addSelectedSongs('@Model.AlbumId')">Додати</button>
+    </form>
+</body>
+</html>

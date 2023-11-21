@@ -10,14 +10,18 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServer4.Test;
+//using Laul.Application.Services.Artists.Commands.CreateArtist;
 using Laul.Identity.Quickstart.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace IdentityServerHost.Quickstart.UI
@@ -185,7 +189,7 @@ namespace IdentityServerHost.Quickstart.UI
         /// Entry point into the register workflow
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Register(string returnUrl)
+        public IActionResult Register(string returnUrl)
         {
             var vm = new RegisterViewModel
             {
@@ -209,12 +213,20 @@ namespace IdentityServerHost.Quickstart.UI
 
                 if (result.Succeeded)
                 {
+                    using (var client = new HttpClient())
+                    {
+                        var apiUrl = "https://localhost:5445";
+                        var endpoint = "/Artist";
+                        var artist = new
+                        {
+                            Id = new Guid(user.Id),
+                            Name = user.UserName
+                        };
+                        var apiResult = await client.PostAsJsonAsync(new Uri(apiUrl + endpoint), artist);
+                    }
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    
                     return Redirect(model.ReturnUrl);
-                    //var loginvm = await BuildLoginViewModelAsync(model.ReturnUrl);
-                    //loginvm.Username = model.UserName;
-                    //loginvm.Password = model.Password;
-                    //return await Login(loginvm, "login");
 
                 }
                 else

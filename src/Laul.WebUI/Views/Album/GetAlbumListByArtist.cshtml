@@ -1,0 +1,35 @@
+﻿    @model Laul.Application.Services.Albums.Queries.GetAlbumListByArtist.AlbumListVm;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/songList.css" />
+</head>
+<body>
+    <div id="songs-container">
+    @if (Model.Albums != null && Model.Albums.Any())
+    {
+        @foreach (var item in Model.Albums)
+        {
+                <a href="@Url.Action("GetAlbumDetails","Album", new { AlbumId = item.Id, ArtistId = Model.ArtistId})">
+                <div class="song-card">
+                    <div>
+                        <img class="song-cover" src="@item.Image" alt="Photo)">
+                        <div class="song-details">
+                                <h3 style="margin: 0px">@item.Title</h3>
+                            <h3 style="font-size: 14px; margin: 0px">@item.Genre</h3>
+                            <h3 style="font-size: 14px;">@item.PublishDate.Year</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    }
+    else
+    {
+        <p>No albums available.</p>
+    }
+    </div>
+</body>
+</html>
+

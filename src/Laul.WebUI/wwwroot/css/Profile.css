@@ -1,0 +1,16 @@
+﻿body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details {
+    width: 55%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Вирівнювання вгору (починається зверху) */
+}
+
+h1, h2, p, ul {
+    margin: 0; /* Видалення зовнішнього відступу, щоб уникнути додаткових відступів */
+}

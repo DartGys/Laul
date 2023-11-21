@@ -9,37 +9,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Laul.WebUI
 build_property.RootNamespace = Laul.WebUI
-build_property.ProjectDir = C:\Users\boda2\source\repos\Laul\src\Laul.WebUI\
+build_property.ProjectDir = C:\Users\ZenBook\source\repos\Laul\src\Laul.WebUI\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\boda2\source\repos\Laul\src\Laul.WebUI
+build_property.MSBuildProjectDirectory = C:\Users\ZenBook\source\repos\Laul\src\Laul.WebUI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Home/Index.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/CreateAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cQ3JlYXRlQWxidW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/GetAlbumDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cR2V0QWxidW1EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Album/GetAlbumListByArtist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cR2V0QWxidW1MaXN0QnlBcnRpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Home/Privacy.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Shared/Error.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Playlist/CreatePlaylist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcQ3JlYXRlUGxheWxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Playlist/GetPlaylistDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcR2V0UGxheWxpc3REZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Playlist/GetPlaylistList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcR2V0UGxheWxpc3RMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Playlist/GetPlaylistListForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RcR2V0UGxheWxpc3RMaXN0Rm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Profile/EditArtist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0QXJ0aXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Profile/GetArtistDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxHZXRBcnRpc3REZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/_ViewImports.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Song/CreateSong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ1xDcmVhdGVTb25nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Song/GetSongListByArtist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ1xHZXRTb25nTGlzdEJ5QXJ0aXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Song/GetSongListForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ1xHZXRTb25nTGlzdEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/_ViewStart.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/boda2/source/repos/Laul/src/Laul.WebUI/Views/Shared/_Layout.cshtml]
+[C:/Users/ZenBook/source/repos/Laul/src/Laul.WebUI/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-j524sf3be1

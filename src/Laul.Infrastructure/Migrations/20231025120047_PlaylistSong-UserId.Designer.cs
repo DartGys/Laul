@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Laul.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231025120047_PlaylistSong-UserId")]
+    [Migration("20231025120047_PlaylistSong-ArtistId")]
     partial class PlaylistSongUserId
     {
         /// <inheritdoc />
@@ -99,7 +99,7 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<int>("SongId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasMaxLength(255)
                         .HasColumnType("uniqueidentifier");
 
@@ -124,9 +124,9 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<int>("SongId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserId");
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 
@@ -152,9 +152,9 @@ namespace Laul.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserId");
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 
@@ -175,9 +175,9 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<int>("SongId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserId");
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 

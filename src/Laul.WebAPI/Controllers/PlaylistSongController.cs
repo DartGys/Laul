@@ -1,5 +1,5 @@
-﻿using Laul.Application.Services.Playlists.Commands.AddPlaylistSong;
-using Laul.Application.Services.Playlists.Commands.RemovePlaylistSong;
+﻿using Laul.Application.Services.PlaylistSongs.Commands.AddPlaylistSong;
+using Laul.Application.Services.PlaylistSongs.Commands.RemovePlaylistSong;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +17,7 @@ namespace Laul.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPlaylistSong(AddPlaylistSongCommand command) =>
+        public async Task<IActionResult> AddPlaylistSong([FromBody]AddPlaylistSongCommand command) =>
             Ok(await _mediator.Send(command));
 
         [HttpDelete]

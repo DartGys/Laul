@@ -1,0 +1,18 @@
+﻿@model Laul.WebUI.Models.Playlist.PlaylistListFormVm;
+
+<html>
+<body>
+    <div id="succedContainer"></div>
+
+    <form>
+        <div class="list-group">
+            @foreach (var playlist in Model.Playlists)
+            {
+                <a href="#" onclick="sendPlaylistRequest(@Model.SongId,@playlist.Id); return false;" class="list-group-item list-group-item-action">
+                    @playlist.Title
+                </a>
+            }
+        </div>
+    </form>
+</body>
+</html>
