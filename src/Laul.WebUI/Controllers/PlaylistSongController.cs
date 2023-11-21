@@ -31,7 +31,7 @@ namespace Laul.WebUI.Controllers
             }
             else
             {
-                return Content("Error occured");
+                return BadRequest("Error occured");
             }
         }
 

@@ -2,7 +2,7 @@
 using Laul.Application.Common.Mapping;
 using Laul.Domain.Entities;
 
-namespace Laul.Application.Services.Songs.Queries.GetSongListByArtist
+namespace Laul.Application.Services.Songs.Queries.GetSongListByArtistNoAlbum
 {
     public class SongLookupDto : IMapWith<Song>
     {
@@ -10,13 +10,10 @@ namespace Laul.Application.Services.Songs.Queries.GetSongListByArtist
         public string Title { get; set; }
         public string Photo {  get; set; }
         public string Storage { get; set; }
-        public long AlbumId { get; set; }
-        public string AlbumTitle { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Song, SongLookupDto>()
-                .ForMember(dest => dest.AlbumTitle, opt => opt.MapFrom(src => src.Album != null ? src.Album.Title : null));
+            profile.CreateMap<Song, SongLookupDto>();
         }
 
     }

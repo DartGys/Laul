@@ -4,31 +4,46 @@
 <html>
 <head>
     <script src="~/js/Song/togleAndPlay.js"></script>
+    <script src="~/js/Song/modalSongWindow.js"></script>
+    <script src="~/js/Song/selectSong.js"></script>
+
 </head>
 <body>
-    <a>Download song to album</a>
-    <a>Add to album from list</a>
-    <div>
-        <img src="@Model.Image"/>
+    <div class="d-flex">
+        <div>
+            <img style="height : 170px"src="@Model.Image" class="img-fluid" alt="Album Image" />
+        </div>
+        <div class="ms-3">
+            <div>
+                <h3>@Model.Title</h3>
+            </div>
+            <div>
+                <h4>@Model.Genre</h4>
+            </div>
+            <div>
+                <h4>@Model.PublishDate.Year</h4>
+            </div>
+            <div>
+                <h4>@Model.Songs.Count Songs</h4>
+            </div>
+        </div>
     </div>
-    <div>
-        <h3>@Model.Title</h3>
-    </div>
-    <div>
-        <h4>@Model.Genre</h4>
-    </div>
-    <div>
-        <h4>@Model.Year</h4>
-    </div>
-    <div>
-        <h4>@Model.Songs.Count Songs</h4>
-    </div>
+    <button onclick="openModal(@Model.Id)" data-toggle="ajax-modal" data-target="Modal" class="btn btn-primary add-song-button">Add song to album</button>
+
+
     <table class="table">
         @foreach (var item in Model.Songs)
         {
-            <tr class="song-cover" onmouseover="changeCursor(this)">
-                <td style="width: auto; height: 50px" onclick="toggleAndPlayAudio('@item.Storage')">
-                    @Html.DisplayFor(modelItem => item.Title)
+            <tr>
+                <td>
+                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio('@item.Storage')" class="song-cover" onmouseover="changeCursor(this)">
+                        <div style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img style="block-size: 50px" src="@item.Photo" />
+                        </div>
+                        <div style="width: 350px; height: 50px">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </div>
+                    </div>
                 </td>
             </tr>
         }

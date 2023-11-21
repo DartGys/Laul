@@ -1,14 +1,14 @@
-function openAlbumModal(artistId) {
-    Url = '/Album/CreateAlbum'
+function openModal(albumId) {
+    Url = '/Song/GetSongListForm';
     const modal = new bootstrap.Modal(document.getElementById('modal'));
 
     $.ajax({
         type: 'GET',
         url: Url,
-        data: { ArtistId: artistId },
+        data: { AlbumId: albumId },
         success: function (response) {
             console.log("Modal success");
-            modal._element.querySelector(".modal-title").textContent = "Create Album";
+            modal._element.querySelector(".modal-title").textContent = "Song`s List";
             modal._element.querySelector(".modal-body").innerHTML = response;
             modal.show();
         },

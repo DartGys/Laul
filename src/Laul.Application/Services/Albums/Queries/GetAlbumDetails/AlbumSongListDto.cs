@@ -9,6 +9,7 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
         public long Id { get; set; }
         public string Title { get; set; }
         public string Storage { get; set; }
+        public string Photo {  get; set; }
 
         public void Mapping(Profile profile)
         {

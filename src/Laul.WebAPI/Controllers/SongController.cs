@@ -21,10 +21,6 @@ namespace Laul.WebAPI.Controllers
         public async Task<IActionResult> CreateSong(CreateSongCommand command) =>
             Ok(await _mediator.Send(command));
 
-        [HttpPost]
-        public async Task<IActionResult> AddSongToAlbum(AddSongToAlbumCommand command) =>
-            Ok(await _mediator.Send(command));
-
         [HttpDelete]
         public async Task<IActionResult> DeleteSong(DeleteSongCommand command) =>
             Ok(await _mediator.Send(command));

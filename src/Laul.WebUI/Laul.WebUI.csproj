@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\js\Album\" />
     <Folder Include="wwwroot\js\Profile\" />
   </ItemGroup>
 

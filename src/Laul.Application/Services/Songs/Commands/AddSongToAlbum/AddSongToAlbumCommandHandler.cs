@@ -1,6 +1,7 @@
 ﻿using Laul.Application.Interfaces.Persistance;
 using Laul.Application.Common.Exeption;
 using MediatR;
+using Laul.Domain.Entities;
 
 namespace Laul.Application.Services.Songs.Commands.AddSongToAlbum
 {
@@ -15,15 +16,18 @@ namespace Laul.Application.Services.Songs.Commands.AddSongToAlbum
 
         public async Task<Unit> Handle(AddSongToAlbumCommand command, CancellationToken cancellationToken)
         {
-            var song = await _unitOfWork.Song.GetById(command.SongId, cancellationToken);
+            var songs = new List<Song>();
+            foreach(var songId in command.SongsId)
+              songs.Add(await _unitOfWork.Song.GetById(songId, cancellationToken));
             var album = await _unitOfWork.Album.GetById(command.AlbumId, cancellationToken);
 
-            if(song == null || album == null)
+            if(songs == null || album == null)
             {
-                throw new NotFoundExeption(nameof(song), command.SongId);
+                throw new NotFoundExeption(nameof(album), command.AlbumId);
             }
 
-            song.AlbumId = album.Id;
+            foreach(var song in songs)
+                song.AlbumId = command.AlbumId;
 
             await _unitOfWork.SaveChangeAsync(cancellationToken);
 

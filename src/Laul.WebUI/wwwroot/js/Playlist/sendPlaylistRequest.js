@@ -15,6 +15,8 @@ function sendPlaylistRequest(songId, playlistId) {
         },
         error: function (error) {
             console.error('Error:', error);
+            succedContainer.html('');
+            succedContainer.append('<div style="color: red;">' + 'Song already in playlist' + '</div>');
         }
     });
 }

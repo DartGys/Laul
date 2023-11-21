@@ -13,7 +13,7 @@
         {
                 <a href="@Url.Action("GetAlbumDetails","Album", new { AlbumId = item.Id, ArtistId = Model.ArtistId})">
                 <div class="song-card">
-                    <div onmouseover="changeCursor(this)">
+                    <div>
                         <img class="song-cover" src="@item.Image" alt="Photo)">
                         <div class="song-details">
                                 <h3 style="margin: 0px">@item.Title</h3>

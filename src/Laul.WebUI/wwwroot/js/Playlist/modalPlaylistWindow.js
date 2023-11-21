@@ -1,5 +1,5 @@
 function openModal(songId) {
-    Url = '/Playlist/GetPlaylistListForm'
+    Url = '/Playlist/GetPlaylistListForm';
     const modal = new bootstrap.Modal(document.getElementById('modal'));
 
     $.ajax({

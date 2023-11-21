@@ -3,7 +3,13 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Laul.WebUI.Common.Inspector;
+
+using System.Security.Claims;
+using AutoMapper;
 using Laul.Application.Services.Songs.Queries.GetSongByArtist;
+using Laul.Application.Services.Songs.Queries.GetSongListByArtistNoAlbum;
+using Laul.Application.Services.Songs.Commands.AddSongToAlbum;
+using Azure.Core;
 
 namespace Laul.WebUI.Controllers
 {
@@ -12,16 +18,14 @@ namespace Laul.WebUI.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public SongController(IMediator mediator, IConfiguration configuration)
+        public SongController(IMediator mediator, IConfiguration configuration, IMapper mapper)
         {
             _httpClient = new HttpClient();
             _config = configuration;
             _mediator = mediator;
-        }
-        public IActionResult Index()
-        {
-            return View();
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> GetSongListByArtist(string UserName)
@@ -33,6 +37,35 @@ namespace Laul.WebUI.Controllers
             var model = await _mediator.Send(request);
 
             return View(model);
+        }
+
+        public async Task<IActionResult> GetSongListForm(long AlbumId)
+        {
+            var UserName = HttpContext.User.FindFirstValue("name");
+            var request = new GetSongListByArtistNoAlbumQuery()
+            {
+                UserName = UserName
+            };
+            var response = await _mediator.Send(request);
+
+            var model = _mapper.Map<SongListFormVm>(response);
+            model.AlbumId = AlbumId;
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddSongToAlbum(List<long> SongsId, long AlbumId)
+        {
+            var model = new AddSongToAlbumCommand()
+            {
+                AlbumId = AlbumId,
+                SongsId = SongsId
+            };
+            var response = await _mediator.Send(model);
+
+            return Ok();
         }
 
         [HttpGet]

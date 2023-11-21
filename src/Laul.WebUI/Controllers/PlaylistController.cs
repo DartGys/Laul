@@ -47,13 +47,13 @@ namespace Laul.WebUI.Controllers
         public async Task<IActionResult> GetPlaylistListForm(long SongId)
         {
             var UserName = HttpContext.User.FindFirstValue("name");
-            var reqeust = new GetPlaylistListQuery()
+            var request = new GetPlaylistListQuery()
             {
                 UserName = UserName,
             };
-            var request = await _mediator.Send(reqeust);
+            var response = await _mediator.Send(request);
 
-            var model = _mapper.Map<PlaylistListFormVm>(request);
+            var model = _mapper.Map<PlaylistListFormVm>(response);
             model.SongId = SongId;
 
             return PartialView(model);
