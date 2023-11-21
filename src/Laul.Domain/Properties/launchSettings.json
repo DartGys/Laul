@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Laul.Domain": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53016;http://localhost:53019"
+    }
+  }
+}

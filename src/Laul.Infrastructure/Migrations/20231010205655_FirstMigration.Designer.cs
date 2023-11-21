@@ -101,7 +101,7 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<int>("SongId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("ArtistId")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -127,7 +127,7 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<int>("SongId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("ArtistId")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -156,7 +156,7 @@ namespace Laul.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("ArtistId")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");

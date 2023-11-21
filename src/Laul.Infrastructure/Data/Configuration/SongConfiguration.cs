@@ -14,8 +14,15 @@ namespace Laul.Infrastructure.Data.Configuration
             .IsRequired()
             .HasMaxLength(255);
 
-            builder.Property(s => s.Duration)
-            .IsRequired();
+            builder.Property(s => s.PublishDate)
+                .HasColumnType("date");
+
+            builder.Property(s => s.Photo)
+           .HasMaxLength(255);
+
+            builder.Property(s => s.Storage)
+           .IsRequired()
+           .HasMaxLength(255);
 
             builder.Property(s => s.Genre)
             .HasMaxLength(50);
@@ -28,6 +35,7 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.HasOne(s => s.Album)
             .WithMany(a => a.Songs)
             .HasForeignKey(s => s.AlbumId)
+            .IsRequired(false)
             .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(s => s.LikeDislikes)

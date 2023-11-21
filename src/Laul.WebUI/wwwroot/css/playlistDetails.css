@@ -1,0 +1,32 @@
+﻿.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    flex: 1; /* Займає доступне простір в рядку */
+}
+
+.description {
+    flex: 2; /* Займає доступне простір в рядку */
+}
+
+.song-cover {
+    width: 100%;
+    height: auto;
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
+
+.song-card a {
+    text-decoration: none; /* Заборонити підкреслення за замовчуванням */
+}
+
+    .song-card a:hover {
+        text-decoration: underline; /* Додати підкреслення при наведенні */
+    }
+
+    .song-cover:hover {
+        filter: brightness(0.8);
+    }
+

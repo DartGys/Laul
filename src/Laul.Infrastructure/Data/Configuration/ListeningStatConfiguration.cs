@@ -13,9 +13,10 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(ls => ls.ListeningDate)
             .IsRequired();
 
-            builder.Property(ld => ld.UserId)
-            .HasMaxLength(255)
-            .IsRequired();
+            builder.HasOne(ls => ls.Artist)
+            .WithMany(ls => ls.ListeningStats)
+            .HasForeignKey(album => album.ArtistId)
+            .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(ls => ls.Song)
             .WithMany(song => song.ListeningStats)

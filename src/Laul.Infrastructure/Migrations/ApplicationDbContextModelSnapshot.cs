@@ -24,14 +24,14 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.Album", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<decimal>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("decimal(20,0)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
 
-                    b.Property<int>("ArtistId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ArtistId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Genre")
                         .HasMaxLength(50)
@@ -41,13 +41,13 @@ namespace Laul.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("date");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -58,11 +58,9 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.Artist", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -83,11 +81,12 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.LikeDislike", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<Guid>("ArtistId")
+                        .HasMaxLength(255)
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<decimal>("SongId")
+                        .HasColumnType("decimal(20,0)");
 
                     b.Property<DateTime>("ActionDate")
                         .HasColumnType("datetime2");
@@ -95,15 +94,7 @@ namespace Laul.Infrastructure.Migrations
                     b.Property<bool>("IsLike")
                         .HasColumnType("bit");
 
-                    b.Property<int>("SongId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
+                    b.HasKey("ArtistId", "SongId");
 
                     b.HasIndex("SongId");
 
@@ -112,22 +103,21 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.ListeningStat", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<decimal>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("decimal(20,0)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
 
                     b.Property<DateTime>("ListeningDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SongId")
-                        .HasColumnType("int");
+                    b.Property<decimal>("SongId")
+                        .HasColumnType("decimal(20,0)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                    b.Property<Guid>("ArtistId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 
@@ -138,11 +128,11 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.Playlist", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<decimal>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("decimal(20,0)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -153,10 +143,9 @@ namespace Laul.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                    b.Property<Guid>("ArtistId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ArtistId");
 
                     b.HasKey("Id");
 
@@ -165,21 +154,17 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.PlaylistSong", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<decimal>("PlaylistId")
+                        .HasColumnType("decimal(20,0)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<decimal>("SongId")
+                        .HasColumnType("decimal(20,0)");
 
-                    b.Property<int>("PlaylistId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ArtistId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ArtistId");
 
-                    b.Property<int>("SongId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaylistId");
+                    b.HasKey("PlaylistId", "SongId");
 
                     b.HasIndex("SongId");
 
@@ -188,24 +173,33 @@ namespace Laul.Infrastructure.Migrations
 
             modelBuilder.Entity("Laul.Domain.Entities.Song", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<decimal>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("decimal(20,0)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
 
-                    b.Property<int>("AlbumId")
-                        .HasColumnType("int");
+                    b.Property<decimal>("AlbumId")
+                        .HasColumnType("decimal(20,0)");
 
-                    b.Property<int>("ArtistId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ArtistId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Genre")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Photo")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Storage")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Title")
                         .IsRequired()

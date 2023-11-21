@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-
+using Laul.Application.Interfaces.Persistance;
+using Laul.Infrastructure.Persistance;
+using Laul.Infrastructure.Data.BlobStorage;
+using Laul.Application.Interfaces.BlobStorage;
 
 namespace Laul.Infrastructure.Data
 {
@@ -19,6 +22,8 @@ namespace Laul.Infrastructure.Data
 
             // Інші сервіси та налаштування
             // ...
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IBlobStorageContext, BlobStorageContext>();
 
             return services;
         }

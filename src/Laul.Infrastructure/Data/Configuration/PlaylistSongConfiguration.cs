@@ -8,7 +8,7 @@ namespace Laul.Infrastructure.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<PlaylistSong> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(ps => new { ps.PlaylistId, ps.SongId});
 
             builder.HasOne(ps => ps.Playlist)
             .WithMany(p => p.PlaylistSongs)
@@ -19,7 +19,6 @@ namespace Laul.Infrastructure.Data.Configuration
             .WithMany(s => s.PlaylistSongs)
             .HasForeignKey(ps => ps.SongId)
             .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

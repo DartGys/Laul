@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {}
+    "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {
+    "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
+        "projectUniqueName": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
         "projectName": "Laul.Application",
-        "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
-        "packagesPath": "C:\\Users\\boda2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Application\\obj\\",
+        "projectPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\Laul.Application.csproj",
+        "packagesPath": "C:\\Users\\ZenBook\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ZenBook\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj": {
-                "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj"
+              "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj": {
+                "projectPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj"
               }
             }
           }
@@ -44,6 +44,26 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -65,21 +85,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj": {
+    "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj",
         "projectName": "Laul.Domain",
-        "projectPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj",
-        "packagesPath": "C:\\Users\\boda2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boda2\\source\\repos\\Laul\\src\\Laul.Domain\\obj\\",
+        "projectPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Domain\\Laul.Domain.csproj",
+        "packagesPath": "C:\\Users\\ZenBook\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ZenBook\\source\\repos\\Laul\\src\\Laul.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ZenBook\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -120,7 +140,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

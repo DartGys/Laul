@@ -8,7 +8,7 @@ namespace Laul.Infrastructure.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<LikeDislike> builder)
         {
-            builder.HasKey(ld => ld.Id);
+            builder.HasKey(ld => new { ld.ArtistId, ld.SongId });
 
             builder.Property(ld => ld.ActionDate)
             .IsRequired();
@@ -16,9 +16,10 @@ namespace Laul.Infrastructure.Data.Configuration
             builder.Property(ld => ld.IsLike)
             .IsRequired();
 
-            builder.Property(ld => ld.UserId)
-            .HasMaxLength(255)
-            .IsRequired();
+            builder.HasOne(ld => ld.Artist)
+            .WithMany(ld => ld.LikeDislikes)
+            .HasForeignKey(album => album.ArtistId)
+            .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(ld => ld.Song)
            .WithMany()
