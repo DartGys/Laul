@@ -3,13 +3,13 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Laul.WebUI.Common.Inspector;
-
 using System.Security.Claims;
 using AutoMapper;
 using Laul.Application.Services.Songs.Queries.GetSongByArtist;
 using Laul.Application.Services.Songs.Queries.GetSongListByArtistNoAlbum;
 using Laul.Application.Services.Songs.Commands.AddSongToAlbum;
-using Azure.Core;
+using Laul.WebUI.Services.Identity;
+using System.Net.Http.Headers;
 
 namespace Laul.WebUI.Controllers
 {
@@ -19,13 +19,15 @@ namespace Laul.WebUI.Controllers
         private readonly IConfiguration _config;
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly ITokenService _tokenService;
 
-        public SongController(IMediator mediator, IConfiguration configuration, IMapper mapper)
+        public SongController(IMediator mediator, IConfiguration configuration, IMapper mapper, ITokenService tokenService)
         {
             _httpClient = new HttpClient();
             _config = configuration;
             _mediator = mediator;
             _mapper = mapper;
+            _tokenService = tokenService;
         }
 
         public async Task<IActionResult> GetSongListByArtist(string UserName)
@@ -112,6 +114,8 @@ namespace Laul.WebUI.Controllers
                         Storage = songBytes,
                         Title = request.Title,
                     };
+                    var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
 
                     HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Song", model);
                         

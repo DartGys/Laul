@@ -1,12 +1,14 @@
 ﻿using Laul.Application.Services.PlaylistSongs.Commands.AddPlaylistSong;
 using Laul.Application.Services.PlaylistSongs.Commands.RemovePlaylistSong;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class PlaylistSongController : ControllerBase
     {
         private readonly IMediator _mediator;

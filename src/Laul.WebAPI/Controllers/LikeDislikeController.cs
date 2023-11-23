@@ -3,12 +3,14 @@ using Laul.Application.Services.LikeDislikes.Commands.DeleteLikeDislike;
 using Laul.Application.Services.LikeDislikes.Commands.UpdateLikeDislike;
 using Laul.Application.Services.LikeDislikes.Queries.GetLikeDislike;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class LikeDislikeController : ControllerBase
     {
         private readonly IMediator _mediator;

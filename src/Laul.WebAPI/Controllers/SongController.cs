@@ -4,11 +4,13 @@ using MediatR;
 using Laul.Application.Services.Songs.Commands.DeleteSong;
 using Laul.Application.Services.Songs.Commands.UpdateSong;
 using Laul.Application.Services.Songs.Commands.AddSongToAlbum;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class SongController : ControllerBase
     {
         private readonly IMediator _mediator;

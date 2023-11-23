@@ -7,6 +7,8 @@ using Laul.WebUI.Models.Artist;
 using Laul.WebUI.Common.Interpretator;
 using MediatR;
 using Laul.Application.Services.Artists.Queries.GetArtistDetails;
+using Laul.WebUI.Services.Identity;
+using System.Net.Http.Headers;
 
 namespace Laul.WebUI.Controllers
 {
@@ -15,12 +17,14 @@ namespace Laul.WebUI.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly IMediator _mediator;
+        private readonly ITokenService _tokenService;
 
-        public ProfileController(IMediator mediator, IConfiguration configuration)
+        public ProfileController(IMediator mediator, IConfiguration configuration, ITokenService tokenService)
         {
             _httpClient = new HttpClient();
             _config = configuration;
             _mediator = mediator;
+            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -71,6 +75,9 @@ namespace Laul.WebUI.Controllers
                     Description = request.Description,
                     Photo = PhotoInBytes
                 };
+                var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await _httpClient.PatchAsync($"{_config["apiUrl"]}/Artist", content);
 

@@ -3,6 +3,7 @@ using Laul.Application.Services.Artists.Commands.DeleteArtist;
 using Laul.Application.Services.Artists.Commands.UpdateArtist;
 using Laul.Application.Services.Artists.Queries.GetArtistDetails;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
@@ -10,6 +11,7 @@ namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class ArtistController : ControllerBase
     {
         private readonly IMediator _mediator;
