@@ -6,11 +6,10 @@ using Laul.Application.Services.Playlists.Queries.GetPlaylistList;
 using Laul.Application.Services.Playlists.Queries.GetPlaylistDetails;
 using Laul.WebUI.Models.Playlist;
 using AutoMapper;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
+    [Authorize]
     public class PlaylistController : Controller
     {
         private readonly IMediator _mediator;
@@ -28,7 +27,6 @@ namespace Laul.WebUI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetPlaylistList()
         {
 
@@ -43,7 +41,6 @@ namespace Laul.WebUI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetPlaylistListForm(long SongId)
         {
             var UserName = HttpContext.User.FindFirstValue("name");
@@ -71,7 +68,6 @@ namespace Laul.WebUI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public IActionResult CreatePlaylist()
         {
             var model = new CreatePlaylistDto()
@@ -83,7 +79,6 @@ namespace Laul.WebUI.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> CreatePlaylist(CreatePlaylistDto model)
         {
             if (ModelState.IsValid)

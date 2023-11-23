@@ -22,7 +22,7 @@ namespace Laul.WebUI.Controllers
         {
             var request = new GetSongListQuery()
             {
-                Count = 10
+                Count = 50
             };
             var models = await _mediator.Send(request);
 

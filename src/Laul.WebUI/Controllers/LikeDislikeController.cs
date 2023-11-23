@@ -4,9 +4,11 @@ using Newtonsoft.Json;
 using System.Text;
 using Laul.Application.Services.LikeDislikes.Queries.GetLikeDislike;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Laul.WebUI.Controllers
 {
+    [Authorize]
     public class LikeDislikeController : Controller
     {
         private readonly HttpClient _httpClient;

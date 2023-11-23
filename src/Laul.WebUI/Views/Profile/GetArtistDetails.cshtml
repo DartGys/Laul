@@ -27,7 +27,7 @@
         @if (Model.Name == Context.User.FindFirst("name")?.Value)
         {
             <div class="mt-3">
-                <a class="btn btn-secondary" href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id })">Edit Profile</a>
+                <a class="btn btn-secondary" href="@Url.Action("EditArtist", "Profile", new { Id = Model.Id, Photo = Model.Photo })">Edit Profile</a>
             </div>
             <div class="mt-3">
                 <a class="btn btn-success" href="@Url.Action("CreateSong", "Song", new { ArtistId = Model.Id })">Create Song</a>

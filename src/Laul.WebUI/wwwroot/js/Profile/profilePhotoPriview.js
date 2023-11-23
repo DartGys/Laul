@@ -1,6 +1,23 @@
+document.addEventListener("DOMContentLoaded", function () {
+    var urlParams = new URLSearchParams(window.location.search);
+
+    var photoParam = urlParams.get('Photo');
+
+    loadCurrentImage(photoParam);
+});
+
+function loadCurrentImage(photo) {
+    var preview = document.getElementById('photoPreview');
+
+    var image = document.createElement('img');
+    image.src = photo;
+    image.style.maxWidth = '100%'; 
+    preview.appendChild(image);
+}
+
 function previewImage(input) {
     var preview = document.getElementById('photoPreview');
-    preview.innerHTML = ''; // Очистіть попереднє прев'ю
+    preview.innerHTML = ''; 
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -8,7 +25,7 @@ function previewImage(input) {
         reader.onload = function (e) {
             var image = document.createElement('img');
             image.src = e.target.result;
-            image.style.maxWidth = '100%'; // Забезпечте максимальну ширину
+            image.style.maxWidth = '100%';
             preview.appendChild(image);
         };
 

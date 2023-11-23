@@ -15,9 +15,11 @@ namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
 
         public async Task<long> Handle(CreateListeningStatCommand command, CancellationToken cancellationToken)
         {
+            var artist = (await _unitOfWork.Artist.FindAsyncNoTracking(a => a.Name == command.ArtistName)).FirstOrDefault();
+
             var listeningStat = new ListeningStat()
             {
-                ArtistId = command.ArtistId,
+                ArtistId = artist.Id,
                 SongId = command.SongId,
                 ListeningDate = DateTime.UtcNow,
             };

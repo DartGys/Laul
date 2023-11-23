@@ -1,11 +1,12 @@
 ﻿using Laul.WebUI.Models.PlaylistSong;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Net.Http;
 using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
+    [Authorize]
     public class PlaylistSongController : Controller
     {
         private readonly HttpClient _httpClient;

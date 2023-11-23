@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using System.Text;
 using Laul.WebUI.Models.Artist;
+using Laul.WebUI.Common.Interpretator;
 using MediatR;
 using Laul.Application.Services.Artists.Queries.GetArtistDetails;
 
@@ -39,11 +40,12 @@ namespace Laul.WebUI.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult EditArtist(Guid id)
+        public IActionResult EditArtist(Guid id, string Photo)
         {
+
             var model = new ArtistUpdateDto()
             {
-                Id = id
+                Id = id,
             };
             return View(model);
         }
@@ -67,7 +69,6 @@ namespace Laul.WebUI.Controllers
                 {
                     Id = request.Id,
                     Description = request.Description,
-                    Name = request.Name,
                     Photo = PhotoInBytes
                 };
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
@@ -75,12 +76,10 @@ namespace Laul.WebUI.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // Обробка успішного відгуку від API (наприклад, редірект)
                     return RedirectToAction("GetArtistDetails");
                 }
                 else
                 {
-                    // Обробка помилки від API (наприклад, відображення повідомлення про помилку)
                     ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
                 }
             }

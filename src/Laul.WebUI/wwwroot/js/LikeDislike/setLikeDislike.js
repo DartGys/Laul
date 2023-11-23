@@ -44,8 +44,8 @@ function toggleDisLike(element) {
 
 function sendLikeOrDislikeRequest(isLike, request) {
 
-    var artistName = document.getElementById('song').getAttribute('artistName');
-    var songId = document.getElementById('song').getAttribute('songId');
+    var artistName = localStorage.getItem('ArtistName');
+    var songId = localStorage.getItem('SongId');
     const Url = '/LikeDislike/' + request;
 
     $.ajax({
@@ -56,11 +56,10 @@ function sendLikeOrDislikeRequest(isLike, request) {
             isLike: isLike
         },
         success: function (data) {
-            // Ваш код для обробки відповіді від сервера
-            console.log('Success:', data);
+            console.log('ListeningAdded:', data);
         },
         error: function (error) {
-            console.error('Error:', error);
+            console.error('ErrorListening:', error);
         }
     });
 }

@@ -39,6 +39,7 @@ namespace Laul.WebUI.Controllers
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> GetSongListForm(long AlbumId)
         {
             var UserName = HttpContext.User.FindFirstValue("name");
@@ -116,13 +117,11 @@ namespace Laul.WebUI.Controllers
                         
                     if (response.IsSuccessStatusCode)
                     {
-                        // Обробка успішного відгуку від API (наприклад, редірект)
                         return RedirectToAction("GetArtistDetails","Profile");
                     }
                     else
                     {
-                        // Обробка помилки від API (наприклад, відображення повідомлення про помилку)
-                        ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
+                        ModelState.AddModelError(string.Empty, "Error Creating song. Please try again later.");
                     }
                 }
             }

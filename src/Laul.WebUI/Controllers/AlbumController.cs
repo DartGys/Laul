@@ -2,10 +2,11 @@
 using Laul.Application.Services.Albums.Queries.GetAlbumListByArtist;
 using Laul.WebUI.Common.Inspector;
 using Laul.WebUI.Models.Album;
+using Laul.WebUI.Services.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol;
+using System.Net.Http.Headers;
 
 namespace Laul.WebUI.Controllers
 {
@@ -14,12 +15,14 @@ namespace Laul.WebUI.Controllers
         private readonly IMediator _mediator;
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
+        private readonly ITokenService _tokenService;
 
-        public AlbumController(IConfiguration config, IMediator mediator)
+        public AlbumController(IConfiguration config, IMediator mediator, ITokenService tokenService)
         {
             _config = config;
-            _httpClient = new HttpClient();
             _mediator = mediator;
+            _httpClient = new HttpClient();
+            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -62,9 +65,19 @@ namespace Laul.WebUI.Controllers
                     Title = request.Title,
                 };
 
+                var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Album", model);
 
-                RedirectToAction("GetArtistDetails", "Profile");
+                if (response.IsSuccessStatusCode)
+                {
+                    RedirectToAction("GetArtistDetails", "Profile");
+                }
+                else
+                {
+                    return BadRequest(response.Content);
+                }
             }
 
             return View(request);

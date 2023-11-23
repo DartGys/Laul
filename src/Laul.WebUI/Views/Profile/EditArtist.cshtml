@@ -11,9 +11,9 @@
 </head>
 <body>
     <h1 class="text-center">@ViewData["Title"]</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="container my-5">
-    <!-- Форма для редагування профілю -->
     <form class="mt-3" asp-action="EditArtist" asp-controller="Profile" method="post" enctype="multipart/form-data">
         <input type="hidden" asp-for="Id" />
 
