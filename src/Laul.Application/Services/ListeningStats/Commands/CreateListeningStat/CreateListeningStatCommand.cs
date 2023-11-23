@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
+namespace Laul.Application.Services.ListeningStats.Commands.CreateListeningStat
 {
     public class CreateListeningStatCommand : IRequest<long>
     {

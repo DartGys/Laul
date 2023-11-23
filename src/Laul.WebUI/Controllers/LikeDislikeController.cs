@@ -5,6 +5,8 @@ using System.Text;
 using Laul.Application.Services.LikeDislikes.Queries.GetLikeDislike;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Laul.WebUI.Services.Identity;
+using System.Net.Http.Headers;
 
 namespace Laul.WebUI.Controllers
 {
@@ -14,12 +16,14 @@ namespace Laul.WebUI.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly IMediator _mediator;
+        private readonly ITokenService _tokenService;
 
-        public LikeDislikeController(IConfiguration config, IMediator mediator)
+        public LikeDislikeController(IConfiguration config, IMediator mediator, ITokenService tokenService)
         {
             _config = config;
             _httpClient = new HttpClient();
             _mediator = mediator;
+            _tokenService = tokenService;
         }
 
         public async Task<IActionResult> CreateLikeDislike(string ArtistName, long SongId, bool isLike)
@@ -30,6 +34,9 @@ namespace Laul.WebUI.Controllers
                 SongId = SongId,
                 IsLike = isLike
             };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
             HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/LikeDislike", model);
 
             if(response.IsSuccessStatusCode)
@@ -49,6 +56,9 @@ namespace Laul.WebUI.Controllers
                 ArtistName = ArtistName,
                 SongId = SongId
             };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/LikeDislike")
             {
@@ -73,6 +83,9 @@ namespace Laul.WebUI.Controllers
                 ArtistName = ArtistName,
                 SongId = SongId
             };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _httpClient.PatchAsync($"{_config["apiUrl"]}/LikeDislike", content);
 

@@ -2,7 +2,7 @@
 using Laul.Domain.Entities;
 using MediatR;
 
-namespace Laul.Application.Services.ListeningStats.Command.CreateListeningStat
+namespace Laul.Application.Services.ListeningStats.Commands.CreateListeningStat
 {
     public class CreateListeningStatCommandHanlder : IRequestHandler<CreateListeningStatCommand, long>
     {

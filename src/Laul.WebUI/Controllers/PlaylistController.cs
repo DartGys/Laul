@@ -6,6 +6,8 @@ using Laul.Application.Services.Playlists.Queries.GetPlaylistList;
 using Laul.Application.Services.Playlists.Queries.GetPlaylistDetails;
 using Laul.WebUI.Models.Playlist;
 using AutoMapper;
+using System.Net.Http.Headers;
+using Laul.WebUI.Services.Identity;
 
 namespace Laul.WebUI.Controllers
 {
@@ -16,14 +18,15 @@ namespace Laul.WebUI.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
+        private readonly ITokenService _tokenService;
 
-
-        public PlaylistController(IMediator mediator, IConfiguration config, IMapper mapper)
+        public PlaylistController(IMediator mediator, IConfiguration config, IMapper mapper, ITokenService tokenService)
         {
             _mediator = mediator;
             _httpClient = new HttpClient();
             _config = config;
             _mapper = mapper;
+            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -83,6 +86,9 @@ namespace Laul.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Playlist", model);
                 if (response.IsSuccessStatusCode)
                 {

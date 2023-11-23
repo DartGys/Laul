@@ -1,4 +1,4 @@
-﻿using Laul.Application.Services.ListeningStats.Command.CreateListeningStat;
+﻿using Laul.Application.Services.ListeningStats.Commands.CreateListeningStat;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
