@@ -1,7 +1,11 @@
-﻿function toggleAndPlayAudio(audioUrl) {
+﻿function toggleAndPlayAudio(audioUrl, SongId, ArtistName) {
     console.log('Playing song:', audioUrl);
     // Отримайте доступ до елементу аудіо та змініть його src
     var audioPlayer = document.getElementById('footerAudioPlayer');
+
+    if (ArtistName != null) {
+        getLikeDislike(SongId, ArtistName);
+    }
 
     var same = audioPlayer.src === audioUrl;
     // Перевірте, чи аудіо відтворюється

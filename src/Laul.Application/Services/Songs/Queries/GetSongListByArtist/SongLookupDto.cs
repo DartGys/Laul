@@ -10,6 +10,7 @@ namespace Laul.Application.Services.Songs.Queries.GetSongListByArtist
         public string Title { get; set; }
         public string Photo {  get; set; }
         public string Storage { get; set; }
+        public Guid ArtistId { get; set; }
         public long AlbumId { get; set; }
         public string AlbumTitle { get; set; }
 

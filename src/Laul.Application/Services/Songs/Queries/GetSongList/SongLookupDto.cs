@@ -11,7 +11,9 @@ namespace Laul.Application.Services.Songs.Queries.GetSongList
         public string Title { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
+        public Guid ArtistId { get; set; }
         public string ArtistName { get; set; }
+        public long AlbumId { get; set; }
         public string AlbumName { get; set; }
 
         public void Mapping(Profile profile)

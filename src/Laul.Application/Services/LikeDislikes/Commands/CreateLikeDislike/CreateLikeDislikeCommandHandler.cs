@@ -15,12 +15,14 @@ namespace Laul.Application.Services.LikeDislikes.Commands.CreateLikeDislike
 
         public async Task<Guid> Handle(CreateLikeDislikeCommand command, CancellationToken cancellationToken)
         {
+            var artist = (await _unitOfWork.Artist.FindAsyncNoTracking(a => a.Name == command.ArtistName, cancellationToken)).FirstOrDefault();
+
             var likeDislike = new LikeDislike()
             {
                 ActionDate = DateTime.UtcNow,
                 IsLike = command.IsLike,
                 SongId = command.SongId,
-                ArtistId = command.ArtistId,
+                ArtistId = artist.Id,
             };
 
             await _unitOfWork.LikeDislike.AddAsync(likeDislike, cancellationToken);

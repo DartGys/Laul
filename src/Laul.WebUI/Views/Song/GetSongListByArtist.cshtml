@@ -19,7 +19,7 @@
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AlbumTitle)
+                        <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})">@item.AlbumTitle</a>
                     </td>
                 </tr>
             }

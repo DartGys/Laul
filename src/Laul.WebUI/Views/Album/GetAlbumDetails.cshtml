@@ -28,8 +28,10 @@
             </div>
         </div>
     </div>
+    @if (Model.ArtistName == Context.User.FindFirst("name")?.Value)
+    {
     <button onclick="openModal(@Model.Id)" data-toggle="ajax-modal" data-target="Modal" class="btn btn-primary add-song-button">Add song to album</button>
-
+    }
 
     <table class="table">
         @foreach (var item in Model.Songs)

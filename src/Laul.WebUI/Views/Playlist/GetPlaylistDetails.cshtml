@@ -34,10 +34,10 @@
                     </div>
                 </td>
                 <td style="width: 200px; height: 50px">
-                    @Html.DisplayFor(modelItem => item.ArtistName)
+                    <a href="@Url.Action("GetArtistDetails","Profile", new { UserName = item.ArtistName})">@item.ArtistName</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AlbumTitle)
+                    <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})">@item.AlbumTitle</a>
                 </td>
                 <td>
                     <div class="dropdown">

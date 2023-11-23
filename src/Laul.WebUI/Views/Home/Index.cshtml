@@ -13,9 +13,9 @@
     <div id="songs-container">
         @foreach (var item in Model.Songs)
         {
-            <div class="song-card">
+            <div id="song" artistName="@Context.User.FindFirst("name")?.Value" songId="@item.Id" class="song-card">
                 <div onmouseover="changeCursor(this)">
-                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage')">
+                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage','@item.Id','@Context.User.FindFirst("name")?.Value')">
                     <div class="song-details">
                         <h3 style="font-size: 14px;">@item.Title</h3>
                         <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>
@@ -25,7 +25,7 @@
                                 <li onclick="openModal('@item.Id')" data-toggle="ajax-modal" data-target="Modal">Add to Playlist</li>
                             </ul>
                         </div>
-                        <p style="font-size: 11px;">@item.AlbumName</p>
+                        <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})" style="font-size: 11px;">@item.AlbumName</a>
                     </div>
                 </div>
             </div>
