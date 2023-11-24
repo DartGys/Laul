@@ -10,6 +10,8 @@ using Laul.Application.Services.Songs.Queries.GetSongListByArtistNoAlbum;
 using Laul.Application.Services.Songs.Commands.AddSongToAlbum;
 using Laul.WebUI.Services.Identity;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
@@ -130,6 +132,32 @@ namespace Laul.WebUI.Controllers
                 }
             }
             return View(request);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSong(long SongId)
+        {
+            var model = new DeleteSongDto()
+            {
+                Id = SongId
+            };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/Song")
+            {
+                Content = content
+            });
+            
+            if(response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

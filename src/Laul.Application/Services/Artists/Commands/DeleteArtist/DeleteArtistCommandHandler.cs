@@ -19,12 +19,40 @@ namespace Laul.Application.Services.Artists.Commands.DeleteArtist
 
         public async Task<Unit> Handle(DeleteArtistCommand command, CancellationToken cancellationToken)
         {
-            var entity = await _unitOfWork.Artist.GetById(command.Id, cancellationToken);
+            var entity = (await _unitOfWork.Artist.FindAsync(e => e.Id == command.Id, cancellationToken,
+                e => e.LikeDislikes, e => e.ListeningStats, e => e.Playlists, e => e.Albums, e => e.Songs)).FirstOrDefault();
 
-            if (entity == null || command.Id != entity.Id)
+            if(entity.ListeningStats != null)
+                _unitOfWork.ListeningStats.RemoveRange(entity.ListeningStats);
+
+            if(entity.LikeDislikes != null)
+                _unitOfWork.LikeDislike.RemoveRange(entity.LikeDislikes);
+
+            if(entity.Playlists != null)
             {
-                throw new NotFoundExeption(nameof(Artist), entity.Id);
+                foreach (var playlist in entity.Playlists)
+                {
+                    var playlistSong = (await _unitOfWork.PlaylistSong.FindAsync(p => p.PlaylistId == playlist.Id)).ToList();
+                    if (playlistSong != null && playlistSong.Count() > 0)
+                        _unitOfWork.PlaylistSong.RemoveRange(playlistSong);
+                }
+
+                _unitOfWork.Playlist.RemoveRange(entity.Playlists);
             }
+
+            if (entity.Songs != null)
+            {
+                _unitOfWork.Song.RemoveRange(entity.Songs);
+
+                foreach(var song in entity.Songs)
+                {
+                    await _blobStorageContext.DeleteAsync.DeleteFileAsync(song.Photo);
+                    await _blobStorageContext.DeleteAsync.DeleteFileAsync(song.Storage);
+                }
+            }
+
+            if (entity.Albums != null)
+                _unitOfWork.Album.RemoveRange(entity.Albums);
 
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
 

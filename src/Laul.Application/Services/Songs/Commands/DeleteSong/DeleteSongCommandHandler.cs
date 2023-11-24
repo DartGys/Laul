@@ -23,12 +23,17 @@ namespace Laul.Application.Services.Songs.Commands.DeleteSong
         }
         public async Task<Unit> Handle(DeleteSongCommand command, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == command.Id, cancellationToken)).FirstOrDefault();
+            var entity = (await _unitOfWork.Song.FindAsync(e => e.Id == command.Id, cancellationToken, 
+                e => e.LikeDislikes, e => e.ListeningStats, e => e.PlaylistSongs)).FirstOrDefault();
 
-            if (entity == null || entity.ArtistId != command.ArtistId)
-            {
-                throw new NotFoundExeption(nameof(Song), entity.Id);
-            }
+            if(entity.LikeDislikes != null)
+                _unitOfWork.LikeDislike.RemoveRange(entity.LikeDislikes);
+
+            if(entity.ListeningStats != null)
+                _unitOfWork.ListeningStats.RemoveRange(entity.ListeningStats);
+
+            if(entity.PlaylistSongs != null)
+                _unitOfWork.PlaylistSong.RemoveRange(entity.PlaylistSongs);
 
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Photo);
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Storage);

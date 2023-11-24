@@ -13,7 +13,7 @@
     <div id="songs-container">
         @foreach (var item in Model.Songs)
         {
-            <div id="song" artistName="@Context.User.FindFirst("name")?.Value" class="song-card">
+            <div id="song" class="song-card">
                 <div onmouseover="changeCursor(this)">
                     <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage','@item.Id','@Context.User.FindFirst("name")?.Value')">
                     <div class="song-details">
