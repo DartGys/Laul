@@ -1,5 +1,5 @@
 ﻿function getLikeDislike(SongId, ArtistName) {
-    $(document).ready(function () {
+    $(function () {
         $.ajax({
             url: '/LikeDislike/GetLikeDislike',
             data: {

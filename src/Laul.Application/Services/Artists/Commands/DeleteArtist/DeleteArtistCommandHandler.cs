@@ -1,7 +1,6 @@
 ﻿using Laul.Application.Interfaces.Persistance;
 using Laul.Application.Common.Exeption;
 using MediatR;
-using Laul.Domain.Entities;
 using Laul.Application.Interfaces.BlobStorage;
 
 namespace Laul.Application.Services.Artists.Commands.DeleteArtist
@@ -19,7 +18,7 @@ namespace Laul.Application.Services.Artists.Commands.DeleteArtist
 
         public async Task<Unit> Handle(DeleteArtistCommand command, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfWork.Artist.FindAsync(e => e.Id == command.Id, cancellationToken,
+            var entity = (await _unitOfWork.Artist.FindAsync(e => e.Name == command.UserName, cancellationToken,
                 e => e.LikeDislikes, e => e.ListeningStats, e => e.Playlists, e => e.Albums, e => e.Songs)).FirstOrDefault();
 
             if(entity.ListeningStats != null)

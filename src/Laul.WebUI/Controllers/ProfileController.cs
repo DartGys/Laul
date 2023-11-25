@@ -92,5 +92,32 @@ namespace Laul.WebUI.Controllers
             }
             return View(request);
         }
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteArtist()
+        {
+            var model = new DeleteArtistDto()
+            {
+                UserName = HttpContext.User.FindFirstValue("name")
+            }
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/Artist")
+            {
+                Content = content
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
