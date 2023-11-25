@@ -100,7 +100,7 @@ namespace Laul.WebUI.Controllers
             var model = new DeleteArtistDto()
             {
                 UserName = HttpContext.User.FindFirstValue("name")
-            }
+            };
             var tokenResponse = await _tokenService.GetToken("WebAPI.write");
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
 

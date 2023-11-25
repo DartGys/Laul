@@ -8,6 +8,8 @@ using Laul.WebUI.Models.Playlist;
 using AutoMapper;
 using System.Net.Http.Headers;
 using Laul.WebUI.Services.Identity;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
@@ -100,6 +102,33 @@ namespace Laul.WebUI.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> DeletePlaylist(long PlaylistId)
+        {
+            var model = new DeletePlaylistDto()
+            {
+                Id = PlaylistId
+            };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/Playlist")
+            {
+                Content = content
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

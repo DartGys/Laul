@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Laul.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+391318d4d777e4cb1290dfc872b07ff1d2a10a20")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bae25d5f3ba2c5adacead4e0c37577e204374138")]
 [assembly: System.Reflection.AssemblyProductAttribute("Laul.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Laul.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

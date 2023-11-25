@@ -12,6 +12,7 @@ using Laul.WebUI.Services.Identity;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using System.Text;
+using Laul.Application.Services.Songs.Commands.DeleteSongFromAlbum;
 
 namespace Laul.WebUI.Controllers
 {
@@ -67,6 +68,19 @@ namespace Laul.WebUI.Controllers
             {
                 AlbumId = AlbumId,
                 SongsId = SongsId
+            };
+            var response = await _mediator.Send(model);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> DeleteSongFromAlbum(long SongId)
+        {
+            var model = new DeleteSongFromAlbumCommand()
+            {
+                SongId = SongId
             };
             var response = await _mediator.Send(model);
 

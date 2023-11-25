@@ -43,9 +43,6 @@
         <a class="btn btn-primary" href="@Url.Action("GetSongListByArtist", "Song", new { UserName = Model.Name })">Songs</a>
         <a class="btn btn-primary" href="@Url.Action("GetAlbumListByArtist", "Album", new { UserName = Model.Name })">Albums</a>
     </div>
-    <div class="mt-3">
-        <a class="btn btn-primary" style="color: red" onclick="deleteArtist(@Model.Id)">Delete Account</a>
-    </div>
 </body>
 
 </html>

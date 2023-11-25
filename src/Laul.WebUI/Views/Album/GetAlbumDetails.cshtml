@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="~/css/songList.css" />
     <script src="~/js/Song/togleAndPlay.js"></script>
     <script src="~/js/Song/modalSongWindow.js"></script>
     <script src="~/js/Song/selectSong.js"></script>
-
+    <script src="~/js/Song/songMenu.js"></script>
+    <script src="~/js/Song/sendDeleteSongFromAlbum.js"></script>
 </head>
 <body>
     <div class="d-flex">
@@ -45,6 +47,14 @@
                         <div style="width: 350px; height: 50px">
                             @Html.DisplayFor(modelItem => item.Title)
                         </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <a class="bx bx-dots-vertical-rounded dropdownButton" onmouseover="changeCursor(this)"></a>
+                        <ul class="dropdown-menu">
+                            <li onclick="deleteSongFromAlbum(@item.Id)">Delete From Album</li>
+                        </ul>
                     </div>
                 </td>
             </tr>

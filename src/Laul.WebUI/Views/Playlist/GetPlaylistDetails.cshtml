@@ -41,7 +41,7 @@
                 </td>
                 <td>
                     <div class="dropdown">
-                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none"></a>
+                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none" onmouseover="changeCursor(this)"></a>
                         <ul class="dropdown-menu song-cover">
                             <a class="text-decoration-none" href="@Url.Action("RemoveSongFromPlaylist","PlaylistSong", new {songId = item.Id, playlistId = Model.Id})">Delete From Playlist</a>
                         </ul>
