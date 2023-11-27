@@ -109,15 +109,28 @@
                 <source src="" type="audio/mp3">
             </audio>
 
-            @if (User.Identity.IsAuthenticated)
-            {
+            <div style="display: flex; justify-content: space-between;">
+                <div id="footerInfo" style="text-align: left">
+                    <img style="width: 50px; margin-left: 10px" id="footerPhoto" src="" alt="Photo">
+                    <span id="footerTitle"></span>
+                    <span id="footerArtist"></span>
+                    <span id="footerAlbum"></span>
+                </div>
+
+                <div style="text-align: center;">
+                    <i style="font-size: 40px" class='bx bx-skip-previous custom-icon' onclick="prevSong()"></i>
+                    <i style="font-size: 40px" class='bx bx-skip-next custom-icon' onclick="nextSong()"></i>
+                </div>
+
                 <div style="text-align: right;">
+                    <i class='bx bx-shuffle custom-icon' onclick="shuffleSong()"></i>
                     <i id="likeButton" class="bx custom-icon" onclick="toggleLike(this)" onmouseover="addHoverEffect(this)" onmouseout="removeHoverEffect(this)"></i>
                     <i id="dislikeButton" class="bx custom-icon" onclick="toggleDisLike(this)" onmouseover="addHoverEffect(this)" onmouseout="removeHoverEffect(this)"></i>
                 </div>
-            }
+            </div>
         </div>
     </footer>
+
 
     <script src="~/js/sidebar.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

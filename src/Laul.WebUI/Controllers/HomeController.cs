@@ -26,7 +26,6 @@ namespace Laul.WebUI.Controllers
             };
             var models = await _mediator.Send(request);
 
-
             return View(models);
         }
 

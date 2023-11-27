@@ -1,21 +1,20 @@
-﻿    @model Laul.Application.Services.Songs.Queries.GetSongList.SongListVm;
+﻿@model Laul.Application.Services.Songs.Queries.GetSongList.SongListVm;
 
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="~/css/songList.css" />
-    <script src="~/js/Song/togleAndPlay.js"></script>
     <script src="~/js/Song/songMenu.js"></script>
     <script src="~/js/Playlist/modalPlaylistWindow.js"></script>
     <script src="~/js/Playlist/sendPlaylistRequest.js"></script>
 </head>
 <body>
-    <div id="songs-container">
+    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'>
         @foreach (var item in Model.Songs)
         {
             <div id="song" class="song-card">
                 <div onmouseover="changeCursor(this)">
-                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio('@item.Storage','@item.Id','@Context.User.FindFirst("name")?.Value')">
+                    <img class="song-cover" src="@item.Photo" alt="Photo" onclick="toggleAndPlayAudio(@item.Id, true)">
                     <div class="song-details">
                         <h3 style="font-size: 14px;">@item.Title</h3>
                         <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>
@@ -25,12 +24,15 @@
                                 <li onclick="openModal('@item.Id')" data-toggle="ajax-modal" data-target="Modal">Add to Playlist</li>
                             </ul>
                         </div>
-                        <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})" style="font-size: 11px;">@item.AlbumName</a>
+                        <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})" style="font-size: 11px;">@item.AlbumTitle</a>
                     </div>
                 </div>
             </div>
         }
     </div>
+    <script src="~/js/Song/SongsData.js"></script>
+    <script src="~/js/footerInfo.js"></script>
+    <script src="~/js/Song/togleAndPlay.js"></script>
 </body>
 </html>
 

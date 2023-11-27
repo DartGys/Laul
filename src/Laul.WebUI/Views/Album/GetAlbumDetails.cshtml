@@ -4,6 +4,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/songList.css" />
+    <script src="~/js/Song/SongsData.js"></script>
+    <script src="~/js/footerInfo.js"></script>
     <script src="~/js/Song/togleAndPlay.js"></script>
     <script src="~/js/Song/modalSongWindow.js"></script>
     <script src="~/js/Song/selectSong.js"></script>
@@ -11,6 +13,7 @@
     <script src="~/js/Song/sendDeleteSongFromAlbum.js"></script>
 </head>
 <body>
+    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'></div>
     <div class="d-flex">
         <div>
             <img style="height : 170px"src="@Model.Image" class="img-fluid" alt="Album Image" />
@@ -40,7 +43,7 @@
         {
             <tr>
                 <td>
-                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio('@item.Storage')" class="song-cover" onmouseover="changeCursor(this)">
+                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio(@item.Id)" class="song-cover" onmouseover="changeCursor(this)">
                         <div style="width: 50px; height: 50px; margin-right: 10px;">
                             <img style="block-size: 50px" src="@item.Photo" />
                         </div>
