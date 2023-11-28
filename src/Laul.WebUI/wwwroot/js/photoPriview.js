@@ -7,12 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function loadCurrentImage(photo) {
-    var preview = document.getElementById('photoPreview');
+    if (input.files && input.files[0]) {
+        var preview = document.getElementById('photoPreview');
 
-    var image = document.createElement('img');
-    image.src = photo;
-    image.style.maxWidth = '100%'; 
-    preview.appendChild(image);
+        var image = document.createElement('img');
+        image.src = photo;
+        image.style.maxWidth = '100%';
+        preview.appendChild(image);
+    }
 }
 
 function previewImage(input) {

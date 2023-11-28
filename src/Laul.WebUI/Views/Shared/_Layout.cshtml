@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/Laul.WebUI.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/sidebar.css" />
+    <link rel="stylesheet" href="~/css/popUpWindow.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
 </head>
 <body>
@@ -103,6 +104,10 @@
     </div>
     </div>
 
+    
+
+
+
     <footer>
         <div id="footer" style="display: none;">
             <audio id="footerAudioPlayer" controls style="width: 100%;">
@@ -123,6 +128,7 @@
                 </div>
 
                 <div style="text-align: right;">
+                    <i class='bx bxs-up-arrow custom-icon' onclick="songQueue()" data-toggle="ajax-modal" data-target="Modal"></i>
                     <i class='bx bx-shuffle custom-icon' onclick="shuffleSong()"></i>
                     <i id="likeButton" class="bx custom-icon" onclick="toggleLike(this)" onmouseover="addHoverEffect(this)" onmouseout="removeHoverEffect(this)"></i>
                     <i id="dislikeButton" class="bx custom-icon" onclick="toggleDisLike(this)" onmouseover="addHoverEffect(this)" onmouseout="removeHoverEffect(this)"></i>
@@ -131,12 +137,12 @@
         </div>
     </footer>
 
-
     <script src="~/js/sidebar.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/LikeDislike/loadLikeDislike.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/songQueueWindow.js"></script>
     <script src="~/js/LikeDislike/setLikeDislike.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
