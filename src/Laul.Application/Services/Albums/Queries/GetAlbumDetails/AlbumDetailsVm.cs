@@ -18,7 +18,7 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Album, AlbumDetailsVm>()
-                .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist != null ? src.Artist.Name : null));
+                .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name));
         }
     }
 }

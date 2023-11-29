@@ -11,6 +11,7 @@ namespace Laul.Application.Services.Playlists.Queries.GetPlaylistDetails
         public string Title { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
+        public Guid ArtistId {  get; set; }
         public string ArtistName { get; set; }
         public long AlbumId { get; set; }
         public string AlbumTitle { get; set; }

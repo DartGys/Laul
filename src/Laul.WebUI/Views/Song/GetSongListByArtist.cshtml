@@ -3,30 +3,62 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="~/js/footerInfo.js"></script>
     <script src="~/js/Song/togleAndPlay.js"></script>
+    <script src="~/js/Song/sendDeleteRequest.js"></script>
+    <script src="~/js/Song/songMenu.js"></script>
+    <link rel="stylesheet" href="~/css/songList.css"/>
 </head>
 <body>
+    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'></div>
     <table class="table">
         @if (Model.Songs != null && Model.Songs.Any())
         {
             @foreach (var item in Model.Songs)
             {
                 <tr class="song-cover" onmouseover="changeCursor(this)">
-                    <td style="width: 50px; height: 50px" onclick="toggleAndPlayAudio('@item.Storage')">
+                    <td style="width: 50px; height: 50px" onclick="toggleAndPlayAudio(@item.Id)">
                         <img style="block-size: 50px" src="@item.Photo" />
                     </td>
                     <td style="width: 350px; height: 50px">
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AlbumTitle)
+                        <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})">@item.AlbumTitle</a>
                     </td>
+                    @if (item.ArtistName == Context.User.FindFirst("name")?.Value)
+                    {
+                        <td>
+                            <i class='bx bxs-like'> @item.LikeCount</i>
+                        </td>
+                        <td>
+                            <i class='bx bxs-dislike'> @item.DislikeCount</i>
+                        </td>
+                    }
+                    <td>
+                        <i class='bx bx-headphone'> @item.ListeningCount</i>
+                    </td>
+                    @if (item.ArtistName == Context.User.FindFirst("name")?.Value)
+                    {
+                       <td>
+                            <div class="dropdown">
+                                <a style="font-size: 23px" class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none"></a>
+                                <ul class="dropdown-menu">
+                                    <li onclick="deleteRequest('@item.Id')">Delete</li>
+                                </ul>
+                            </div>
+                       </td>
+                    }
                 </tr>
             }
         }
         else
         {
-            <p>No songs available.</p>
+            <tr>
+                <td>
+                    <p>No songs available.</p>
+                </td>
+            </tr>
         }
     </table>
 </body>

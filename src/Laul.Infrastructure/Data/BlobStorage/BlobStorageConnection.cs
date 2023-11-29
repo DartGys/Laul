@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+#nullable disable
 
 namespace Laul.Infrastructure.Data.BlobStorage
 {

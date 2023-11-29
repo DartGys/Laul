@@ -4,6 +4,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/playlistList.css"/>
+    <script src="~/js/Playlist/sendDeletePlaylist.js"></script>
+    <script src="~/js/Song/songMenu.js"></script>
+
 </head>
 <body>
     <h1>Playlist's List</h1>
@@ -15,6 +18,12 @@
             {
                 <li class="list-group-item">
                     <a href="@Url.Action("GetPlaylistDetails", new { Id = playlist.Id })">@playlist.Title</a>
+                    <div class="dropdown">
+                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none" onmouseover="changeCursor(this)"></a>
+                        <ul class="dropdown-menu song-cover">
+                            <li onclick="deletePlaylist(@playlist.Id)">Delete</li>
+                        </ul>
+                    </div>
                 </li>
             }
         </ul>

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,13 +79,13 @@ namespace IdentityServerHost.Quickstart.UI
         /// Post processing of external authentication
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Callback()
+        public async Task<IActionResult> Callback(string UserName)
         {
             // read external identity from the temporary cookie
             var result = await HttpContext.AuthenticateAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
             if (result?.Succeeded != true)
             {
-                throw new Exception("External authentication error");
+                    throw new Exception("External authentication error");
             }
 
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -102,7 +103,19 @@ namespace IdentityServerHost.Quickstart.UI
                 // simply auto-provisions new external user
                 if (provider != null)
                 {
-                    user = await AutoProvisionUser(provider, providerUserId, claims);
+                    if (UserName.IsNullOrEmpty())
+                    {
+                        return View("UserNameEnter");
+                    }
+                    else
+                    {
+                        user = await AutoProvisionUser(provider, providerUserId, claims, UserName);
+                        if(user == null)
+                        {
+                            ModelState.AddModelError("UserName", "This UserName already taken. Please choose another one");
+                            return View("UserNameEnter");
+                        }
+                    }
                 }
             }
 
@@ -171,7 +184,7 @@ namespace IdentityServerHost.Quickstart.UI
             return (user, provider, providerUserId, claims);
         }
 
-        private async Task<IdentityUser> AutoProvisionUser(string provider, string providerUserId, IEnumerable<Claim> claims)
+        private async Task<IdentityUser> AutoProvisionUser(string provider, string providerUserId, IEnumerable<Claim> claims, string UserName)
         {
             // Отримати або створити користувача на основі інформації в claims
             var user = await _signInManager.UserManager.FindByLoginAsync(provider, providerUserId);
@@ -179,13 +192,12 @@ namespace IdentityServerHost.Quickstart.UI
             if (user == null)
             {
                 user = new IdentityUser();
-
                 // Заповніть властивості користувача на основі інформації з claims
                 foreach (var claim in claims)
                 {
                     if (claim.Type == ClaimTypes.Name)
                     {
-                        user.UserName = claim.Value; // Встановити UserName на основі імені з Claims
+                        user.UserName = UserName; // Встановити UserName на основі імені з Claims
                     }
                     else if (claim.Type == ClaimTypes.Email)
                     {
@@ -199,8 +211,20 @@ namespace IdentityServerHost.Quickstart.UI
 
                 if (!result.Succeeded)
                 {
-                    // Обробити помилку створення користувача за потреби
-                    throw new Exception("User creation failed.");
+                    return null;
+                }
+
+                using (var client = new HttpClient())
+                {
+                    var apiUrl = "https://localhost:5445";
+                    var endpoint = "/Artist";
+                    var artist = new
+                    {
+                        Id = new Guid(user.Id),
+                        Name = user.UserName
+                    };
+
+                    var apiResult = await client.PostAsJsonAsync(new Uri(apiUrl + endpoint), artist);
                 }
 
                 // Додайте зв'язок між провайдером і користувачем

@@ -1,11 +1,13 @@
-﻿using Laul.Application.Services.ListeningStats.Command.CreateListeningStat;
+﻿using Laul.Application.Services.ListeningStats.Commands.CreateListeningStat;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class ListeningStatController : ControllerBase
     {
         private readonly IMediator _mediator;

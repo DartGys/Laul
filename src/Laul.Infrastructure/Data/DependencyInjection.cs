@@ -6,6 +6,7 @@ using Laul.Infrastructure.Persistance;
 using Laul.Infrastructure.Data.BlobStorage;
 using Laul.Application.Interfaces.BlobStorage;
 
+
 namespace Laul.Infrastructure.Data
 {
     public static class DependencyInjection

@@ -3,6 +3,23 @@
     bottom: 0;
     width: 100%;
     background-color: #f1f1f1;
-    padding: 10px;
     text-align: center;
 }
+
+.custom-icon {
+    font-size: 24px; /* Змініть розмір за потребою */
+    cursor: pointer;
+    border-radius: 50%; /* Робить іконку круглою */
+    margin: 5px; /* Додає відступ між іконками */
+    transition: box-shadow 0.3s ease; /* Додає плавний ефект переходу для тіні */
+}
+
+    .custom-icon:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Додає круглу тінь при наведенні */
+    }
+
+#footerInfo span {
+    display: inline-block;
+    margin-left: 10px; /* або будь-який інший відступ, який вам потрібен */
+}
+

@@ -2,7 +2,10 @@
 using Laul.WebUI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
@@ -19,9 +22,10 @@ namespace Laul.WebUI.Controllers
         {
             var request = new GetSongListQuery()
             {
-                Count = 10
+                Count = 50
             };
             var models = await _mediator.Send(request);
+
             return View(models);
         }
 

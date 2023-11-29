@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using System.Text;
 using Laul.WebUI.Models.Artist;
+using Laul.WebUI.Common.Interpretator;
 using MediatR;
 using Laul.Application.Services.Artists.Queries.GetArtistDetails;
+using Laul.WebUI.Services.Identity;
+using System.Net.Http.Headers;
 
 namespace Laul.WebUI.Controllers
 {
@@ -14,12 +17,14 @@ namespace Laul.WebUI.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly IMediator _mediator;
+        private readonly ITokenService _tokenService;
 
-        public ProfileController(IMediator mediator, IConfiguration configuration)
+        public ProfileController(IMediator mediator, IConfiguration configuration, ITokenService tokenService)
         {
             _httpClient = new HttpClient();
             _config = configuration;
             _mediator = mediator;
+            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -39,11 +44,12 @@ namespace Laul.WebUI.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult EditArtist(Guid id)
+        public IActionResult EditArtist(Guid id, string Photo)
         {
+
             var model = new ArtistUpdateDto()
             {
-                Id = id
+                Id = id,
             };
             return View(model);
         }
@@ -67,24 +73,51 @@ namespace Laul.WebUI.Controllers
                 {
                     Id = request.Id,
                     Description = request.Description,
-                    Name = request.Name,
                     Photo = PhotoInBytes
                 };
+                var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await _httpClient.PatchAsync($"{_config["apiUrl"]}/Artist", content);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // Обробка успішного відгуку від API (наприклад, редірект)
                     return RedirectToAction("GetArtistDetails");
                 }
                 else
                 {
-                    // Обробка помилки від API (наприклад, відображення повідомлення про помилку)
                     ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
                 }
             }
             return View(request);
+        }
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteArtist()
+        {
+            var model = new DeleteArtistDto()
+            {
+                UserName = HttpContext.User.FindFirstValue("name")
+            };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/Artist")
+            {
+                Content = content
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

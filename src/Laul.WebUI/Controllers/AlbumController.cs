@@ -2,10 +2,13 @@
 using Laul.Application.Services.Albums.Queries.GetAlbumListByArtist;
 using Laul.WebUI.Common.Inspector;
 using Laul.WebUI.Models.Album;
+using Laul.WebUI.Services.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace Laul.WebUI.Controllers
 {
@@ -14,12 +17,14 @@ namespace Laul.WebUI.Controllers
         private readonly IMediator _mediator;
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
+        private readonly ITokenService _tokenService;
 
-        public AlbumController(IConfiguration config, IMediator mediator)
+        public AlbumController(IConfiguration config, IMediator mediator, ITokenService tokenService)
         {
             _config = config;
-            _httpClient = new HttpClient();
             _mediator = mediator;
+            _httpClient = new HttpClient();
+            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -62,9 +67,19 @@ namespace Laul.WebUI.Controllers
                     Title = request.Title,
                 };
 
+                var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Album", model);
 
-                RedirectToAction("GetArtistDetails", "Profile");
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetArtistDetails", "Profile");
+                }
+                else
+                {
+                    return BadRequest(response.Content);
+                }
             }
 
             return View(request);
@@ -92,6 +107,34 @@ namespace Laul.WebUI.Controllers
             var model = await _mediator.Send(request);
 
             return View(model);
+        }
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAlbum(long AlbumId)
+        {
+            var model = new DeleteAlbumDto()
+            {
+                Id = AlbumId
+            };
+
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/Album")
+            {
+                Content = content
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using Laul.Application.Common;
 using Laul.Infrastructure.Data;
 using Laul.WebAPI.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

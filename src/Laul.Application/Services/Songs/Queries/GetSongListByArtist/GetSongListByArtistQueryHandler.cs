@@ -28,7 +28,7 @@ namespace Laul.Application.Services.Songs.Queries.GetSongListByArtist
                 throw new NotFoundExeption(nameof(artist), artist.Id);
             }
 
-            var songs = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.ArtistId == artist.Id, cancellationToken, a => a.Album))
+            var songs = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.ArtistId == artist.Id, cancellationToken, a => a.Album, s => s.Artist ,s => s.LikeDislikes, s => s.ListeningStats))
                 .AsQueryable()
                 .ProjectTo<SongLookupDto>(_mapper.ConfigurationProvider)
                 .ToList();

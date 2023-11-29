@@ -11,14 +11,16 @@ namespace Laul.Application.Services.Songs.Queries.GetSongList
         public string Title { get; set; }
         public string Photo { get; set; }
         public string Storage { get; set; }
+        public Guid ArtistId { get; set; }
         public string ArtistName { get; set; }
-        public string AlbumName { get; set; }
+        public long AlbumId { get; set; }
+        public string AlbumTitle { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Song, SongLookupDto>()
                 .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name))
-                .ForMember(dest => dest.AlbumName, opt => opt.MapFrom(src => src.Album != null ? src.Album.Title : null));
+                .ForMember(dest => dest.AlbumTitle, opt => opt.MapFrom(src => src.Album != null ? src.Album.Title : null));
         }
     }
 }

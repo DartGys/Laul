@@ -18,14 +18,17 @@ namespace Laul.Application.Services.Albums.Commands.DeleteAlbum
         
         public async Task<Unit> Handle(DeleteAlbumCommand command, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfwork.Album.FindAsync(e => e.Id == command.Id, cancellationToken)).FirstOrDefault();
+            var entity = (await _unitOfwork.Album.FindAsync(e => e.Id == command.Id, cancellationToken, e => e.Songs)).FirstOrDefault();
 
-            if (entity == null || command.ArtistId != entity.ArtistId)
+            if (entity == null)
             {
                 throw new NotFoundExeption(nameof(Album), entity.Id);
             }
 
             await _blobStorageContext.DeleteAsync.DeleteFileAsync(entity.Image);
+
+            foreach (var item in entity.Songs)
+                item.Album = null;
 
             _unitOfwork.Album.Remove(entity);
             await _unitOfwork.SaveChangeAsync(cancellationToken);
