@@ -214,6 +214,7 @@ namespace IdentityServerHost.Quickstart.UI
                             Id = new Guid(user.Id),
                             Name = user.UserName
                         };
+                        
                         var apiResult = await client.PostAsJsonAsync(new Uri(apiUrl + endpoint), artist);
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);
@@ -385,6 +386,11 @@ namespace IdentityServerHost.Quickstart.UI
             // show the logout prompt. this prevents attacks where the user
             // is automatically signed out by another malicious web page.
             return vm;
+        }
+
+        public IActionResult InputUserName(string UserName)
+        {
+            return RedirectToAction("Callback", "External", new { UserName });
         }
 
         private async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(string logoutId)

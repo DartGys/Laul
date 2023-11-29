@@ -3,19 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="~/js/footerInfo.js"></script>
     <script src="~/js/Song/togleAndPlay.js"></script>
     <script src="~/js/Song/sendDeleteRequest.js"></script>
     <script src="~/js/Song/songMenu.js"></script>
     <link rel="stylesheet" href="~/css/songList.css"/>
 </head>
 <body>
+    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'></div>
     <table class="table">
         @if (Model.Songs != null && Model.Songs.Any())
         {
             @foreach (var item in Model.Songs)
             {
                 <tr class="song-cover" onmouseover="changeCursor(this)">
-                    <td style="width: 50px; height: 50px" onclick="toggleAndPlayAudio('@item.Storage','@item.Id','@Context.User.FindFirst("name")?.Value')">
+                    <td style="width: 50px; height: 50px" onclick="toggleAndPlayAudio(@item.Id)">
                         <img style="block-size: 50px" src="@item.Photo" />
                     </td>
                     <td style="width: 350px; height: 50px">

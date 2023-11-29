@@ -5,13 +5,11 @@ using Laul.Application.Services.Artists.Queries.GetArtistDetails;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
     public class ArtistController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -25,10 +23,13 @@ namespace Laul.WebAPI.Controllers
             Ok(await _mediator.Send(command));
 
         [HttpDelete]
+        [Authorize]
+
         public async Task<IActionResult> DeleteArtist([FromBody]DeleteArtistCommand command) =>
             Ok(await _mediator.Send(command));
 
         [HttpPatch]
+        [Authorize]
         public async Task<IActionResult> UpdateArtist([FromBody]UpdateArtistCommand command) =>
             Ok(await _mediator.Send(command));
     }

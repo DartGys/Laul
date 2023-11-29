@@ -19,7 +19,7 @@
                         <h3 style="font-size: 14px;">@item.Title</h3>
                         <a href="@Url.Action("GetArtistDetails", "Profile", new { UserName = item.ArtistName })">@item.ArtistName</a>
                         <div class="dropdown">
-                            <a class="bx bx-dots-vertical-rounded dropdownButton"></a>
+                            <a style="padding-left: 30px" class="bx bx-dots-vertical-rounded dropdownButton"></a>
                             <ul class="dropdown-menu">
                                 <li onclick="openModal('@item.Id')" data-toggle="ajax-modal" data-target="Modal">Add to Playlist</li>
                             </ul>
