@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\audioVolume.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\audioVolume.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\audioVolume.js" />
     <None Include="wwwroot\js\sidebar.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\Song\songMenu.js" />

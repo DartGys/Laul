@@ -6,10 +6,13 @@
     <link rel="stylesheet" href="~/css/playlistDetails.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Song/SongsData.js"></script>
+    <script src="~/js/footerInfo.js"></script>
     <script src="~/js/Song/togleAndPlay.js"></script>
     <script src="~/js/Song/songMenu.js"></script>
 </head>
 <body>
+    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'></div>
     <div class="container">
         <div class="title">
             <h1>@Model.Title</h1>
@@ -24,7 +27,7 @@
         {
             <tr>
                 <td>
-                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio('@item.Storage')" class="song-cover" onmouseover="changeCursor(this)">
+                    <div style="display: flex; align-items: center;" onclick="toggleAndPlayAudio(@item.Id)" class="song-cover" onmouseover="changeCursor(this)">
                         <div style="width: 50px; height: 50px; margin-right: 10px;">
                             <img style="block-size: 50px" src="@item.Photo" />
                         </div>
@@ -34,14 +37,14 @@
                     </div>
                 </td>
                 <td style="width: 200px; height: 50px">
-                    @Html.DisplayFor(modelItem => item.ArtistName)
+                    <a href="@Url.Action("GetArtistDetails","Profile", new { UserName = item.ArtistName})">@item.ArtistName</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AlbumTitle)
+                    <a href="@Url.Action("GetAlbumDetails", "Album", new {AlbumId = item.AlbumId, ArtistId = item.ArtistId})">@item.AlbumTitle</a>
                 </td>
                 <td>
                     <div class="dropdown">
-                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none"></a>
+                        <a class="bx bx-dots-vertical-rounded dropdownButton text-decoration-none" onmouseover="changeCursor(this)"></a>
                         <ul class="dropdown-menu song-cover">
                             <a class="text-decoration-none" href="@Url.Action("RemoveSongFromPlaylist","PlaylistSong", new {songId = item.Id, playlistId = Model.Id})">Delete From Playlist</a>
                         </ul>

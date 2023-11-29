@@ -2,12 +2,14 @@
 using Laul.Application.Services.Albums.Commands.DeleteAlbum;
 using Laul.Application.Services.Albums.Commands.UpdateAlbum;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laul.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class AlbumController : ControllerBase
     {
         private readonly IMediator _mediator;

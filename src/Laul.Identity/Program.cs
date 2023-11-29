@@ -26,6 +26,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
 app.UseAuthorization();
+app.UseAuthentication();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();

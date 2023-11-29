@@ -16,11 +16,13 @@ namespace Laul.Application.Services.LikeDislikes.Commands.UpdateLikeDislike
 
         public async Task<Unit> Handle(UpdateLikeDislikeCommand command, CancellationToken cancellationToken)
         {
-            var entity = (await _unitOfWork.LikeDislike.FindAsync(e => e.ArtistId == command.ArtistId && e.SongId == command.SongId)).FirstOrDefault();
+            var artist = (await _unitOfWork.Artist.FindAsyncNoTracking(a => a.Name == command.ArtistName, cancellationToken)).FirstOrDefault();
+
+            var entity = (await _unitOfWork.LikeDislike.FindAsync(e => e.ArtistId == artist.Id && e.SongId == command.SongId)).FirstOrDefault();
 
             if (entity == null)
             {
-                throw new NotFoundExeption(nameof(LikeDislike), command.ArtistId);
+                throw new NotFoundExeption(nameof(LikeDislike), command.SongId);
             }
 
             entity.IsLike = !entity.IsLike;

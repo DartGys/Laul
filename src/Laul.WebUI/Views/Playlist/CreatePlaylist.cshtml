@@ -6,9 +6,10 @@
     <title>Create Playlist</title>
 </head>
 <body>
-
+    <h2>Create Playlist</h2>
     <div class="container">
-        <h2>Create Playlist</h2>
+        <div asp-validation-summary="All" class="text-danger"></div>
+
         <div>
             <form asp-action="CreatePlaylist" asp-controller="Playlist" method="post">
             <div class="form-group">

@@ -1,0 +1,36 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List</title>
+</head>
+<body>
+
+    <h1>Song List</h1>
+
+    @if (Model != null && Model.Any())
+    {
+        <ul>
+            @foreach (var song in Model)
+            {
+                <li>
+                    <div>
+                        <img src="@song.Photo" alt="Song Photo" style="width: 50px;">
+                        <p>Title: @song.Title</p>
+                        <p>Artist: @song.Artist</p>
+                        <p>Album: @song.Album</p>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No songs available.</p>
+    }
+
+</body>
+</html>
+

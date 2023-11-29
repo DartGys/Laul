@@ -35,7 +35,7 @@ namespace Laul.Infrastructure.Data.BlobStorage
                 BlobContainerName = containerName,
                 BlobName = fileName,
                 Resource = "b",
-                ExpiresOn = DateTimeOffset.UtcNow.AddYears(1),
+                ExpiresOn = DateTimeOffset.UtcNow.AddYears(5),
                 StartsOn = DateTimeOffset.UtcNow
             };
 

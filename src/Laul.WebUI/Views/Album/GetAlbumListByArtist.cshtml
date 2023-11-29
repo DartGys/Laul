@@ -4,6 +4,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/songList.css" />
+    <script src="~/js/Song/songMenu.js"></script>
+    <script src="~/js/Album/sendDeleteAlbum.js"></script>
 </head>
 <body>
     <div id="songs-container">
@@ -11,18 +13,23 @@
     {
         @foreach (var item in Model.Albums)
         {
-                <a href="@Url.Action("GetAlbumDetails","Album", new { AlbumId = item.Id, ArtistId = Model.ArtistId})">
-                <div class="song-card">
-                    <div>
-                        <img class="song-cover" src="@item.Image" alt="Photo)">
-                        <div class="song-details">
-                                <h3 style="margin: 0px">@item.Title</h3>
-                            <h3 style="font-size: 14px; margin: 0px">@item.Genre</h3>
-                            <h3 style="font-size: 14px;">@item.PublishDate.Year</h3>
-                        </div>
+            <div class="song-card">
+                    <a href="@Url.Action("GetAlbumDetails","Album", new { AlbumId = item.Id, ArtistId = Model.ArtistId})">
+                <img class="song-cover" src="@item.Image" alt="Photo)">
+                </a>
+                    <div class="song-details">
+                    <h3 style="margin: 0px">@item.Title</h3>
+                    <h3 style="font-size: 14px; margin: 0px">@item.Genre</h3>
+                    <h3 style="font-size: 14px; display: inline-block;">@item.PublishDate.Year</h3>
+
+                    <div class="dropdown" style="display: inline-block;">
+                        <a class="bx bx-dots-vertical-rounded dropdownButton"></a>
+                        <ul class="dropdown-menu">
+                            <li onclick="deleteAlbum(@item.Id)">Delete Album</li>
+                        </ul>
                     </div>
                 </div>
-            </a>
+            </div>
         }
     }
     else

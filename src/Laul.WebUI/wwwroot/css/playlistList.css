@@ -8,6 +8,22 @@ h1 {
     color: #333;
 }
 
+.list-group-item {
+    display: flex;
+    align-items: center; /* Вирівнювання елементів по центру */
+    justify-content: space-between; /* Рівномірний розподіл простору між елементами */
+}
+
+    /* Додайте стилі для елементів всередині .list-group-item за необхідності */
+    .list-group-item a {
+        text-decoration: none;
+        /* Інші стилі, які вам потрібні */
+    }
+
+    .list-group-item .dropdown {
+        margin-left: auto; /* Залишає простір зліва від .dropdown */
+    }
+
 /* Стилізація для навігаційного списку */
 .playlist-list {
     list-style: none;
@@ -29,3 +45,39 @@ h1 {
         .playlist-list a:hover {
             color: #0056b3;
         }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+    .dropdown a {
+        text-decoration: none;
+        font-size: 20px;
+        padding-left: 55px; /* Додати відступ зліва */
+    }
+
+.dropdown-toggle {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    list-style: none;
+}
+
+    .dropdown-menu li {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+        .dropdown-menu li:hover {
+            background-color: #ddd;
+        }
+

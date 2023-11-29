@@ -30,7 +30,6 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
 
             var album = (await _unitOfWork.Album.FindAsyncNoTracking(a => a.Id == request.Id, cancellationToken))
                 .AsQueryable()
-                .Include(artist.Name)
                 .FirstOrDefault();
 
             var songs = (await _unitOfWork.Song.FindAsyncNoTracking(s => s.AlbumId == request.Id, cancellationToken))
@@ -38,6 +37,7 @@ namespace Laul.Application.Services.Albums.Queries.GetAlbumDetails
                 .ToList();
 
             var AlbumDetailsVm = _mapper.Map<AlbumDetailsVm>(album);
+            AlbumDetailsVm.ArtistName = artist.Name;
             AlbumDetailsVm.Songs = _mapper.Map<IList<AlbumSongListDto>>(songs);
 
             return AlbumDetailsVm;

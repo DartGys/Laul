@@ -8,9 +8,13 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
+    <script src="~/js/songSizeCheck.js"></script>
+    <script src="~/js/photoSizeCheck.js"></script>
+    <script src="~/js/photoPriview.js"></script>
 </head>
 <body>
     <h1>@ViewData["Title"]</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <form class="mt-3" method="post" action="/Song/CreateSong" enctype="multipart/form-data">
         <input type="hidden" asp-for="ArtistId" />
@@ -27,12 +31,13 @@
 
         <div class="mb-3">
             <label class="form-label" asp-for="Photo">Photo:</label>
-            <input class="form-control" asp-for="Photo" type="file" accept="image/*" />
+            <input class="form-control" asp-for="Photo" type="file" accept="image/*" id="photoInput" onchange="photoSize()"/>
+            <div id="photoPreview" style="margin-top: 10px; max-width: 200px; max-height: auto;"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label" asp-for="Song">Song:</label>
-            <input class="form-control" asp-for="Song" type="file" accept="audio/*" />
+            <input class="form-control" asp-for="Song" type="file" accept="audio/*" id="songInput" onchange="songSize()" />
         </div>
 
         <div class="mb-3">

@@ -3,13 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Laul.WebUI.Common.Inspector;
-
 using System.Security.Claims;
 using AutoMapper;
 using Laul.Application.Services.Songs.Queries.GetSongByArtist;
 using Laul.Application.Services.Songs.Queries.GetSongListByArtistNoAlbum;
 using Laul.Application.Services.Songs.Commands.AddSongToAlbum;
-using Azure.Core;
+using Laul.WebUI.Services.Identity;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Text;
+using Laul.Application.Services.Songs.Commands.DeleteSongFromAlbum;
 
 namespace Laul.WebUI.Controllers
 {
@@ -19,13 +22,15 @@ namespace Laul.WebUI.Controllers
         private readonly IConfiguration _config;
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly ITokenService _tokenService;
 
-        public SongController(IMediator mediator, IConfiguration configuration, IMapper mapper)
+        public SongController(IMediator mediator, IConfiguration configuration, IMapper mapper, ITokenService tokenService)
         {
             _httpClient = new HttpClient();
             _config = configuration;
             _mediator = mediator;
             _mapper = mapper;
+            _tokenService = tokenService;
         }
 
         public async Task<IActionResult> GetSongListByArtist(string UserName)
@@ -39,6 +44,7 @@ namespace Laul.WebUI.Controllers
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> GetSongListForm(long AlbumId)
         {
             var UserName = HttpContext.User.FindFirstValue("name");
@@ -62,6 +68,19 @@ namespace Laul.WebUI.Controllers
             {
                 AlbumId = AlbumId,
                 SongsId = SongsId
+            };
+            var response = await _mediator.Send(model);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> DeleteSongFromAlbum(long SongId)
+        {
+            var model = new DeleteSongFromAlbumCommand()
+            {
+                SongId = SongId
             };
             var response = await _mediator.Send(model);
 
@@ -111,22 +130,48 @@ namespace Laul.WebUI.Controllers
                         Storage = songBytes,
                         Title = request.Title,
                     };
+                    var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
 
                     HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_config["apiUrl"]}/Song", model);
                         
                     if (response.IsSuccessStatusCode)
                     {
-                        // Обробка успішного відгуку від API (наприклад, редірект)
                         return RedirectToAction("GetArtistDetails","Profile");
                     }
                     else
                     {
-                        // Обробка помилки від API (наприклад, відображення повідомлення про помилку)
-                        ModelState.AddModelError(string.Empty, "Error updating profile. Please try again later.");
+                        ModelState.AddModelError(string.Empty, "Error Creating song. Please try again later.");
                     }
                 }
             }
             return View(request);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSong(long SongId)
+        {
+            var model = new DeleteSongDto()
+            {
+                Id = SongId
+            };
+            var tokenResponse = await _tokenService.GetToken("WebAPI.write");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"{_config["apiUrl"]}/Song")
+            {
+                Content = content
+            });
+            
+            if(response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
