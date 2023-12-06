@@ -1,6 +1,8 @@
 # Laul
 Laul is new audio hosting resourse that provide you with best experience in listening a music and best platform to share youre music
-https://github.com/DartGys/Laul/assets/108235020/d66243de-d0af-48b6-9a70-11742107f63e
+
+https://github.com/DartGys/Laul/assets/108235020/ae6975d4-41c2-44f7-8984-576b502a74aa
+
 
 ## Project description
 
