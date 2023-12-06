@@ -6,8 +6,8 @@ function updateFooterInfo(title, artist, album, photo) {
     var footerPhoto = document.getElementById('footerPhoto');
 
     footerTitle.innerText = title;
-    footerArtist.innerText = artist;
-    footerAlbum.innerText = album;
+    footerArtist.innerText = (typeof artist !== 'undefined') ? artist : '';;
+    footerAlbum.innerText = (typeof album !== 'undefined') ? album : '';
     footerPhoto.src = photo;
 
     // Включити відображення футера

@@ -13,7 +13,6 @@
     <script src="~/js/Song/sendDeleteSongFromAlbum.js"></script>
 </head>
 <body>
-    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'></div>
     <div class="d-flex">
         <div>
             <img style="height : 150px"src="@Model.Image" class="img-fluid" alt="Album Image" />
@@ -35,9 +34,10 @@
     </div>
     @if (Model.ArtistName == Context.User.FindFirst("name")?.Value)
     {
-    <button onclick="openModal(@Model.Id)" data-toggle="ajax-modal" data-target="Modal" class="btn btn-primary add-song-button">Add song to album</button>
+        <button onclick="openModal(@Model.Id)" data-toggle="ajax-modal" data-target="Modal" class="btn btn-primary add-song-button">Add song to album</button>
     }
 
+    <div id="songs-container" data-songs='@(Json.Serialize(Model.Songs))' data-user='@Context.User.FindFirst("name")?.Value'></div>
     <table class="table">
         @foreach (var item in Model.Songs)
         {
@@ -53,12 +53,15 @@
                     </div>
                 </td>
                 <td>
-                    <div class="dropdown">
-                        <a class="bx bx-dots-vertical-rounded dropdownButton" onmouseover="changeCursor(this)"></a>
-                        <ul class="dropdown-menu">
-                            <li onclick="deleteSongFromAlbum(@item.Id)">Delete From Album</li>
-                        </ul>
-                    </div>
+                    @if (Model.ArtistName == Context.User.FindFirst("name")?.Value)
+                    {
+                        <div class="dropdown">
+                            <a class="bx bx-dots-vertical-rounded dropdownButton" onmouseover="changeCursor(this)"></a>
+                            <ul class="dropdown-menu">
+                                <li onclick="deleteSongFromAlbum(@item.Id)">Delete From Album</li>
+                            </ul>
+                        </div>
+                    }
                 </td>
             </tr>
         }
