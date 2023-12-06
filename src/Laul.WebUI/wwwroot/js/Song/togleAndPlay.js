@@ -1,5 +1,5 @@
 ﻿var songData = [];
-var curSong = 0;
+var curSong = -1;
 var audioPlayer;
 var songs = [];
 var UserName;
@@ -10,10 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     audioPlayer.addEventListener('ended', function () {
         nextSong();
     });
-
-    var info = document.getElementById("songs-container");
-    UserName = info.dataset.user;
-    songs = JSON.parse(info.dataset.songs);
 });
 
 function nextSong() {
@@ -35,7 +31,13 @@ function prevSong() {
 }
 
 function toggleAndPlayAudio(SongId, shuffle = false) {
+    var info = document.getElementById("songs-container");
+    UserName = info.dataset.user;
+    songs = JSON.parse(info.dataset.songs);
+
+    curSong = -1;
     choosenSong = songs.find(function (onesong) {
+        curSong++;
         return onesong.id === SongId;
     });
 
@@ -50,6 +52,7 @@ function toggleAndPlayAudio(SongId, shuffle = false) {
 }
 
 function shuffledSong(SongId) {
+    curSong = 0;
     songData = songs.filter(function (onesong) {
         return onesong.id !== SongId;
     });
